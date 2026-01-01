@@ -1,29 +1,22 @@
 import { ExternalLink } from 'lucide-react';
-
-const tools = [
-  {
-    title: 'Dump Space',
-    href: 'https://dumpspace.lovable.app/',
-    description: 'A simple capture tool for clearing mental clutter. Get open loops out of your head and into a safe place — so you can return to your work with less noise.',
-    color: 'from-sage-light to-accent',
-  },
-  {
-    title: 'Accrue Language',
-    href: 'https://accruelanguage.lovable.app/',
-    description: 'Time-based tracking that keeps progress visible. Log your practice, see totals over time, and stay encouraged through clear signals — without gamification.',
-    color: 'from-slate-light to-muted',
-  },
-  {
-    title: 'Fluent Hour',
-    href: 'https://fluent-hour.netlify.app/',
-    description: 'A guided one-hour practice flow. Start the timer, follow the steps, and finish with measurable progress. Works best with a language helper, and can also be adapted for independent practice.',
-    color: 'from-linen to-cream',
-  },
-];
-
+const tools = [{
+  title: 'Dump Space',
+  href: 'https://dumpspace.lovable.app/',
+  description: 'A simple capture tool for clearing mental clutter. Get open loops out of your head and into a safe place — so you can return to your work with less noise.',
+  color: 'from-sage-light to-accent'
+}, {
+  title: 'Accrue Language',
+  href: 'https://accruelanguage.lovable.app/',
+  description: 'Time-based tracking that keeps progress visible. Log your practice, see totals over time, and stay encouraged through clear signals — without gamification.',
+  color: 'from-slate-light to-muted'
+}, {
+  title: 'Fluent Hour',
+  href: 'https://fluent-hour.netlify.app/',
+  description: 'A guided one-hour practice flow. Start the timer, follow the steps, and finish with measurable progress. Works best with a language helper, and can also be adapted for independent practice.',
+  color: 'from-linen to-cream'
+}];
 export default function Tools() {
-  return (
-    <section id="tools" className="py-20 md:py-28 bg-muted/20">
+  return <section id="tools" className="py-20 md:py-28 bg-muted/20">
       <div className="container-calm">
         {/* Section header */}
         <div className="max-w-2xl mb-12">
@@ -37,15 +30,9 @@ export default function Tools() {
 
         {/* Tools grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map((tool, index) => (
-            <a
-              key={tool.title}
-              href={tool.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group card-calm flex flex-col h-full opacity-0 animate-fade-in-up focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+          {tools.map((tool, index) => <a key={tool.title} href={tool.href} target="_blank" rel="noopener noreferrer" className="group card-calm flex flex-col h-full opacity-0 animate-fade-in-up focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" style={{
+          animationDelay: `${index * 100}ms`
+        }}>
               {/* Thumbnail placeholder */}
               <div className={`relative w-full aspect-video rounded-lg mb-5 bg-gradient-to-br ${tool.color} overflow-hidden border border-border/50`}>
                 <div className="absolute inset-3 bg-card/90 rounded-md shadow-sm border border-border/30">
@@ -69,15 +56,11 @@ export default function Tools() {
               <p className="text-muted-foreground leading-relaxed text-sm">
                 {tool.description}
               </p>
-            </a>
-          ))}
+            </a>)}
         </div>
 
         {/* Portfolio note */}
-        <p className="mt-10 text-xs text-muted-foreground/70 text-center max-w-2xl mx-auto">
-          Some projects shown here were developed during my tenure at Pioneer Bible Translators and are displayed for demonstration only. Ownership remains with the respective organization.
-        </p>
+        <p className="mt-10 text-xs text-muted-foreground/70 text-center max-w-2xl mx-auto">Some projects shown here were created as part of my work with Pioneer Bible Translators. Shown for demonstration only; ownership remains with the respective organization.</p>
       </div>
-    </section>
-  );
+    </section>;
 }

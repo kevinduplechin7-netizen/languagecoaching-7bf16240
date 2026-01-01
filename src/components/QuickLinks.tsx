@@ -1,20 +1,23 @@
-import { MessageSquare, BookOpen, GraduationCap, ExternalLink } from 'lucide-react';
+import { Brain, Clock, Timer, ExternalLink } from 'lucide-react';
 
-const quickLinks = [
+const appLinks = [
   {
-    icon: MessageSquare,
-    title: 'Chat with Paul Nation',
-    href: 'https://notebooklm.google.com/notebook/da30b9be-319d-4de8-8920-470389dd2db8',
+    icon: Brain,
+    title: 'Dump Space',
+    description: 'Clear mental clutter',
+    href: 'https://dumpspace.lovable.app/',
   },
   {
-    icon: BookOpen,
-    title: 'Paul Nation resources',
-    href: 'https://www.wgtn.ac.nz/lals/resources/paul-nations-resources',
+    icon: Clock,
+    title: 'Accrue Language',
+    description: 'Track practice time',
+    href: 'https://accruelanguage.lovable.app/',
   },
   {
-    icon: GraduationCap,
-    title: 'Wheaton ICCT resources',
-    href: 'https://www.wheaton.edu/academics/academic-centers/institute-for-cross-cultural-training/resources/',
+    icon: Timer,
+    title: 'Fluent Hour',
+    description: 'Guided practice flow',
+    href: 'https://fluent-hour.netlify.app/',
   },
 ];
 
@@ -22,8 +25,9 @@ export default function QuickLinks() {
   return (
     <section id="quick-links" className="py-8 bg-muted/30 border-y border-border/50 scroll-mt-20">
       <div className="container-calm">
+        <p className="text-xs text-muted-foreground text-center mb-4 uppercase tracking-wide">App Solutions</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {quickLinks.map((link) => (
+          {appLinks.map((link) => (
             <a
               key={link.title}
               href={link.href}
@@ -34,8 +38,11 @@ export default function QuickLinks() {
               <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-accent rounded-lg group-hover:bg-primary/10 transition-colors">
                 <link.icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
-              <span className="flex-1 text-sm font-medium text-foreground">{link.title}</span>
-              <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" aria-hidden="true" />
+              <div className="flex-1 min-w-0">
+                <span className="block text-sm font-medium text-foreground">{link.title}</span>
+                <span className="block text-xs text-muted-foreground">{link.description}</span>
+              </div>
+              <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" aria-hidden="true" />
             </a>
           ))}
         </div>

@@ -27,7 +27,7 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '400ms' }}>
-            <a href="#resources" className="btn-primary-calm w-full sm:w-auto">
+            <a href="#quick-links" className="btn-primary-calm w-full sm:w-auto">
               <ArrowDown className="w-4 h-4 mr-2" aria-hidden="true" />
               Quick links
             </a>

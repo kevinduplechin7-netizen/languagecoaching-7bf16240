@@ -20,7 +20,7 @@ const quickLinks = [
 
 export default function QuickLinks() {
   return (
-    <section className="py-8 bg-muted/30 border-y border-border/50">
+    <section id="quick-links" className="py-8 bg-muted/30 border-y border-border/50 scroll-mt-20">
       <div className="container-calm">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {quickLinks.map((link) => (

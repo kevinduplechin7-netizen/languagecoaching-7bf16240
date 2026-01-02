@@ -10,10 +10,20 @@ const tools = [{
   description: 'Time-based tracking that keeps progress visible. Log your practice, see totals over time, and stay encouraged through clear signals — without gamification.',
   color: 'from-slate-light to-muted'
 }, {
-  title: 'Fluent Hour',
-  href: 'https://fluent-hour.netlify.app/',
+  title: 'FluentHour',
+  href: 'https://fluenthourpremium.netlify.app/',
   description: 'A guided one-hour practice flow. Start the timer, follow the steps, and finish with measurable progress. Works best with a language helper, and can also be adapted for independent practice.',
   color: 'from-linen to-cream'
+}, {
+  title: 'FluentHour Companion',
+  href: 'https://chatgpt.com/g/g-6958040e8ce881918400c643c84bbfc1-fluenthour-companion',
+  description: 'An AI-powered practice assistant designed to complement your FluentHour sessions. Get instant feedback, conversation practice, and personalized guidance.',
+  color: 'from-slate-light to-accent'
+}, {
+  title: 'Sentence Paths',
+  href: 'https://sentencepaths.netlify.app/',
+  description: 'Import a large sentence library (your own or AI-generated), practice with audio, and optionally include transliteration and word-by-word gloss. Supports up to four columns: Translation, Target Language, optional Transliteration, and optional Word-by-word Gloss.',
+  color: 'from-linen to-muted'
 }];
 export default function Tools() {
   return <section id="tools" className="py-20 md:py-28 bg-muted/20">

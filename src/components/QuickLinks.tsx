@@ -1,4 +1,4 @@
-import { Brain, Clock, Timer, ExternalLink } from 'lucide-react';
+import { Brain, Clock, Timer, MessageCircle, Layers, ExternalLink } from 'lucide-react';
 
 const appLinks = [
   {
@@ -15,9 +15,21 @@ const appLinks = [
   },
   {
     icon: Timer,
-    title: 'Fluent Hour',
+    title: 'FluentHour',
     description: 'Guided practice flow',
-    href: 'https://fluent-hour.netlify.app/',
+    href: 'https://fluenthourpremium.netlify.app/',
+  },
+  {
+    icon: MessageCircle,
+    title: 'FluentHour Companion',
+    description: 'AI practice assistant',
+    href: 'https://chatgpt.com/g/g-6958040e8ce881918400c643c84bbfc1-fluenthour-companion',
+  },
+  {
+    icon: Layers,
+    title: 'Sentence Paths',
+    description: 'Audio sentence practice',
+    href: 'https://sentencepaths.netlify.app/',
   },
 ];
 
@@ -26,7 +38,7 @@ export default function QuickLinks() {
     <section id="quick-links" className="py-8 bg-muted/30 border-y border-border/50 scroll-mt-20">
       <div className="container-calm">
         <p className="text-xs text-muted-foreground text-center mb-4 uppercase tracking-wide">App Solutions</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           {appLinks.map((link) => (
             <a
               key={link.title}

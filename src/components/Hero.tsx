@@ -42,7 +42,7 @@ export default function Hero() {
           <div className="mt-16 pt-8 border-t border-border/50 opacity-0 animate-fade-in" style={{
           animationDelay: '500ms'
         }}>
-            <p className="text-sm text-muted-foreground">Kevin Duplechin·Linguist·Pioneer Bible Translators<span className="font-medium text-foreground">Kevin Duplechin</span>
+            <p className="text-sm text-muted-foreground">Kevin Duplechin<span className="font-medium text-foreground">Kevin Duplechin</span>
               <span className="mx-2">·</span>
               Linguist · Coordinator of Language Learning Coaches
               <span className="mx-2">·</span>

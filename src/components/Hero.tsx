@@ -16,9 +16,7 @@ export default function Hero() {
           {/* Subcopy */}
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty opacity-0 animate-fade-in" style={{
           animationDelay: '200ms'
-        }}>
-            Coaching, tools, and research helpers for cross-cultural workers and teams. Calm structure, faithful consistency.
-          </p>
+        }}>Calm coaching, tools, and research helpers for cross-cultural workers and teams.</p>
 
           {/* Credibility */}
           <p className="mt-4 text-sm text-muted-foreground/70 opacity-0 animate-fade-in" style={{

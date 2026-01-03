@@ -10,7 +10,7 @@ const resourceCategories = [
     tag: 'Guide',
     description: 'A diagnostic lens for balanced language learning \u2014 not a replacement for your approach, but a way to check your learning diet.',
     icon: BookOpen,
-    href: 'https://www.wgtn.ac.nz/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/foreign-language_1125.pdf',
+    href: 'https://4strands4me.netlify.app/',
     internal: false,
   },
   {
@@ -187,4 +187,5 @@ export default function ResourcesPage() {
     </div>
   );
 }
+
 

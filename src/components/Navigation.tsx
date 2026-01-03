@@ -7,7 +7,7 @@ const navLinks = [
   { href: '/resources', label: 'Resources' },
   { href: '/coaching', label: 'Coaching' },
   { href: '/standards', label: 'Standards' },
-  { href: '/tools', label: 'Tools' },
+  { href: '/tools', label: 'Language Builds' },
 ];
 
 export default function Navigation() {

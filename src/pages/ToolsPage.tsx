@@ -35,11 +35,10 @@ const tools = [
     color: 'from-linen to-muted',
   },
   {
-    title: 'Chat with Paul Nation',
-    href: 'https://notebooklm.google.com/notebook/da30b9be-319d-4de8-8920-470389dd2db8',
-    description: "Ask coaching and language-learning questions against Paul Nation's publicly available research and lectures. Designed to help you find grounded answers quickly.",
+    title: 'MyLanguageCoach',
+    href: 'https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach',
+    description: 'Less stress, more progress. Get coached in minutes: 3 options → fit-check → one commitment.',
     color: 'from-sage-light to-muted',
-    note: 'Not affiliated with or endorsed by Paul Nation.',
     icon: MessageSquare,
   },
 ];
@@ -97,7 +96,7 @@ export default function ToolsPage() {
                 <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                   {tool.description}
                 </p>
-                {tool.note && (
+                {'note' in tool && typeof tool.note === 'string' && (
                   <p className="text-xs text-muted-foreground/60 mt-2 italic">
                     {tool.note}
                   </p>

@@ -7,7 +7,7 @@ const steps = [
   { label: 'Clarify', caption: 'what matters to you' },
   { label: 'Choose', caption: 'goals + path' },
   { label: 'Practice', caption: 'the right activities' },
-  { label: 'Evidence', caption: 'track · review · adjust' },
+  { label: 'Evidence', caption: 'track Â· review Â· adjust' },
 ];
 
 const coachingCards = [
@@ -175,7 +175,7 @@ export default function CoachingPage() {
               <ul className="space-y-2">
                 {questions.map((question) => (
                   <li key={question} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="text-primary mt-0.5">·</span>
+                    <span className="text-primary mt-0.5">Â·</span>
                     <span>"{question}"</span>
                   </li>
                 ))}

@@ -8,7 +8,7 @@ const resourceCategories = [
     id: 'four-strands',
     title: 'Four Strands',
     tag: 'Guide',
-    description: 'A diagnostic lens for balanced language learning Ã¢â‚¬â€ not a replacement for your approach, but a way to check your learning diet.',
+    description: 'A diagnostic lens for balanced language learning \u2014 not a replacement for your approach, but a way to check your learning diet.',
     icon: BookOpen,
     href: 'https://www.wgtn.ac.nz/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/foreign-language_1125.pdf',
     internal: false,
@@ -44,7 +44,7 @@ const resourceCategories = [
     id: 'coaching',
     title: 'Coaching',
     tag: 'Coaching',
-    description: 'Support that meets you where you are Ã¢â‚¬â€ and helps you move forward with a realistic plan.',
+    description: 'Support that meets you where you are ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â and helps you move forward with a realistic plan.',
     icon: Users,
     href: '/coaching',
     internal: true,
@@ -144,7 +144,7 @@ export default function ResourcesPage() {
               The Four Strands
             </h2>
             <p className="text-muted-foreground mb-8 max-w-2xl">
-              We use The Four Strands as a diagnostic lens Ã¢â‚¬â€ not to replace your approach, but to keep your learning diet balanced. This works alongside GPA, LAMP, or any roadmap.
+              We use The Four Strands as a diagnostic lens {"\u2014"} not to replace your approach, but to keep your learning diet balanced. This works alongside GPA, LAMP, or any roadmap.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {strands.map((strand) => (

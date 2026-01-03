@@ -44,7 +44,7 @@ const resourceCategories = [
     id: 'coaching',
     title: 'Coaching',
     tag: 'Coaching',
-    description: 'Support that meets you where you are ?f��??s��?,?� and helps you move forward with a realistic plan.',
+    description: 'Support that meets you where you are ?f——??s——?,?— and helps you move forward with a realistic plan.',
     icon: Users,
     href: '/coaching',
     internal: true,

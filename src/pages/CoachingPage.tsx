@@ -7,14 +7,14 @@ const steps = [
   { label: 'Clarify', caption: 'what matters to you' },
   { label: 'Choose', caption: 'goals + path' },
   { label: 'Practice', caption: 'the right activities' },
-  { label: 'Evidence', caption: 'track Â· review Â· adjust' },
+  { label: 'Evidence', caption: 'track · review · adjust' },
 ];
 
 const coachingCards = [
   {
     icon: Users,
     title: 'Training Learners',
-    description: 'Practical coaching for real conversations. We clarify your goals, choose a simple weekly rhythm, and build confidence through targeted practice — without overwhelm.',
+    description: 'Practical coaching for real conversations. We clarify your goals, choose a simple weekly rhythm, and build confidence through targeted practice - without overwhelm.',
     bullets: [
       'Clear goals tied to real contexts',
       'Sustainable weekly plan',
@@ -24,7 +24,7 @@ const coachingCards = [
   {
     icon: UserCog,
     title: 'Training Language Coaches',
-    description: 'Coach development with structure and field realism. I help teams translate research into repeatable coaching habits — with templates, session patterns, and a clear way to track progress.',
+    description: 'Coach development with structure and field realism. I help teams translate research into repeatable coaching habits - with templates, session patterns, and a clear way to track progress.',
     bullets: [
       'Session design and goal-setting',
       'Feedback habits that help learners grow',
@@ -85,7 +85,7 @@ export default function CoachingPage() {
               Coaching
             </h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Support that meets you where you are — and helps you move forward with a realistic plan you can actually keep.
+              Support that meets you where you are - and helps you move forward with a realistic plan you can actually keep.
             </p>
           </div>
 
@@ -175,7 +175,7 @@ export default function CoachingPage() {
               <ul className="space-y-2">
                 {questions.map((question) => (
                   <li key={question} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="text-primary mt-0.5">Â·</span>
+                    <span className="text-primary mt-0.5">·</span>
                     <span>"{question}"</span>
                   </li>
                 ))}
@@ -186,7 +186,7 @@ export default function CoachingPage() {
             <div>
               <h3 className="text-base font-semibold text-foreground mb-3">How we document progress</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-2xl">
-                We'll choose a progress-tracking method that truly fits you — something that feels natural and motivating — and we'll keep it clear enough for both of us to use confidently in sessions and between sessions.
+                We'll choose a progress-tracking method that truly fits you - something that feels natural and motivating - and we'll keep it clear enough for both of us to use confidently in sessions and between sessions.
               </p>
               <p className="text-sm text-muted-foreground mb-3">Lightweight evidence options:</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">

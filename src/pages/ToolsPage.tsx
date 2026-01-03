@@ -37,7 +37,7 @@ const tools = [
   {
     title: 'MyLanguageCoach',
     href: 'https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach',
-    description: 'Less stress, more progress. Get coached in minutes: 3 options → fit-check → one commitment.',
+    description: 'A language learning coach that helps you stay focused and calm by guiding you through simple choices, checking what fits your life, and helping you commit to one clear next step.',
     color: 'from-sage-light to-muted',
     icon: MessageSquare,
   },

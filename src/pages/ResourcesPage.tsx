@@ -10,7 +10,7 @@ const resourceCategories = [
     tag: 'Guide',
     description: 'A diagnostic lens for balanced language learning \u2014 not a replacement for your approach, but a way to check your learning diet.',
     icon: BookOpen,
-    href: 'https://4strands4me.netlify.app/',
+    href: 'https://www.wgtn.ac.nz/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/foreign-language_1125.pdf',
     internal: false,
   },
   {
@@ -44,7 +44,7 @@ const resourceCategories = [
     id: 'coaching',
     title: 'Coaching',
     tag: 'Coaching',
-    description: 'Support that meets you where you are - and helps you move forward with a realistic plan.',
+    description: 'Support that meets you where you are \u2014 and helps you move forward with a realistic plan.',
     icon: Users,
     href: '/coaching',
     internal: true,
@@ -187,5 +187,4 @@ export default function ResourcesPage() {
     </div>
   );
 }
-
 

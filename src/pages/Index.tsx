@@ -1,20 +1,13 @@
-﻿import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { BookOpen, List, Target } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 
 const featureCards = [
   {
-    title: 'Is My Practice Balanced?',
-    description: 'Feeling stuck or scattered? Take a two-minute audit to spot your missing strand â€” then get one clear next action and a simple weekly rotation plan.',
-    href: 'https://4strands4me.netlify.app/#audit',
-    icon: BarChart3,
-    external: true,
-  },
-  {
     title: 'Start here: the Four Strands',
-    description: 'A diagnostic lens for balanced language learning Ã¢â‚¬â€ check your learning diet without replacing your approach.',
+    description: 'A diagnostic lens for balanced language learning — check your learning diet without replacing your approach.',
     href: '/resources#four-strands',
     icon: BookOpen,
   },
@@ -64,7 +57,7 @@ const Index = () => {
 
             {/* Micro-branding */}
             <p className="mt-12 text-sm text-muted-foreground/60 text-center">
-              Curated by Kevin Duplechin Ã¢â‚¬â€ language learning coach and builder
+              Curated by Kevin Duplechin — language learning coach and builder
             </p>
           </div>
         </section>
@@ -75,6 +68,3 @@ const Index = () => {
 };
 
 export default Index;
-
-
-

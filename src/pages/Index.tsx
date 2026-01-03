@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 
 const featureCards = [
+    {
+    title: 'Is My Learning Balanced?',
+    description: 'Two-minute Four Strands audit to check input, output, focused study, and fluency. Get one next step and a simple one-week rotation plan.',
+    href: 'https://4strands4me.netlify.app/#audit',
+    icon: BarChart3,
+    external: true,
+  },
   {
     title: 'Start here: the Four Strands',
     description: 'A diagnostic lens for balanced language learning — check your learning diet without replacing your approach.',

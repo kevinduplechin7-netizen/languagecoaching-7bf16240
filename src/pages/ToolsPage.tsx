@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ExternalLink, MessageSquare, Users } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -40,6 +40,13 @@ const tools = [
     description: 'A language learning coach that helps you stay focused and calm by guiding you through simple choices, checking what fits your life, and helping you commit to one clear next step.',
     color: 'from-sage-light to-muted',
     icon: MessageSquare,
+  },
+  {
+    title: 'PerfectLanguagePartner',
+    href: 'https://chatgpt.com/g/g-69588e17c2f881918bca83a3d874bc10-perfectlanguagepartner',
+    description: 'A calm, coach-like AI conversation partner that guides learners through structured language sessions using the Perfect Hour Sessions dataset. Presents sessions with Title, Level, Partner, Goal, Context, and Correction, followed by four interactive phases.',
+    color: 'from-linen to-accent',
+    icon: Users,
   },
 ];
 

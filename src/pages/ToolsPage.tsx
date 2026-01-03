@@ -18,7 +18,7 @@ const tools = [
   },
   {
     title: 'FluentHour',
-    href: 'https://fluenthourpremium.netlify.app/',
+    href: 'https://fluent-hour.netlify.app/',
     description: 'A guided one-hour practice flow. Start the timer, follow the steps, and finish with measurable progress. Works best with a language helper, and can also be adapted for independent practice.',
     color: 'from-linen to-cream',
   },

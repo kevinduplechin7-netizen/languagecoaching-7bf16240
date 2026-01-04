@@ -24,7 +24,7 @@ export const tools: Tool[] = [
   },
   {
     title: 'Interlinear Studio',
-    href: 'https://interlinearstudio.lovable.app/',
+    href: 'https://chatgpt.com/g/g-6958a771444881918c4c59c6b55f33ca-interlinear-studio',
     description: 'Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.',
     bestFor: 'structured study, Anki preparation, and Sentence Paths input.',
     color: 'from-slate-light to-muted',

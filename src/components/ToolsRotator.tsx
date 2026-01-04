@@ -17,15 +17,15 @@ export default function ToolsRotator() {
 
   // Get first sentence of description
   const shortDescription = currentTool.description.split('.')[0] + '.';
-  return <div className="mt-8 opacity-0 animate-fade-in" style={{
+  return <div className="mt-6 sm:mt-8 opacity-0 animate-fade-in" style={{
     animationDelay: '350ms'
   }} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocus={() => setIsPaused(true)} onBlur={() => setIsPaused(false)}>
       {/* Framing line */}
-      <p className="text-xs text-muted-foreground/60 mb-3">Tools developed in support of cross-cultural work and daily practice.</p>
+      <p className="text-xs text-muted-foreground/60 mb-3 sm:mb-4">Tools developed in support of cross-cultural work and daily practice.</p>
 
       {/* Rotator */}
-      <div className="relative min-h-[72px]">
-        <a key={currentTool.title} href={currentTool.href} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 p-3 rounded-lg bg-muted/40 border border-border/40 hover:border-primary/30 hover:bg-muted/60 transition-all duration-300 animate-fade-in max-w-md mx-auto">
+      <div className="relative min-h-[80px]">
+        <a key={currentTool.title} href={currentTool.href} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 p-4 rounded-lg bg-muted/40 border border-border/40 hover:border-primary/30 hover:bg-muted/60 transition-all duration-300 animate-fade-in max-w-md mx-auto">
           <div className="w-9 h-9 rounded-md bg-gradient-to-br from-accent to-muted flex items-center justify-center flex-shrink-0 border border-border/30">
             <Icon className="w-4 h-4 text-foreground/70" strokeWidth={1.5} />
           </div>
@@ -42,12 +42,12 @@ export default function ToolsRotator() {
       </div>
 
       {/* Dots indicator */}
-      <div className="flex items-center justify-center gap-1.5 mt-3">
+      <div className="flex items-center justify-center gap-1.5 mt-4">
         {tools.map((_, index) => <button key={index} onClick={() => setCurrentIndex(index)} className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${index === currentIndex ? 'bg-primary/60 w-3' : 'bg-muted-foreground/20'}`} aria-label={`View tool ${index + 1}`} />)}
       </div>
 
       {/* View all link + Next button */}
-      <div className="flex items-center justify-center gap-3 mt-3">
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-3 mb-2">
         <Link to="/tools" className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 hover:text-primary transition-colors">
           View all tools
           <ArrowRight className="w-3 h-3" />

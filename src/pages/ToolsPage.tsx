@@ -7,45 +7,60 @@ const tools = [
   {
     title: 'Dump Space',
     href: 'https://dumpspace.lovable.app/',
-    description: 'A simple capture tool for clearing mental clutter. Get open loops out of your head and into a safe place — so you can return to your work with less noise.',
+    description: 'Capture language notes, sentences, or ideas without deciding what to do with them yet. A safe place to unload mental clutter so focus can return.',
+    bestFor: 'clearing open loops and collecting raw language input.',
     color: 'from-sage-light to-accent',
+  },
+  {
+    title: 'Interlinear Studio',
+    href: 'https://interlinearstudio.lovable.app/',
+    description: 'Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.',
+    bestFor: 'structured study, Anki preparation, and Sentence Paths input.',
+    color: 'from-slate-light to-muted',
   },
   {
     title: 'Accrue Language',
     href: 'https://accruelanguage.lovable.app/',
-    description: 'Time-based tracking that keeps progress visible. Log your practice, see totals over time, and stay encouraged through clear signals — without gamification.',
-    color: 'from-slate-light to-muted',
+    description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year — across languages and activities — without gamification or pressure.',
+    bestFor: 'maintaining long-term momentum and realistic expectations.',
+    color: 'from-linen to-cream',
   },
   {
     title: 'FluentHour',
     href: 'https://fluent-hour.netlify.app/',
-    description: 'A guided one-hour practice flow. Start the timer, follow the steps, and finish with measurable progress. Works best with a language helper, and can also be adapted for independent practice.',
-    color: 'from-linen to-cream',
+    description: 'A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.',
+    bestFor: 'focused practice with a helper or independent deep work.',
+    color: 'from-slate-light to-accent',
   },
   {
     title: 'FluentHour Companion',
     href: 'https://chatgpt.com/g/g-6958040e8ce881918400c643c84bbfc1-fluenthour-companion',
-    description: 'An AI-powered practice assistant designed to complement your FluentHour sessions. Get instant feedback, conversation practice, and personalized guidance.',
-    color: 'from-slate-light to-accent',
+    description: 'An AI assistant that supports FluentHour sessions with prompts, feedback, and structure — without replacing human judgment or automating decisions.',
+    bestFor: 'learners who want guidance without loss of agency.',
+    color: 'from-linen to-muted',
   },
   {
     title: 'Sentence Paths',
     href: 'https://sentencepaths.netlify.app/',
-    description: 'Import a large sentence library (your own or AI-generated), practice with audio, and optionally include transliteration and word-by-word gloss. Supports up to four columns: Translation, Target Language, optional Transliteration, and optional Word-by-word Gloss.',
-    color: 'from-linen to-muted',
+    description: 'Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.',
+    supports: ['Translation', 'Target language', 'Optional transliteration', 'Optional word-by-word gloss'],
+    bestFor: 'input-heavy learning and sustained exposure.',
+    color: 'from-sage-light to-muted',
   },
   {
     title: 'MyLanguageCoach',
     href: 'https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach',
-    description: 'A language learning coach that helps you stay focused and calm by guiding you through simple choices, checking what fits your life, and helping you commit to one clear next step.',
-    color: 'from-sage-light to-muted',
+    description: 'A calm language-learning coach that helps you choose what to work on, check what fits your life, and commit to one clear next step — without overwhelm.',
+    bestFor: 'learners who need direction more than content.',
+    color: 'from-linen to-accent',
     icon: MessageSquare,
   },
   {
     title: 'PerfectLanguagePartner',
     href: 'https://chatgpt.com/g/g-69588e17c2f881918bca83a3d874bc10-perfectlanguagepartner',
-    description: 'A calm, coach-like AI conversation partner that guides learners through structured language sessions using the Perfect Hour Sessions dataset. Presents sessions with Title, Level, Partner, Goal, Context, and Correction, followed by four interactive phases.',
-    color: 'from-linen to-accent',
+    description: 'A structured AI conversation partner built around complete practice sessions. Each session provides context, goals, guided interaction, and correction across four phases.',
+    bestFor: 'intentional speaking practice, not casual chat.',
+    color: 'from-sage-light to-accent',
     icon: Users,
   },
 ];
@@ -71,7 +86,10 @@ export default function ToolsPage() {
               Tools
             </h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Quiet software that reduces friction and keeps progress visible.
+              Calm, practical software for serious language learners.
+            </p>
+            <p className="mt-2 text-base text-muted-foreground/80 leading-relaxed">
+              Each tool is designed to reduce friction, clarify progress, and support sustainable learning — not to distract or gamify.
             </p>
           </div>
 
@@ -100,22 +118,40 @@ export default function ToolsPage() {
                   </h2>
                   <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" aria-hidden="true" />
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {tool.description}
                 </p>
-                {'note' in tool && typeof tool.note === 'string' && (
-                  <p className="text-xs text-muted-foreground/60 mt-2 italic">
-                    {tool.note}
+                {'supports' in tool && Array.isArray(tool.supports) && (
+                  <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
+                    {tool.supports.map((item, i) => (
+                      <li key={i}>• {item}</li>
+                    ))}
+                  </ul>
+                )}
+                {'bestFor' in tool && typeof tool.bestFor === 'string' && (
+                  <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
+                    <span className="font-medium">Best for:</span> {tool.bestFor}
                   </p>
                 )}
               </a>
             ))}
           </div>
 
-          {/* Builder note */}
-          <p className="mt-12 text-sm text-muted-foreground/70 text-center">
-            Built and curated by Kevin Duplechin.
-          </p>
+          {/* Footer copy */}
+          <div className="mt-16 text-center space-y-2">
+            <p className="text-sm text-muted-foreground">
+              Built and curated by Kevin Duplechin
+            </p>
+            <p className="text-xs text-muted-foreground/70">
+              Linguist · Pioneer Bible Translators
+            </p>
+            <p className="text-xs text-muted-foreground/60 mt-4 max-w-md mx-auto">
+              Resources shared here are offered as helpful references and do not represent official organizational policy.
+            </p>
+            <p className="text-xs text-muted-foreground/50 mt-4">
+              © 2026
+            </p>
+          </div>
         </div>
       </main>
       <Footer />

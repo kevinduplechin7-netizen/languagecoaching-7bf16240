@@ -4,9 +4,9 @@ import ToolsRotator from './ToolsRotator';
 
 export default function Hero() {
   return (
-    <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-accent/30 to-background">
-      <div className="container-calm">
-        <div className="max-w-3xl mx-auto text-center">
+    <section className="pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-accent/30 to-background">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-col items-center text-center gap-4 sm:gap-5 lg:gap-6">
           {/* Role badge */}
           <div
             className="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-medium text-muted-foreground bg-muted rounded-full opacity-0 animate-fade-in"
@@ -44,7 +44,7 @@ export default function Hero() {
 
           {/* Buttons */}
           <div
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in"
+            className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full opacity-0 animate-fade-in"
             style={{ animationDelay: '400ms' }}
           >
             <Link to="/resources" className="btn-primary-calm w-full sm:w-auto">

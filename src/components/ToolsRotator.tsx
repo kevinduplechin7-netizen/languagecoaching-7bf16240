@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, ChevronRight } from 'lucide-react';
 import { tools } from '@/pages/ToolsPage';
 
 export default function ToolsRotator() {
@@ -73,14 +73,23 @@ export default function ToolsRotator() {
         ))}
       </div>
 
-      {/* View all link */}
-      <Link
-        to="/tools"
-        className="inline-flex items-center gap-1 mt-3 text-xs text-muted-foreground/70 hover:text-primary transition-colors"
-      >
-        View all tools
-        <ArrowRight className="w-3 h-3" />
-      </Link>
+      {/* View all link + Next button */}
+      <div className="flex items-center justify-center gap-3 mt-3">
+        <Link
+          to="/tools"
+          className="inline-flex items-center gap-1 text-xs text-muted-foreground/70 hover:text-primary transition-colors"
+        >
+          View all tools
+          <ArrowRight className="w-3 h-3" />
+        </Link>
+        <button
+          onClick={() => setCurrentIndex((prev) => (prev + 1) % tools.length)}
+          className="p-1 rounded border border-border/40 text-muted-foreground/60 hover:text-foreground hover:border-primary/30 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50"
+          aria-label="Next tool"
+        >
+          <ChevronRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+        </button>
+      </div>
     </div>
   );
 }

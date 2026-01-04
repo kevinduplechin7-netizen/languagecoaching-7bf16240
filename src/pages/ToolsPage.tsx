@@ -1,15 +1,26 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, MessageSquare, Users } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Inbox, Columns3, BarChart2, Clock, MessageSquare, Route, Compass, MessagesSquare, LucideIcon } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
-const tools = [
+interface Tool {
+  title: string;
+  href: string;
+  description: string;
+  bestFor: string;
+  color: string;
+  icon: LucideIcon;
+  supports?: string[];
+}
+
+export const tools: Tool[] = [
   {
     title: 'Dump Space',
     href: 'https://dumpspace.lovable.app/',
     description: 'Capture language notes, sentences, or ideas without deciding what to do with them yet. A safe place to unload mental clutter so focus can return.',
     bestFor: 'clearing open loops and collecting raw language input.',
     color: 'from-sage-light to-accent',
+    icon: Inbox,
   },
   {
     title: 'Interlinear Studio',
@@ -17,6 +28,7 @@ const tools = [
     description: 'Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.',
     bestFor: 'structured study, Anki preparation, and Sentence Paths input.',
     color: 'from-slate-light to-muted',
+    icon: Columns3,
   },
   {
     title: 'Accrue Language',
@@ -24,6 +36,7 @@ const tools = [
     description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year — across languages and activities — without gamification or pressure.',
     bestFor: 'maintaining long-term momentum and realistic expectations.',
     color: 'from-linen to-cream',
+    icon: BarChart2,
   },
   {
     title: 'FluentHour',
@@ -31,6 +44,7 @@ const tools = [
     description: 'A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.',
     bestFor: 'focused practice with a helper or independent deep work.',
     color: 'from-slate-light to-accent',
+    icon: Clock,
   },
   {
     title: 'FluentHour Companion',
@@ -38,6 +52,7 @@ const tools = [
     description: 'An AI assistant that supports FluentHour sessions with prompts, feedback, and structure — without replacing human judgment or automating decisions.',
     bestFor: 'learners who want guidance without loss of agency.',
     color: 'from-linen to-muted',
+    icon: MessageSquare,
   },
   {
     title: 'Sentence Paths',
@@ -46,6 +61,7 @@ const tools = [
     supports: ['Translation', 'Target language', 'Optional transliteration', 'Optional word-by-word gloss'],
     bestFor: 'input-heavy learning and sustained exposure.',
     color: 'from-sage-light to-muted',
+    icon: Route,
   },
   {
     title: 'MyLanguageCoach',
@@ -53,7 +69,7 @@ const tools = [
     description: 'A calm language-learning coach that helps you choose what to work on, check what fits your life, and commit to one clear next step — without overwhelm.',
     bestFor: 'learners who need direction more than content.',
     color: 'from-linen to-accent',
-    icon: MessageSquare,
+    icon: Compass,
   },
   {
     title: 'PerfectLanguagePartner',
@@ -61,7 +77,7 @@ const tools = [
     description: 'A structured AI conversation partner built around complete practice sessions. Each session provides context, goals, guided interaction, and correction across four phases.',
     bestFor: 'intentional speaking practice, not casual chat.',
     color: 'from-sage-light to-accent',
-    icon: Users,
+    icon: MessagesSquare,
   },
 ];
 
@@ -105,11 +121,7 @@ export default function ToolsPage() {
               >
                 {/* Icon accent */}
                 <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}>
-                  {tool.icon ? (
-                    <tool.icon className="w-5 h-5 text-foreground/70" />
-                  ) : (
-                    <span className="text-xs font-semibold text-foreground/70">{tool.title.charAt(0)}</span>
-                  )}
+                  <tool.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
                 </div>
 
                 <div className="flex items-start justify-between gap-2 mb-2">

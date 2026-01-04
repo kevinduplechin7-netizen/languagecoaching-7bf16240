@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BookOpen, MessageCircle } from 'lucide-react';
+import ToolsRotator from './ToolsRotator';
 
 export default function Hero() {
   return (
@@ -37,6 +38,9 @@ export default function Hero() {
           >
             Informed by Canadian Language Benchmarks, ACTFL, and CEFR.
           </p>
+
+          {/* Tools rotator */}
+          <ToolsRotator />
 
           {/* Buttons */}
           <div

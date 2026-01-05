@@ -61,12 +61,6 @@ const Index = () => {
                 </Link>
               ))}
             </div>
-
-            {/* Micro-branding */}
-            <p className="mt-12 text-sm text-muted-foreground/60 text-center">
-              Curated by Kevin Duplechin — language learning coach and builder
-            </p>
-          </div>
         </section>
       </main>
       <Footer />

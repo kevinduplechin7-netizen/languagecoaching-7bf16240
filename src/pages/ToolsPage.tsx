@@ -154,9 +154,6 @@ export default function ToolsPage() {
             <p className="text-sm text-muted-foreground">
               Built and curated by Kevin Duplechin
             </p>
-            <p className="text-xs text-muted-foreground/70">
-              Linguist · Pioneer Bible Translators
-            </p>
             <p className="text-xs text-muted-foreground/60 mt-4 max-w-md mx-auto">
               Resources shared here are offered as helpful references and do not represent official organizational policy.
             </p>

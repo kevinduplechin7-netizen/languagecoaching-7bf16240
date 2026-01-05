@@ -40,7 +40,7 @@ export const tools: Tool[] = [
   },
   {
     title: 'FluentHour',
-    href: 'https://fluent-hour.netlify.app/',
+    href: 'https://fluenthour-language-sessions.netlify.app/',
     description: 'A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.',
     bestFor: 'focused practice with a helper or independent deep work.',
     color: 'from-slate-light to-accent',

@@ -102,10 +102,10 @@ export default function ToolsPage() {
               Tools
             </h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Calm, practical software for serious language learners.
+              Calm software. Precise workflows.
             </p>
             <p className="mt-2 text-base text-muted-foreground/80 leading-relaxed">
-              Each tool is designed to reduce friction, clarify progress, and support sustainable learning — not to distract or gamify.
+              Built for serious language learners—especially when the problem is too specific for generic apps.
             </p>
           </div>
 

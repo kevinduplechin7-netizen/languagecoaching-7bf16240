@@ -25,7 +25,7 @@ export default function ToolsRotator() {
 
       {/* FluentHour highlight */}
       <a 
-        href="https://fluent-hour.netlify.app/" 
+        href="https://fluenthour-language-sessions.netlify.app/" 
         target="_blank" 
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"

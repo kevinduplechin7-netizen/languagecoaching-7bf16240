@@ -37,6 +37,11 @@ export default function ToolsRotator() {
             <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">
               {shortDescription}
             </p>
+            {currentTool.title === 'FluentHour' && (
+              <span className="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-medium text-primary bg-primary/10 rounded-full">
+                300 structured hours of speaking practice
+              </span>
+            )}
           </div>
         </a>
       </div>

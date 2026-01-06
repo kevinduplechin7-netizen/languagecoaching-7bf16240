@@ -49,7 +49,7 @@ export const tools: Tool[] = [{
 }, {
   title: 'Fluent Hour Phase Actor',
   href: 'https://chatgpt.com/g/g-695ca3f3a694819187975bb509bc15cb-fluent-hour-phase-actor',
-  description: 'Rewrite a Fluent Hour session or phase into a timed, speakable script in your target language. Preserves the original structure and labels, keeps learner + helper speech natural and level-appropriate, and builds in pacing steps, repeat loops, and correction-focused recasts so the phase fills the full time. If the target language is missing, it asks one question and stops. All output is fully in the target language and uses number words (no digits).',
+  description: 'A GPT that converts a Fluent Hour session or phase into a timed, speakable script in the target language—preserving structure/labels, keeping dialogue natural and level-appropriate, and adding pacing, repeat loops, and correction recasts to fill the full time. If the target language is missing, it asks one question and stops. Output is target-language only and uses number words (no digits).',
   bestFor: 'turning English phases into ready-to-run target-language phases fast.',
   color: 'from-slate-light to-accent',
   icon: Clapperboard

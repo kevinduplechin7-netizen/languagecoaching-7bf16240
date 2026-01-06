@@ -23,6 +23,17 @@ export default function ToolsRotator() {
       {/* Framing line */}
       <p className="text-xs text-muted-foreground/60 mb-3 sm:mb-4">Tools developed in support of cross-cultural work and daily practice.</p>
 
+      {/* FluentHour highlight */}
+      <a 
+        href="https://fluent-hour.netlify.app/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+        <span>FluentHour — 300 structured hours of speaking practice</span>
+      </a>
+
       {/* Rotator */}
       <div className="relative min-h-[80px]">
         <a key={currentTool.title} href={currentTool.href} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 p-4 rounded-lg bg-muted/40 border border-border/40 hover:border-primary/30 hover:bg-muted/60 transition-all duration-300 animate-fade-in max-w-md mx-auto">
@@ -37,11 +48,6 @@ export default function ToolsRotator() {
             <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">
               {shortDescription}
             </p>
-            {currentTool.title === 'FluentHour' && (
-              <span className="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-medium text-primary bg-primary/10 rounded-full">
-                300 structured hours of speaking practice
-              </span>
-            )}
           </div>
         </a>
       </div>

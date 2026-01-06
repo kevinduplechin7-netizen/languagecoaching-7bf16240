@@ -23,16 +23,27 @@ export default function ToolsRotator() {
       {/* Framing line */}
       <p className="text-xs text-muted-foreground/60 mb-3 sm:mb-4">Tools developed in support of cross-cultural work and daily practice.</p>
 
-      {/* FluentHour highlight */}
-      <a 
-        href="https://fluenthour-language-sessions.netlify.app/" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-        <span>FluentHour — 300 structured hours of speaking practice</span>
-      </a>
+      {/* Pinned highlights */}
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+        <a 
+          href="https://fluenthour-language-sessions.netlify.app/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+          <span>FluentHour — 300 structured hours of speaking practice</span>
+        </a>
+        <a 
+          href="https://accruelanguage.lovable.app/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+          <span>Accrue Language — track time, not streaks</span>
+        </a>
+      </div>
 
       {/* Rotator */}
       <div className="relative min-h-[80px]">

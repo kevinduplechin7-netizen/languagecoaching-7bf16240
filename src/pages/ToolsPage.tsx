@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, Inbox, Columns3, BarChart2, Clock, MessageSquare, Route, Compass, MessagesSquare, LucideIcon } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Inbox, Columns3, BarChart2, Clock, MessageSquare, Route, Compass, MessagesSquare, Clapperboard, LucideIcon } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 interface Tool {
@@ -46,6 +46,13 @@ export const tools: Tool[] = [{
   bestFor: 'learners who want guidance without loss of agency.',
   color: 'from-linen to-muted',
   icon: MessageSquare
+}, {
+  title: 'Fluent Hour Phase Generator',
+  href: 'https://chatgpt.com/g/g-695ca3f3a694819187975bb509bc15cb-fluent-hour-phase-actor',
+  description: 'Rewrite a Fluent Hour session or phase into a timed, speakable script in your target language. Preserves the original structure and labels, keeps learner + helper speech natural and level-appropriate, and builds in pacing steps, repeat loops, and correction-focused recasts so the phase fills the full time. If the target language is missing, it asks one question and stops. All output is fully in the target language and uses number words (no digits).',
+  bestFor: 'turning English phases into ready-to-run target-language phases fast.',
+  color: 'from-slate-light to-accent',
+  icon: Clapperboard
 }, {
   title: 'Sentence Paths',
   href: 'https://sentencepaths.netlify.app/',

@@ -1,7 +1,20 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, Inbox, Columns3, BarChart2, Clock, MessageSquare, Route, Compass, MessagesSquare, Clapperboard, LucideIcon } from 'lucide-react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Inbox,
+  Columns3,
+  BarChart2,
+  Clock,
+  MessageSquare,
+  Route,
+  Compass,
+  MessagesSquare,
+  Clapperboard,
+  LucideIcon,
+} from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 interface Tool {
   title: string;
   href: string;
@@ -11,90 +24,109 @@ interface Tool {
   icon: LucideIcon;
   supports?: string[];
 }
-export const tools: Tool[] = [{
-  title: 'Dump Space',
-  href: 'https://dumpspace.lovable.app/',
-  description: 'Capture language notes, sentences, or ideas without deciding what to do with them yet. A safe place to unload mental clutter so focus can return.',
-  bestFor: 'clearing open loops and collecting raw language input.',
-  color: 'from-sage-light to-accent',
-  icon: Inbox
-}, {
-  title: 'Interlinear Studio',
-  href: 'https://chatgpt.com/g/g-6958a771444881918c4c59c6b55f33ca-interlinear-studio',
-  description: 'Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.',
-  bestFor: 'structured study, Anki preparation, and Sentence Paths input.',
-  color: 'from-slate-light to-muted',
-  icon: Columns3
-}, {
-  title: 'Accrue Language',
-  href: 'https://accruelanguage.lovable.app/',
-  description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year — across languages and activities — without gamification or pressure.',
-  bestFor: 'maintaining long-term momentum and realistic expectations.',
-  color: 'from-linen to-cream',
-  icon: BarChart2
-}, {
-  title: 'FluentHour',
-  href: 'https://fluenthour-language-sessions.netlify.app/',
-  description: 'A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.',
-  bestFor: 'focused practice with a helper or independent deep work.',
-  color: 'from-slate-light to-accent',
-  icon: Clock
-}, {
-  title: 'FluentHour Companion',
-  href: 'https://chatgpt.com/g/g-6958040e8ce881918400c643c84bbfc1-fluenthour-companion',
-  description: 'An AI assistant that supports FluentHour sessions with prompts, feedback, and structure — without replacing human judgment or automating decisions.',
-  bestFor: 'learners who want guidance without loss of agency.',
-  color: 'from-linen to-muted',
-  icon: MessageSquare
-}, {
-  title: 'Fluent Hour Phase Actor',
-  href: 'https://chatgpt.com/g/g-695ca3f3a694819187975bb509bc15cb-fluent-hour-phase-actor',
-  description: 'A GPT that converts a Fluent Hour session or phase into a timed, speakable script in the target language—preserving structure/labels, keeping dialogue natural and level-appropriate, and adding pacing, repeat loops, and correction recasts to fill the full time. If the target language is missing, it asks one question and stops. Output is target-language only and uses number words (no digits).',
-  bestFor: 'turning English phases into ready-to-run target-language phases fast.',
-  color: 'from-slate-light to-accent',
-  icon: Clapperboard
-}, {
-  title: 'Sentence Paths',
-  href: 'https://sentencepathspremium.netlify.app/',
-  description: 'Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.',
-  supports: ['Translation', 'Target language', 'Optional transliteration', 'Optional word-by-word gloss'],
-  bestFor: 'input-heavy learning and sustained exposure.',
-  color: 'from-sage-light to-muted',
-  icon: Route
-}, {
-  title: 'MyLanguageCoach',
-  href: 'https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach',
-  description: 'A calm language-learning coach that helps you choose what to work on, check what fits your life, and commit to one clear next step — without overwhelm.',
-  bestFor: 'learners who need direction more than content.',
-  color: 'from-linen to-accent',
-  icon: Compass
-}, {
-  title: 'PerfectLanguagePartner',
-  href: 'https://chatgpt.com/g/g-69588e17c2f881918bca83a3d874bc10-perfectlanguagepartner',
-  description: 'A structured AI conversation partner built around complete practice sessions. Each session provides context, goals, guided interaction, and correction across four phases.',
-  bestFor: 'intentional speaking practice, not casual chat.',
-  color: 'from-sage-light to-accent',
-  icon: MessagesSquare
-}];
+export const tools: Tool[] = [
+  {
+    title: "Dump Space",
+    href: "https://dumpspace.lovable.app/",
+    description:
+      "Capture language notes, sentences, or ideas without deciding what to do with them yet. A safe place to unload mental clutter so focus can return.",
+    bestFor: "clearing open loops and collecting raw language input.",
+    color: "from-sage-light to-accent",
+    icon: Inbox,
+  },
+  {
+    title: "Interlinear Studio",
+    href: "https://chatgpt.com/g/g-6958a771444881918c4c59c6b55f33ca-interlinear-studio",
+    description:
+      "Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.",
+    bestFor: "structured study, Anki preparation, and Sentence Paths input.",
+    color: "from-slate-light to-muted",
+    icon: Columns3,
+  },
+  {
+    title: "Accrue Language",
+    href: "https://accruelanguage.lovable.app/",
+    description:
+      "Track language learning by time, not streaks. See honest totals by day, week, month, and year — across languages and activities — without gamification or pressure.",
+    bestFor: "maintaining long-term momentum and realistic expectations.",
+    color: "from-linen to-cream",
+    icon: BarChart2,
+  },
+  {
+    title: "FluentHour",
+    href: "https://fluenthour-language-sessions.netlify.app/",
+    description:
+      "A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.",
+    bestFor: "focused practice with a helper or independent deep work.",
+    color: "from-slate-light to-accent",
+    icon: Clock,
+  },
+  {
+    title: "FluentHour Companion",
+    href: "https://chatgpt.com/g/g-6958040e8ce881918400c643c84bbfc1-fluenthour-companion",
+    description:
+      "An AI assistant that supports FluentHour sessions with prompts, feedback, and structure — without replacing human judgment or automating decisions.",
+    bestFor: "learners who want guidance without loss of agency.",
+    color: "from-linen to-muted",
+    icon: MessageSquare,
+  },
+  {
+    title: "Fluent Hour Phase Actor",
+    href: "https://chatgpt.com/g/g-695ca3f3a694819187975bb509bc15cb-fluent-hour-phase-actor",
+    description:
+      "A GPT that converts a Fluent Hour session or phase into a timed, speakable script in the target language—preserving structure/labels, keeping dialogue natural and level-appropriate, and adding pacing, repeat loops, and correction recasts to fill the full time. If the target language is missing, it asks one question and stops. Output is target-language only and uses number words (no digits).",
+    bestFor: "turning English phases into ready-to-run target-language phases fast.",
+    color: "from-slate-light to-accent",
+    icon: Clapperboard,
+  },
+  {
+    title: "Sentence Paths",
+    href: "https://lingua-flow-copy-d222e302.base44.app/Home",
+    description:
+      "Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.",
+    supports: ["Translation", "Target language", "Optional transliteration", "Optional word-by-word gloss"],
+    bestFor: "input-heavy learning and sustained exposure.",
+    color: "from-sage-light to-muted",
+    icon: Route,
+  },
+  {
+    title: "MyLanguageCoach",
+    href: "https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach",
+    description:
+      "A calm language-learning coach that helps you choose what to work on, check what fits your life, and commit to one clear next step — without overwhelm.",
+    bestFor: "learners who need direction more than content.",
+    color: "from-linen to-accent",
+    icon: Compass,
+  },
+  {
+    title: "PerfectLanguagePartner",
+    href: "https://chatgpt.com/g/g-69588e17c2f881918bca83a3d874bc10-perfectlanguagepartner",
+    description:
+      "A structured AI conversation partner built around complete practice sessions. Each session provides context, goals, guided interaction, and correction across four phases.",
+    bestFor: "intentional speaking practice, not casual chat.",
+    color: "from-sage-light to-accent",
+    icon: MessagesSquare,
+  },
+];
 export default function ToolsPage() {
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
       <main className="pt-24 pb-16">
         <div className="container-calm">
           {/* Back link */}
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
             <ArrowLeft className="w-4 h-4" />
             Home
           </Link>
 
           {/* Header */}
           <div className="max-w-2xl mb-12">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
-              Tools
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Calm software. Precise workflows.
-            </p>
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Tools</h1>
+            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">Calm software. Precise workflows.</p>
             <p className="mt-2 text-base text-muted-foreground/80 leading-relaxed">
               Built for serious language learners—especially when the problem is too specific for generic apps.
             </p>
@@ -102,9 +134,18 @@ export default function ToolsPage() {
 
           {/* Tools grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {tools.map(tool => <a key={tool.title} href={tool.href} target="_blank" rel="noopener noreferrer" className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full">
+            {tools.map((tool) => (
+              <a
+                key={tool.title}
+                href={tool.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full"
+              >
                 {/* Icon accent */}
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}>
+                <div
+                  className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}
+                >
                   <tool.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
                 </div>
 
@@ -112,28 +153,33 @@ export default function ToolsPage() {
                   <h2 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                     {tool.title}
                   </h2>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <ExternalLink
+                    className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {tool.description}
-                </p>
-                {'supports' in tool && Array.isArray(tool.supports) && <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
-                    {tool.supports.map((item, i) => <li key={i}>• {item}</li>)}
-                  </ul>}
-                {'bestFor' in tool && typeof tool.bestFor === 'string' && <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
+                <p className="text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+                {"supports" in tool && Array.isArray(tool.supports) && (
+                  <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
+                    {tool.supports.map((item, i) => (
+                      <li key={i}>• {item}</li>
+                    ))}
+                  </ul>
+                )}
+                {"bestFor" in tool && typeof tool.bestFor === "string" && (
+                  <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
                     <span className="font-medium">Best for:</span> {tool.bestFor}
-                  </p>}
-              </a>)}
+                  </p>
+                )}
+              </a>
+            ))}
           </div>
 
           {/* Footer copy */}
-          <div className="mt-16 text-center space-y-2">
-            
-            
-            
-          </div>
+          <div className="mt-16 text-center space-y-2"></div>
         </div>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 }

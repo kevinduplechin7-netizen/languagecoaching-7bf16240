@@ -39,7 +39,7 @@ export const tools: Tool[] = [
     href: "https://chatgpt.com/g/g-6958a771444881918c4c59c6b55f33ca-interlinear-studio",
     description:
       "Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.",
-    bestFor: "structured study, Anki preparation, and Sentence Paths input.",
+    bestFor: "structured study, Anki preparation, and LinguaFlow input.",
     color: "from-slate-light to-muted",
     icon: Columns3,
   },
@@ -80,7 +80,7 @@ export const tools: Tool[] = [
     icon: Clapperboard,
   },
   {
-    title: "Sentence Paths",
+    title: "LinguaFlow",
     href: "https://lingua-flow-copy-d222e302.base44.app/Home",
     description:
       "Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.",

@@ -55,7 +55,7 @@ export const tools: Tool[] = [{
   icon: Clapperboard
 }, {
   title: 'Sentence Paths',
-  href: 'https://sentencepaths.netlify.app/',
+  href: 'https://sentencepathspremium.netlify.app/',
   description: 'Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.',
   supports: ['Translation', 'Target language', 'Optional transliteration', 'Optional word-by-word gloss'],
   bestFor: 'input-heavy learning and sustained exposure.',

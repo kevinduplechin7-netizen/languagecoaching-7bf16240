@@ -81,7 +81,7 @@ export const tools: Tool[] = [
   },
   {
     title: "LinguaFlow",
-    href: "https://lingua-flow-copy-d222e302.base44.app/Home",
+    href: "https://lingua-flow-lite-66d7b581.base44.app",
     description:
       "Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.",
     supports: ["Translation", "Target language", "Optional transliteration", "Optional word-by-word gloss"],

@@ -19,6 +19,8 @@ interface Tool {
   title: string;
   href: string;
   description: string;
+  descriptionSuffix?: string;
+  designedLink?: string;
   bestFor: string;
   color: string;
   icon: LucideIcon;
@@ -83,7 +85,9 @@ export const tools: Tool[] = [
     title: "LinguaFlow",
     href: "https://lingua-flow-lite-66d7b581.base44.app",
     description:
-      "Practice large sentence libraries using audio and optional linguistic support. Designed for volume, repetition, and gradual familiarity — not memorization tricks.",
+      "Practice large sentence libraries using audio and optional linguistic support.",
+    descriptionSuffix: " for volume, repetition, and gradual familiarity — not memorization tricks.",
+    designedLink: "/tools/linguaflow-architecture",
     supports: ["Translation", "Target language", "Optional transliteration", "Optional word-by-word gloss"],
     bestFor: "input-heavy learning and sustained exposure.",
     color: "from-sage-light to-muted",
@@ -158,7 +162,22 @@ export default function ToolsPage() {
                     aria-hidden="true"
                   />
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {tool.description}
+                  {tool.designedLink && (
+                    <>
+                      {" "}
+                      <Link
+                        to={tool.designedLink}
+                        onClick={(e) => e.stopPropagation()}
+                        className="underline hover:text-primary transition-colors"
+                      >
+                        Designed
+                      </Link>
+                      {tool.descriptionSuffix}
+                    </>
+                  )}
+                </p>
                 {"supports" in tool && Array.isArray(tool.supports) && (
                   <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
                     {tool.supports.map((item, i) => (

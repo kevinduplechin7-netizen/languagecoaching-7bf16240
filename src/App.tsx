@@ -10,6 +10,7 @@ import StandardsPage from "./pages/StandardsPage";
 import CoachingPage from "./pages/CoachingPage";
 import ToolsPage from "./pages/ToolsPage";
 import LinguaFlowArchitecturePage from "./pages/LinguaFlowArchitecturePage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/coaching" element={<CoachingPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/tools/linguaflow-architecture" element={<LinguaFlowArchitecturePage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

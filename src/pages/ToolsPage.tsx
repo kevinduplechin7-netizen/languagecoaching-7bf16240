@@ -21,6 +21,7 @@ interface Tool {
   description: string;
   descriptionSuffix?: string;
   designedLink?: string;
+  missionPartnerNote?: boolean;
   bestFor: string;
   color: string;
   icon: LucideIcon;
@@ -85,9 +86,10 @@ export const tools: Tool[] = [
     title: "LinguaFlow",
     href: "https://lingua-flow-lite-66d7b581.base44.app",
     description:
-      "Practice large sentence libraries using audio and optional linguistic support.",
+      "An offline-first sentence reader for serious language work. Upload your own texts or use curated packs, listen with browser audio, and add optional transliteration or gloss — built for spotty internet and sustained daily practice.",
     descriptionSuffix: " for volume, repetition, and gradual familiarity — not memorization tricks.",
     designedLink: "/tools/linguaflow-architecture",
+    missionPartnerNote: true,
     supports: ["Translation", "Target language", "Optional transliteration", "Optional word-by-word gloss"],
     bestFor: "input-heavy learning and sustained exposure.",
     color: "from-sage-light to-muted",
@@ -178,6 +180,17 @@ export default function ToolsPage() {
                     </>
                   )}
                 </p>
+                {tool.missionPartnerNote && (
+                  <p className="text-xs text-muted-foreground/70 mt-2">
+                    <Link
+                      to="/contact"
+                      onClick={(e) => e.stopPropagation()}
+                      className="underline hover:text-primary transition-colors"
+                    >
+                      Mission partner access is available on request for organizational use.
+                    </Link>
+                  </p>
+                )}
                 {"supports" in tool && Array.isArray(tool.supports) && (
                   <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
                     {tool.supports.map((item, i) => (

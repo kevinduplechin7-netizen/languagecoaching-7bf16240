@@ -7,6 +7,9 @@ export default function Footer() {
         <p className="text-sm text-muted-foreground/70 text-center tracking-wide">
           Kevin Duplechin · Linguist · Pioneer Bible Translators
         </p>
+        <p className="mt-1 text-xs text-muted-foreground/60 text-center">
+          Independent coaching available by request.
+        </p>
         <p className="mt-4 text-xs text-muted-foreground/50 text-center">
           Resources shared here are offered as helpful references and do not
           represent official organizational policy.

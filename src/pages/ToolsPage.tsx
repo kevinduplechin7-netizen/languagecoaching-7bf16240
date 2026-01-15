@@ -207,8 +207,13 @@ export default function ToolsPage() {
             ))}
           </div>
 
-          {/* Footer copy */}
-          <div className="mt-16 text-center space-y-2"></div>
+          {/* Attribution notice */}
+          <div className="mt-16 p-6 rounded-xl border border-border/60 bg-muted/30 max-w-2xl mx-auto">
+            <h3 className="text-sm font-semibold text-foreground mb-2">Language Builds Attribution</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              All language builds, sentence libraries, scaffolding systems, and instructional content presented on this site are original works created by Kevin Duplechin and are his sole intellectual property, protected under United States copyright law. These materials are provided for personal educational use only and may not be copied, redistributed, or used for commercial purposes without prior written permission.
+            </p>
+          </div>
         </div>
       </main>
       <Footer />

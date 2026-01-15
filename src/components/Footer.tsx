@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="py-8 border-t border-border">
       <div className="container-calm">
         <p className="text-sm text-muted-foreground/70 text-center tracking-wide">
-          Kevin Duplechin · Linguist · Pioneer Bible Translators
+          Kevin Duplechin · Linguist
         </p>
         <p className="mt-1 text-xs text-muted-foreground/60 text-center">
           Independent coaching available by request.

@@ -51,7 +51,7 @@ export default function TermsPage() {
                 © 2026 Kevin Duplechin. All rights reserved.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
-                All original content on this site — including instructional text, sentence libraries, scaffolding systems, learning paths, lesson structures, explanations, examples, and downloadable materials — is the intellectual property of Kevin Duplechin and is protected under United States copyright law.
+                All original content on this site — including instructional text, sentence libraries, language builds, scaffolding systems, learning paths, lesson structures, explanations, examples, and downloadable materials — is the intellectual property of Kevin Duplechin and is protected under United States copyright law.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 This content is provided for personal educational use only.

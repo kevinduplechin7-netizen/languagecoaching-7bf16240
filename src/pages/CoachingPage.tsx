@@ -258,7 +258,7 @@ export default function CoachingPage() {
                 These influences inform the principles behind the coaching approach. They do not constitute ownership, authorship, or endorsement of the specific materials presented here.
               </p>
               <p className="font-medium text-foreground">
-                All lesson designs, sentence builds, instructional explanations, learning paths, frameworks, and written materials are original works created by Kevin Duplechin.
+                All lesson designs, sentence builds, language builds, instructional explanations, learning paths, frameworks, and written materials are original works created by Kevin Duplechin and are his sole intellectual property.
               </p>
             </div>
           </section>

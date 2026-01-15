@@ -204,7 +204,7 @@ export default function CoachingPage() {
           </section>
 
           {/* CTA */}
-          <div className="text-center">
+          <div className="text-center mb-16">
             <a
               href="https://calendly.com/kevin-duplechin"
               target="_blank"
@@ -224,6 +224,44 @@ export default function CoachingPage() {
               </a>
             </p>
           </div>
+
+          {/* About the Coach */}
+          <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
+            <h2 className="text-xl font-semibold text-foreground mb-6">About the Coach</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
+              <p>
+                Language coaching on this page is provided by Kevin Duplechin, an independent language coach and linguist.
+              </p>
+              <p>
+                Kevin also works professionally with Pioneer Bible Translators.
+                However, all language coaching services, instructional materials, sentence libraries, learning paths, and educational content presented on this site are developed independently and are not produced, owned, reviewed, or endorsed by Pioneer Bible Translators.
+              </p>
+              <p>
+                This coaching work reflects Kevin's personal expertise, research, and field experience and is offered in a private, independent capacity.
+              </p>
+            </div>
+          </section>
+
+          {/* Intellectual Foundations & Attribution */}
+          <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
+            <h2 className="text-xl font-semibold text-foreground mb-6">Intellectual Foundations & Attribution</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
+              <p>
+                The coaching approach and instructional philosophy presented here are informed by:
+              </p>
+              <ul className="list-disc list-inside space-y-2 ml-2">
+                <li>Cross-cultural language training frameworks developed by the Wheaton Institute for Cross-Cultural Training</li>
+                <li>Research in second language acquisition, including the work of Paul Nation on comprehensible input, frequency-based learning, and extensive exposure</li>
+                <li>Kevin Duplechin's applied experience working with languages in real-world, cross-cultural environments</li>
+              </ul>
+              <p>
+                These influences inform the principles behind the coaching approach. They do not constitute ownership, authorship, or endorsement of the specific materials presented here.
+              </p>
+              <p className="font-medium text-foreground">
+                All lesson designs, sentence builds, instructional explanations, learning paths, frameworks, and written materials are original works created by Kevin Duplechin.
+              </p>
+            </div>
+          </section>
         </div>
       </main>
       <Footer />

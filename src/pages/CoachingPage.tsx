@@ -225,19 +225,24 @@ export default function CoachingPage() {
             </p>
           </div>
 
-          {/* About the Coach */}
+          {/* Professional Role & Independence */}
           <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
-            <h2 className="text-xl font-semibold text-foreground mb-6">About the Coach</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-6">Professional Role & Independence</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
               <p>
-                Language coaching on this page is provided by Kevin Duplechin, an independent language coach and linguist.
+                I am a language coach with Pioneer Bible Translators, where my professional work focuses on language development in support of Bible translation and related field activities.
               </p>
               <p>
-                Kevin also works professionally with Pioneer Bible Translators.
-                However, all language coaching services, instructional materials, sentence libraries, learning paths, and educational content presented on this site are developed independently and are not produced, owned, reviewed, or endorsed by Pioneer Bible Translators.
+                The language coaching services, instructional explanations, lesson designs, sentence builds, learning paths, and educational materials presented on this site are created independently and outside the scope of my assigned responsibilities with Pioneer Bible Translators.
               </p>
               <p>
-                This coaching work reflects Kevin's personal expertise, research, and field experience and is offered in a private, independent capacity.
+                These materials are not produced as part of any Pioneer Bible Translators project, are not works made for hire, and do not incorporate proprietary Pioneer Bible Translators resources, Scripture texts, translations, or internal materials.
+              </p>
+              <p>
+                All content on this page reflects my personal research, experience, and pedagogical design and is offered in a private, independent capacity.
+              </p>
+              <p className="font-medium text-foreground">
+                No endorsement, review, or ownership by Pioneer Bible Translators is implied.
               </p>
             </div>
           </section>
@@ -247,18 +252,28 @@ export default function CoachingPage() {
             <h2 className="text-xl font-semibold text-foreground mb-6">Intellectual Foundations & Attribution</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
               <p>
-                The coaching approach and instructional philosophy presented here are informed by:
+                My coaching approach is informed by:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-2">
-                <li>Cross-cultural language training frameworks developed by the Wheaton Institute for Cross-Cultural Training</li>
+                <li>Cross-cultural language training frameworks developed through the Wheaton Institute for Cross-Cultural Training</li>
                 <li>Research in second language acquisition, including the work of Paul Nation on comprehensible input, frequency-based learning, and extensive exposure</li>
-                <li>Kevin Duplechin's applied experience working with languages in real-world, cross-cultural environments</li>
+                <li>My own applied experience working with languages in real-world, cross-cultural environments</li>
               </ul>
               <p>
-                These influences inform the principles behind the coaching approach. They do not constitute ownership, authorship, or endorsement of the specific materials presented here.
+                These influences inform the principles behind my approach. All instructional materials and expressions presented here are original works authored by me.
               </p>
+            </div>
+          </section>
+
+          {/* Copyright Notice */}
+          <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
+            <h2 className="text-xl font-semibold text-foreground mb-6">Copyright Notice</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
               <p className="font-medium text-foreground">
-                All lesson designs, sentence builds, language builds, instructional explanations, learning paths, frameworks, and written materials are original works created by Kevin Duplechin and are his sole intellectual property.
+                © 2026 Kevin Duplechin. All rights reserved.
+              </p>
+              <p>
+                All instructional text, lesson structures, explanations, learning paths, and materials presented here are the intellectual property of Kevin Duplechin and are protected under United States copyright law.
               </p>
             </div>
           </section>

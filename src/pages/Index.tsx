@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3 } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Layers } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -10,6 +10,13 @@ const featureCards = [
     description: 'Two-minute Four Strands audit to check input, output, focused study, and fluency. Get one next step and a simple one-week rotation plan.',
     href: 'https://4strands4me.netlify.app/#audit',
     icon: BarChart3,
+    external: true,
+  },
+  {
+    title: 'LinguaFlow Lite',
+    description: 'Offline-first vocabulary scaffolding. Build frequency-based word lists using tiered mastery levels.',
+    href: 'https://lingua-flow-lite-66d7b581.base44.app/',
+    icon: Layers,
     external: true,
   },
   {

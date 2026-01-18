@@ -14,7 +14,7 @@ const featureCards = [
   },
   {
     title: 'LinguaFlow Lite',
-    description: 'Offline-first vocabulary scaffolding. Build frequency-based word lists using tiered mastery levels.',
+    description: 'Sentence-first acquisition. Read, listen, and flow through leveled content from A1 to C2 across real-world domains.',
     href: 'https://lingua-flow-lite-66d7b581.base44.app/',
     icon: Layers,
     external: true,

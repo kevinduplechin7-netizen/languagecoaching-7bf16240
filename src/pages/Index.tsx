@@ -13,6 +13,13 @@ const featureCards = [
     external: true,
   },
   {
+    title: 'Accrue Language',
+    description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year—without gamification or pressure.',
+    href: 'https://accruelanguage.lovable.app/',
+    icon: BarChart3,
+    external: true,
+  },
+  {
     title: 'LinguaFlow Lite',
     description: 'Sentence-first acquisition. Read, listen, and flow through leveled content from A1 to C2 across real-world domains.',
     href: 'https://lingua-flow-lite-66d7b581.base44.app/',

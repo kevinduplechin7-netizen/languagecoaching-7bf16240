@@ -17,30 +17,22 @@ export default function ToolsRotator() {
 
   const currentTool = tools[currentIndex];
   const Icon = currentTool.icon;
-
-  // Get first sentence of description
   const shortDescription = currentTool.description.split(".")[0] + ".";
-
-  // Check if current tool is Sentence Paths Lite
   const isNewTool = currentTool.title === "Sentence Paths Lite";
 
   return (
     <div
       className="mt-6 sm:mt-8 opacity-0 animate-fade-in"
-      style={{
-        animationDelay: "350ms",
-      }}
+      style={{ animationDelay: "350ms" }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      {/* Framing line */}
       <p className="text-xs text-muted-foreground/60 mb-3 sm:mb-4">
         Tools developed in support of cross-cultural work and daily practice.
       </p>
 
-      {/* Pinned highlights */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
         
           href="https://sentencepathslite.lovable.app/"
@@ -71,7 +63,6 @@ export default function ToolsRotator() {
         </a>
       </div>
 
-      {/* Rotator */}
       <div className="relative min-h-[80px]">
         
           key={currentTool.title}
@@ -93,24 +84,26 @@ export default function ToolsRotator() {
               )}
               <ExternalLink className="w-3 h-3 text-muted-foreground/60" />
             </div>
-            <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">{shortDescription}</p>
+            <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">
+              {shortDescription}
+            </p>
           </div>
         </a>
       </div>
 
-      {/* Dots indicator */}
       <div className="flex items-center justify-center gap-1.5 mt-4">
         {tools.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${index === currentIndex ? "bg-primary/60 w-3" : "bg-muted-foreground/20"}`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+              index === currentIndex ? "bg-primary/60 w-3" : "bg-muted-foreground/20"
+            }`}
             aria-label={`View tool ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* View all link + Next button */}
       <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-3 mb-2">
         <Link
           to="/tools"

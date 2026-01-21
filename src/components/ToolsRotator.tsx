@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink, ChevronRight } from "lucide-react";
 import { tools } from "@/pages/ToolsPage";
+
 export default function ToolsRotator() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -12,6 +14,7 @@ export default function ToolsRotator() {
     }, 6000);
     return () => clearInterval(interval);
   }, [isPaused]);
+
   const currentTool = tools[currentIndex];
   const Icon = currentTool.icon;
 
@@ -39,7 +42,7 @@ export default function ToolsRotator() {
 
       {/* Pinned highlights */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-        <a
+        
           href="https://sentencepathslite.lovable.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -48,7 +51,7 @@ export default function ToolsRotator() {
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           <span className="font-medium">New: Sentence Paths Lite — focused sentence reading</span>
         </a>
-        <a
+        
           href="https://fluenthour-language-sessions.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -57,7 +60,7 @@ export default function ToolsRotator() {
           <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
           <span>FluentHour — 300 structured hours of speaking practice</span>
         </a>
-        <a
+        
           href="https://accruelanguage.lovable.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -70,7 +73,7 @@ export default function ToolsRotator() {
 
       {/* Rotator */}
       <div className="relative min-h-[80px]">
-        <a
+        
           key={currentTool.title}
           href={currentTool.href}
           target="_blank"

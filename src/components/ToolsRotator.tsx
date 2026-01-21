@@ -34,7 +34,7 @@ export default function ToolsRotator() {
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-        
+        <a
           href="https://sentencepathslite.lovable.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -43,7 +43,7 @@ export default function ToolsRotator() {
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           <span className="font-medium">New: Sentence Paths Lite — focused sentence reading</span>
         </a>
-        
+        <a
           href="https://fluenthour-language-sessions.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -52,7 +52,7 @@ export default function ToolsRotator() {
           <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
           <span>FluentHour — 300 structured hours of speaking practice</span>
         </a>
-        
+        <a
           href="https://accruelanguage.lovable.app/"
           target="_blank"
           rel="noopener noreferrer"
@@ -64,7 +64,7 @@ export default function ToolsRotator() {
       </div>
 
       <div className="relative min-h-[80px]">
-        
+        <a
           key={currentTool.title}
           href={currentTool.href}
           target="_blank"
@@ -84,9 +84,7 @@ export default function ToolsRotator() {
               )}
               <ExternalLink className="w-3 h-3 text-muted-foreground/60" />
             </div>
-            <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">
-              {shortDescription}
-            </p>
+            <p className="text-xs text-muted-foreground/80 leading-relaxed mt-0.5 line-clamp-2">{shortDescription}</p>
           </div>
         </a>
       </div>
@@ -96,9 +94,7 @@ export default function ToolsRotator() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
-              index === currentIndex ? "bg-primary/60 w-3" : "bg-muted-foreground/20"
-            }`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${index === currentIndex ? "bg-primary/60 w-3" : "bg-muted-foreground/20"}`}
             aria-label={`View tool ${index + 1}`}
           />
         ))}

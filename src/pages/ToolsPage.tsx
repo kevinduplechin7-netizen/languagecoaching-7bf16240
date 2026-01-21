@@ -14,7 +14,6 @@ import {
   UtensilsCrossed,
   Beef,
   Bookmark,
-  BookOpen,
   LucideIcon,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -100,16 +99,6 @@ export const tools: Tool[] = [
     icon: Route,
   },
   {
-    title: "Sentence Paths Lite",
-    href: "https://sentencepathslite.lovable.app",
-    description:
-      "A focused sentence reader for language learners. Import your own sentence collections with translations, transliterations, and glosses. Read through leveled content with adjustable fonts, TTS playback, and progress tracking—distraction-free.",
-    supports: ["Translation", "Transliteration", "Word-by-word gloss", "Text-to-speech", "Progress tracking"],
-    bestFor: "deliberate sentence reading with full control over your content.",
-    color: "from-linen to-accent",
-    icon: BookOpen,
-  },
-  {
     title: "MyLanguageCoach",
     href: "https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach",
     description:
@@ -155,7 +144,7 @@ export default function ToolsPage() {
           {/* Tools grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {tools.map((tool) => (
-              
+              <a
                 key={tool.title}
                 href={tool.href}
                 target="_blank"
@@ -228,7 +217,7 @@ export default function ToolsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Lunchie Invite */}
-              
+              <a
                 href="https://lunchie-invite-6cddf1e4.base44.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -255,7 +244,7 @@ export default function ToolsPage() {
               </a>
 
               {/* Phat Carnivore */}
-              
+              <a
                 href="https://phatcarnivore.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -282,7 +271,7 @@ export default function ToolsPage() {
               </a>
 
               {/* Where Did I Leave Off */}
-              
+              <a
                 href="https://wheredidileaveoff.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"

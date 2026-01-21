@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+
 interface Tool {
   title: string;
   href: string;
@@ -31,6 +32,7 @@ interface Tool {
   icon: LucideIcon;
   supports?: string[];
 }
+
 export const tools: Tool[] = [
   {
     title: "Dump Space",
@@ -128,6 +130,7 @@ export const tools: Tool[] = [
     icon: MessagesSquare,
   },
 ];
+
 export default function ToolsPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -205,14 +208,14 @@ export default function ToolsPage() {
                     </Link>
                   </p>
                 )}
-                {"supports" in tool && Array.isArray(tool.supports) && (
+                {tool.supports && Array.isArray(tool.supports) && (
                   <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
                     {tool.supports.map((item, i) => (
                       <li key={i}>• {item}</li>
                     ))}
                   </ul>
                 )}
-                {"bestFor" in tool && typeof tool.bestFor === "string" && (
+                {tool.bestFor && typeof tool.bestFor === "string" && (
                   <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
                     <span className="font-medium">Best for:</span> {tool.bestFor}
                   </p>

@@ -29,8 +29,19 @@ interface Tool {
   color: string;
   icon: LucideIcon;
   supports?: string[];
+  badge?: 'New' | 'Featured';
 }
 export const tools: Tool[] = [
+  {
+    title: "Sentence Paths",
+    href: "https://sentencepathslite.lovable.app/",
+    description:
+      "Build fluency through structured sentence practice. Progress through leveled paths designed for incremental comprehension and recall.",
+    bestFor: "systematic sentence exposure and building automatic recall.",
+    color: "from-primary/20 to-accent",
+    icon: Route,
+    badge: 'New',
+  },
   {
     title: "Dump Space",
     href: "https://dumpspace.lovable.app/",
@@ -149,8 +160,18 @@ export default function ToolsPage() {
                 href={tool.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full"
+                className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full relative"
               >
+                {/* Badge */}
+                {tool.badge && (
+                  <span className={`absolute -top-2 -right-2 px-2 py-0.5 text-xs font-semibold rounded-full ${
+                    tool.badge === 'New' 
+                      ? 'bg-primary text-primary-foreground' 
+                      : 'bg-accent text-accent-foreground border border-primary/30'
+                  }`}>
+                    {tool.badge}
+                  </span>
+                )}
                 {/* Icon accent */}
                 <div
                   className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Layers } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Layers, Route } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
+import { Badge } from '@/components/ui/badge';
 
 const flagshipTools = [
   {
@@ -11,6 +12,7 @@ const flagshipTools = [
     href: 'https://4strands4me.netlify.app/#audit',
     icon: BarChart3,
     external: true,
+    badge: 'Featured',
   },
   {
     title: 'Accrue Language',
@@ -18,6 +20,7 @@ const flagshipTools = [
     href: 'https://accruelanguage.lovable.app/',
     icon: BarChart3,
     external: true,
+    badge: 'Featured',
   },
   {
     title: 'LinguaFlow Lite',
@@ -25,6 +28,15 @@ const flagshipTools = [
     href: 'https://lingua-flow-lite-66d7b581.base44.app/',
     icon: Layers,
     external: true,
+    badge: 'Featured',
+  },
+  {
+    title: 'Sentence Paths',
+    description: 'Build fluency through structured sentence practice. Progress through leveled paths designed for incremental comprehension and recall.',
+    href: 'https://sentencepathslite.lovable.app/',
+    icon: Route,
+    external: true,
+    badge: 'New',
   },
 ];
 
@@ -67,8 +79,20 @@ const Index = () => {
                   href={card.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group card-calm flex flex-col h-full border-primary/20 hover:border-primary/40"
+                  className="group card-calm flex flex-col h-full border-primary/20 hover:border-primary/40 relative"
                 >
+                  {card.badge && (
+                    <Badge 
+                      variant={card.badge === 'New' ? 'default' : 'secondary'}
+                      className={`absolute -top-2 -right-2 text-xs ${
+                        card.badge === 'New' 
+                          ? 'bg-primary text-primary-foreground' 
+                          : 'bg-accent text-accent-foreground border-primary/30'
+                      }`}
+                    >
+                      {card.badge}
+                    </Badge>
+                  )}
                   <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors mb-4">
                     <card.icon className="w-6 h-6 text-primary" aria-hidden="true" />
                   </div>

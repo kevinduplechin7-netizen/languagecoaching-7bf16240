@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Calendar, Mail, Users, UserCog, Globe, CheckCircle2, BookOpen, Target, List, FileText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Mail, Users, UserCog, Globe, CheckCircle2, BookOpen, Target, List, FileText, Sparkles, Smartphone, Eye } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 const steps = [
   { label: 'Clarify', caption: 'what matters to you' },
   { label: 'Choose', caption: 'goals + path' },
@@ -88,6 +89,94 @@ export default function CoachingPage() {
               Support that meets you where you are - and helps you move forward with a realistic plan you can actually keep.
             </p>
           </div>
+
+          {/* Custom Language App Design - Premium Offer */}
+          <section className="mb-16 relative">
+            <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/5 via-accent/30 to-primary/10 border-2 border-primary/20 shadow-lg">
+              {/* Premium Badge */}
+              <Badge className="absolute -top-3 left-6 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold shadow-md">
+                <Sparkles className="w-3 h-3 mr-1" />
+                Premium Add-on
+              </Badge>
+              
+              <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
+                {/* Left: Main content */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary/15 rounded-xl">
+                      <Smartphone className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+                      Want a custom app for learning your language?
+                    </h2>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
+                    I can help you design a personalized language-learning app tailored to your goals, content, and learning style.
+                  </p>
+                  
+                  {/* Bullet list */}
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      'Your exact vocabulary + domains (work, travel, ministry, exams)',
+                      'Your preferred method (reading, audio drills, stories, Anki-ready exports)',
+                      'Progress tracking that matches how you actually study',
+                      'Local-first / offline options available',
+                      'Built around your schedule and motivation style',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-foreground">
+                        <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* CTAs */}
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button asChild size="lg" className="gap-2">
+                      <a
+                        href="https://calendly.com/kevin-duplechin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="w-4 h-4" />
+                        Book an App Design Session
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="gap-2">
+                      <Link to="/tools">
+                        <Eye className="w-4 h-4" />
+                        See examples of what we can build
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* Right: How it works - mini steps */}
+                <div className="mt-8 lg:mt-0 lg:w-72 flex-shrink-0">
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                    How it works
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      { step: 1, label: 'Define your language + goal' },
+                      { step: 2, label: 'Choose your learning loop (stories / drills / reading)' },
+                      { step: 3, label: 'Build your personal toolkit' },
+                    ].map((item) => (
+                      <div key={item.step} className="flex items-start gap-3">
+                        <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                          {item.step}
+                        </span>
+                        <span className="text-sm text-foreground leading-snug pt-1">
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* 4-step success graphic */}
           <section className="mb-16">

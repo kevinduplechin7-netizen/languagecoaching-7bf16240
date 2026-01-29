@@ -26,13 +26,13 @@ export default function ToolsRotator() {
       {/* Pinned highlights */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
         <a 
-          href="https://fluenthour-language-sessions.netlify.app/" 
+          href="https://sentencepathslite.lovable.app/" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-          <span>FluentHour — 300 structured hours of speaking practice</span>
+          <span>Sentence Paths — structured fluency through leveled sentences</span>
         </a>
         <a 
           href="https://accruelanguage.lovable.app/" 

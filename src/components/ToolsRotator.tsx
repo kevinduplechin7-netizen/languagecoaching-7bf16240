@@ -26,13 +26,13 @@ export default function ToolsRotator() {
       {/* Pinned highlights */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
         <a 
-          href="https://sentencepathslite.lovable.app/" 
+          href="https://fluenthour.lovable.app/" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-          <span>Sentence Paths — structured fluency through leveled sentences</span>
+          <span>FluentHour — structured one-hour sessions</span>
         </a>
         <a 
           href="https://accruelanguage.lovable.app/" 
@@ -41,7 +41,7 @@ export default function ToolsRotator() {
           className="inline-flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/50 hover:bg-muted/70 border border-border/30 rounded-full transition-colors"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-          <span>Accrue Language — track time, not streaks</span>
+          <span>Accrue Language — track time by the Four Strands</span>
         </a>
       </div>
 

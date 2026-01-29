@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Sparkles, Smartphone, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -8,26 +8,26 @@ import { Button } from '@/components/ui/button';
 
 const flagshipTools = [
   {
-    title: 'Is My Learning Balanced?',
-    description: 'Two-minute Four Strands audit to check input, output, focused study, and fluency. Get one next step and a simple one-week rotation plan.',
-    href: 'https://4strands4me.netlify.app/#audit',
-    icon: BarChart3,
+    title: 'Sentence Paths',
+    description: 'Build automatic recall through structured, leveled sentences. No grammar drills—just steady exposure that compounds into fluency.',
+    href: 'https://sentencepathslite.lovable.app/',
+    icon: Route,
     external: true,
     badge: 'Featured',
   },
   {
     title: 'Accrue Language',
-    description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year—without gamification or pressure.',
+    description: 'Track learning time across the Four Strands—input, output, focused study, and fluency. See honest totals without streaks or gamification.',
     href: 'https://accruelanguage.lovable.app/',
     icon: BarChart3,
     external: true,
     badge: 'Featured',
   },
   {
-    title: 'Sentence Paths',
-    description: 'Build fluency through structured sentence practice. Progress through leveled paths designed for incremental comprehension and recall.',
-    href: 'https://sentencepathslite.lovable.app/',
-    icon: Route,
+    title: 'FluentHour',
+    description: 'One-hour structured sessions with a timer, phases, and a calm sequence. Finish knowing exactly what you accomplished.',
+    href: 'https://fluenthour.lovable.app/',
+    icon: Clock,
     external: true,
     badge: 'New',
   },

@@ -58,18 +58,21 @@ const resourceCards = [
     description: 'A diagnostic lens for balanced language learning — check your learning diet without replacing your approach.',
     href: '/resources#four-strands',
     icon: BookOpen,
+    image: '/screenshots/four-strands-preview.png',
   },
   {
     title: 'Activities Index',
     description: 'Twenty research-informed activities organized by strand. Turn research principles into weekly practice.',
     href: '/activities',
     icon: List,
+    image: '/screenshots/activities-index-preview.png',
   },
   {
     title: 'Can-Do Statements',
     description: 'Choose goals and document progress using ACTFL, CLB, and CEFR frameworks.',
     href: '/standards',
     icon: Target,
+    image: '/screenshots/can-do-preview.png',
   },
 ];
 
@@ -236,25 +239,32 @@ const Index = () => {
         <section className="py-12 md:py-16 pb-20 md:pb-24">
           <div className="container-calm">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">Resources</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {resourceCards.map((card) => (
                 <Link
                   key={card.title}
                   to={card.href}
-                  className="group p-5 rounded-xl border border-border/50 bg-card hover:border-primary/30 hover:bg-accent/20 transition-all duration-200"
+                  className="group flex flex-col bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-accent/50 rounded-lg group-hover:bg-primary/10 transition-colors flex-shrink-0">
-                      <card.icon className="w-5 h-5 text-primary" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-muted">
+                    <img 
+                      src={card.image} 
+                      alt={`${card.title} illustration`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
+                  </div>
+                  <div className="flex flex-col p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <card.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+                      <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                         {card.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {card.description}
-                      </p>
                     </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {card.description}
+                    </p>
                   </div>
                 </Link>
               ))}

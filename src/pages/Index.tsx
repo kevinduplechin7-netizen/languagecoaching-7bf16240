@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, Users, GraduationCap } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -221,6 +221,46 @@ const Index = () => {
                 </div>
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* Coaching Banner */}
+        <section className="py-8 md:py-12">
+          <div className="container-calm">
+            <Link 
+              to="/coaching"
+              className="group block relative p-6 md:p-8 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-all duration-300 hover:shadow-md"
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex items-center gap-4 flex-1">
+                  <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-xl flex-shrink-0">
+                    <GraduationCap className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
+                      Language Coaching
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-lg">
+                      Clarify your goals, choose the right activities, and track real progress — with a coach who understands the Four Strands.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-6 md:gap-8">
+                  <div className="hidden sm:flex items-center gap-4 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-4 h-4 text-primary/70" />
+                      1-on-1 sessions
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Target className="w-4 h-4 text-primary/70" />
+                      Goal-focused
+                    </span>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
+                </div>
+              </div>
+            </Link>
           </div>
         </section>
 

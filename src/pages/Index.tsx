@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap, Mail, Calendar } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap, Mail, Calendar } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-
+import PremiumScreenshot from '@/components/PremiumScreenshot';
 const flagshipTools = [
   {
     title: 'Sentence Paths',
@@ -101,17 +101,15 @@ const Index = () => {
                   rel="noopener noreferrer"
                   className="group flex flex-col h-full bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                    <img 
-                      src={tool.image} 
+                  <div className="relative">
+                    <PremiumScreenshot
+                      src={tool.image}
                       alt={`${tool.title} app preview`}
-                      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
+                      aspectRatio="4/3"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                     <Badge 
                       variant={tool.badge === 'New' ? 'default' : 'secondary'}
-                      className={`absolute top-3 right-3 text-xs shadow-md ${
+                      className={`absolute top-3 right-3 text-xs shadow-md z-10 ${
                         tool.badge === 'New' 
                           ? 'bg-primary text-primary-foreground' 
                           : 'bg-accent text-accent-foreground border-primary/30'
@@ -205,14 +203,13 @@ const Index = () => {
                   rel="noopener noreferrer"
                   className="group flex flex-col sm:flex-row bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  <div className="relative aspect-[4/3] sm:aspect-square sm:w-44 flex-shrink-0 overflow-hidden bg-muted">
-                    <img 
-                      src={coach.image} 
+                  <div className="sm:w-48 flex-shrink-0">
+                    <PremiumScreenshot
+                      src={coach.image}
                       alt={`${coach.title} preview`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
+                      aspectRatio="square"
+                      className="sm:rounded-l-xl sm:rounded-r-none"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                   </div>
                   <div className="flex flex-col flex-1 p-5">
                     <div className="flex items-center gap-2 mb-2">
@@ -246,15 +243,11 @@ const Index = () => {
                   to={card.href}
                   className="group flex flex-col bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  <div className="relative aspect-[3/2] overflow-hidden bg-muted">
-                    <img 
-                      src={card.image} 
-                      alt={`${card.title} illustration`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
-                  </div>
+                  <PremiumScreenshot
+                    src={card.image}
+                    alt={`${card.title} illustration`}
+                    aspectRatio="3/2"
+                  />
                   <div className="flex flex-col p-5">
                     <div className="flex items-center gap-2 mb-2">
                       <card.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />

@@ -78,17 +78,19 @@ const Index = () => {
                   className="group flex flex-col h-full bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
                   {/* Screenshot Preview */}
-                  <div className="relative aspect-video overflow-hidden bg-muted">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                     <img 
                       src={card.image} 
                       alt={`${card.title} app preview`}
-                      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-cover object-top scale-100 transition-transform duration-300 group-hover:scale-[1.02]"
                       loading="lazy"
+                      style={{ imageRendering: 'auto' }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                     {card.badge && (
                       <Badge 
                         variant={card.badge === 'New' ? 'default' : 'secondary'}
-                        className={`absolute top-3 right-3 text-xs shadow-sm ${
+                        className={`absolute top-3 right-3 text-xs shadow-md ${
                           card.badge === 'New' 
                             ? 'bg-primary text-primary-foreground' 
                             : 'bg-accent text-accent-foreground border-primary/30'

@@ -36,7 +36,7 @@ export const tools: Tool[] = [
     title: "Sentence Paths",
     href: "https://sentencepathslite.lovable.app/",
     description:
-      "Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Immerse yourself in thousands of meaningful sentences—import your own materials or bring text from anywhere.",
+      "Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Immerse yourself in thousands of meaningful sentences—import your own materials or bring text from anywhere. Write by hand with stylus ink mode.",
     bestFor: "practicing more, in more ways—brick by brick, one sentence at a time.",
     color: "from-primary/20 to-accent",
     icon: Route,

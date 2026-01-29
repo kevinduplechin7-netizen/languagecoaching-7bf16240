@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const flagshipTools = [
   {
     title: 'Sentence Paths',
-    description: 'Build automatic recall through structured, leveled sentences. Listen, read, write, and speak—no grammar drills, just steady exposure that compounds into fluency.',
+    description: 'Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Import your own materials or bring text from anywhere—we simply help you practice more, in more ways.',
     href: 'https://sentencepathslite.lovable.app/',
     icon: Route,
     image: '/screenshots/sentence-paths-preview.png',

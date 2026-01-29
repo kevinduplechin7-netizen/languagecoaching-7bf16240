@@ -44,7 +44,7 @@ export default function PremiumScreenshot({
         src={src}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
-        className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+        className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
       />
       {/* Subtle gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />

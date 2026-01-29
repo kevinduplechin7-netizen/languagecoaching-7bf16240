@@ -9,7 +9,7 @@ import PremiumScreenshot from '@/components/PremiumScreenshot';
 const flagshipTools = [
   {
     title: 'Sentence Paths',
-    description: 'Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Import your own materials or bring text from anywhere—we simply help you practice more, in more ways.',
+    description: 'Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Import your own materials or bring text from anywhere—and practice writing by hand with stylus ink mode.',
     href: 'https://sentencepathslite.lovable.app/',
     icon: Route,
     image: '/screenshots/sentence-paths-preview.png',

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap, Mail, Calendar } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -236,7 +236,7 @@ const Index = () => {
         </section>
 
         {/* Resources */}
-        <section className="py-12 md:py-16 pb-20 md:pb-24">
+        <section className="py-12 md:py-16">
           <div className="container-calm">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -268,6 +268,41 @@ const Index = () => {
                   </div>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Gentle CTA - Let's Connect */}
+        <section className="py-16 md:py-20 pb-20 md:pb-24">
+          <div className="container-calm">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+                Have a question?
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Whether you're curious about coaching, want a quote for custom software, or just want to say hello — I'd love to hear from you. If you're new here, feel free to book a free intro session. No pressure, just a conversation.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="https://calendly.com/kevin-duplechin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary-calm w-full sm:w-auto"
+                >
+                  <Calendar className="w-4 h-4 mr-2" aria-hidden="true" />
+                  Book a free intro call
+                </a>
+                <a
+                  href="mailto:kevinduplechin7@gmail.com"
+                  className="btn-secondary-calm w-full sm:w-auto"
+                >
+                  <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
+                  Send me an email
+                </a>
+              </div>
+              <p className="mt-6 text-sm text-muted-foreground/60">
+                kevinduplechin7@gmail.com
+              </p>
             </div>
           </div>
         </section>

@@ -9,25 +9,28 @@ import { Button } from '@/components/ui/button';
 const flagshipTools = [
   {
     title: 'Sentence Paths',
-    description: 'Build automatic recall through structured, leveled sentences. No grammar drills—just steady exposure that compounds into fluency.',
+    description: 'Build automatic recall through structured, leveled sentences. Listen, read, write, and speak—no grammar drills, just steady exposure that compounds into fluency.',
     href: 'https://sentencepathslite.lovable.app/',
     icon: Route,
+    image: '/screenshots/sentence-paths-preview.png',
     external: true,
     badge: 'Featured',
   },
   {
     title: 'Accrue Language',
-    description: 'Track learning time across the Four Strands—input, output, focused study, and fluency. See honest totals without streaks or gamification.',
+    description: 'Track learning time across the Four Strands—meaning-focused input, output, language-focused learning, and fluency development. See honest totals without streaks or gamification.',
     href: 'https://accruelanguage.lovable.app/',
     icon: BarChart3,
+    image: '/screenshots/accrue-language-preview.png',
     external: true,
     badge: 'Featured',
   },
   {
     title: 'FluentHour',
-    description: 'One-hour structured sessions with a timer, phases, and a calm sequence. Finish knowing exactly what you accomplished.',
+    description: 'One-hour structured speaking sessions with a timer, clear phases, and a calm sequence. 300 sessions from A1 to C2—finish knowing exactly what you accomplished.',
     href: 'https://fluenthour.lovable.app/',
     icon: Clock,
+    image: '/screenshots/fluenthour-preview.png',
     external: true,
     badge: 'New',
   },
@@ -72,29 +75,42 @@ const Index = () => {
                   href={card.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group card-calm flex flex-col h-full border-primary/20 hover:border-primary/40 relative"
+                  className="group flex flex-col h-full bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  {card.badge && (
-                    <Badge 
-                      variant={card.badge === 'New' ? 'default' : 'secondary'}
-                      className={`absolute -top-2 -right-2 text-xs ${
-                        card.badge === 'New' 
-                          ? 'bg-primary text-primary-foreground' 
-                          : 'bg-accent text-accent-foreground border-primary/30'
-                      }`}
-                    >
-                      {card.badge}
-                    </Badge>
-                  )}
-                  <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors mb-4">
-                    <card.icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                  {/* Screenshot Preview */}
+                  <div className="relative aspect-video overflow-hidden bg-muted">
+                    <img 
+                      src={card.image} 
+                      alt={`${card.title} app preview`}
+                      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    {card.badge && (
+                      <Badge 
+                        variant={card.badge === 'New' ? 'default' : 'secondary'}
+                        className={`absolute top-3 right-3 text-xs shadow-sm ${
+                          card.badge === 'New' 
+                            ? 'bg-primary text-primary-foreground' 
+                            : 'bg-accent text-accent-foreground border-primary/30'
+                        }`}
+                      >
+                        {card.badge}
+                      </Badge>
+                    )}
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {card.description}
-                  </p>
+                  
+                  {/* Card Content */}
+                  <div className="flex flex-col flex-1 p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <card.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+                      <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {card.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
                 </a>
               ))}
             </div>

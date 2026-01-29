@@ -36,8 +36,8 @@ export const tools: Tool[] = [
     title: "Sentence Paths",
     href: "https://sentencepathslite.lovable.app/",
     description:
-      "Build fluency through structured sentence practice. Progress through leveled paths designed for incremental comprehension and recall.",
-    bestFor: "systematic sentence exposure and building automatic recall.",
+      "Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Immerse yourself in thousands of meaningful sentences—import your own materials or bring text from anywhere.",
+    bestFor: "practicing more, in more ways—brick by brick, one sentence at a time.",
     color: "from-primary/20 to-accent",
     icon: Route,
     badge: 'New',

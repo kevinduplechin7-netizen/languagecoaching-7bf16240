@@ -26,7 +26,7 @@ export default function Footer() {
           </Link>
         </div>
         <p className="mt-4 text-xs text-muted-foreground/40 text-center max-w-xl mx-auto">
-          Educational tools, coaching programs, and instructional resources may be offered now or in the future under the LinguaFlow name without constituting a separate legal entity at this time.
+          Educational tools, coaching programs, and instructional resources may be offered now or in the future without constituting a separate legal entity at this time.
         </p>
         <p className="mt-2 text-xs text-muted-foreground/40 text-center">
           © {new Date().getFullYear()} Kevin Duplechin. All rights reserved.

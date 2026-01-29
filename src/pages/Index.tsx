@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Layers, Route, Sparkles, Smartphone, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Sparkles, Smartphone, CheckCircle2, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -20,14 +20,6 @@ const flagshipTools = [
     description: 'Track language learning by time, not streaks. See honest totals by day, week, month, and year—without gamification or pressure.',
     href: 'https://accruelanguage.lovable.app/',
     icon: BarChart3,
-    external: true,
-    badge: 'Featured',
-  },
-  {
-    title: 'LinguaFlow Lite',
-    description: 'Sentence-first acquisition. Read, listen, and flow through leveled content from A1 to C2 across real-world domains.',
-    href: 'https://lingua-flow-lite-66d7b581.base44.app/',
-    icon: Layers,
     external: true,
     badge: 'Featured',
   },

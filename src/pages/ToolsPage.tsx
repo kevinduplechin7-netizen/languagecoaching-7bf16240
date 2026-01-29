@@ -56,7 +56,7 @@ export const tools: Tool[] = [
     href: "https://chatgpt.com/g/g-6958a771444881918c4c59c6b55f33ca-interlinear-studio",
     description:
       "Turn translations or linguistic data into clean, aligned interlinear tables for Excel or Google Sheets. Outputs ready-to-use TSV with headers — no fixing columns, no formatting cleanup.",
-    bestFor: "structured study, Anki preparation, and LinguaFlow input.",
+    bestFor: "structured study, Anki preparation, and sentence-first learning.",
     color: "from-slate-light to-muted",
     icon: Columns3,
   },
@@ -95,19 +95,6 @@ export const tools: Tool[] = [
     bestFor: "turning English phases into ready-to-run target-language phases fast.",
     color: "from-slate-light to-accent",
     icon: Clapperboard,
-  },
-  {
-    title: "LinguaFlow",
-    href: "https://lingua-flow-lite-66d7b581.base44.app",
-    description:
-      "Sentence-first acquisition. Read, listen, and flow through leveled content from A1 to C2 across real-world domains—Foundation, Medical, Legal, Work, Travel, Relocation. Upload your own texts or use curated packs with optional transliteration and gloss.",
-    descriptionSuffix: " for volume, repetition, and gradual familiarity — not memorization tricks.",
-    designedLink: "/tools/linguaflow-architecture",
-    missionPartnerNote: true,
-    supports: ["Translation", "Target language", "Optional transliteration", "Optional word-by-word gloss"],
-    bestFor: "input-heavy learning and sustained sentence exposure.",
-    color: "from-sage-light to-muted",
-    icon: Route,
   },
   {
     title: "MyLanguageCoach",

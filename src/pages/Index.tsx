@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, Smartphone, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -141,6 +141,85 @@ const Index = () => {
                   </p>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* AI Coaches Section */}
+        <section className="py-8 md:py-12">
+          <div className="container-calm">
+            <div className="flex items-center gap-2 mb-6">
+              <h2 className="text-sm font-medium text-primary uppercase tracking-wider">AI Coaches</h2>
+              <Badge variant="secondary" className="text-xs bg-accent/50 text-accent-foreground border-primary/20">
+                Powered by ChatGPT
+              </Badge>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* MyLanguageCoach */}
+              <a
+                href="https://chatgpt.com/g/g-69584b86f18c8191ade5d4be4976ffac-mylanguagecoach"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col md:flex-row bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="relative aspect-[4/3] md:aspect-square md:w-48 flex-shrink-0 overflow-hidden bg-muted">
+                  <img 
+                    src="/screenshots/mylanguagecoach-preview.png" 
+                    alt="MyLanguageCoach GPT preview"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                </div>
+                <div className="flex flex-col flex-1 p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Compass className="w-5 h-5 text-primary flex-shrink-0" />
+                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                      MyLanguageCoach
+                    </h3>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    A calm AI coach that helps you choose what to work on, check what fits your life, and commit to one clear next step — without overwhelm.
+                  </p>
+                  <p className="text-xs text-muted-foreground/70 mt-auto pt-2 border-t border-border/40">
+                    <span className="font-medium">Best for:</span> Learners who need direction more than content.
+                  </p>
+                </div>
+              </a>
+
+              {/* PerfectLanguagePartner */}
+              <a
+                href="https://chatgpt.com/g/g-69588e17c2f881918bca83a3d874bc10-perfectlanguagepartner"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col md:flex-row bg-card rounded-xl border border-border/50 hover:border-primary/40 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="relative aspect-[4/3] md:aspect-square md:w-48 flex-shrink-0 overflow-hidden bg-muted">
+                  <img 
+                    src="/screenshots/perfectlanguagepartner-preview.png" 
+                    alt="PerfectLanguagePartner GPT preview"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                </div>
+                <div className="flex flex-col flex-1 p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MessagesSquare className="w-5 h-5 text-primary flex-shrink-0" />
+                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                      PerfectLanguagePartner
+                    </h3>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    A structured AI conversation partner with complete practice sessions. Each session has context, goals, guided interaction, and correction across four phases.
+                  </p>
+                  <p className="text-xs text-muted-foreground/70 mt-auto pt-2 border-t border-border/40">
+                    <span className="font-medium">Best for:</span> Intentional speaking practice, not casual chat.
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
         </section>

@@ -105,7 +105,6 @@ const Index = () => {
                     <PremiumScreenshot
                       src={tool.image}
                       alt={`${tool.title} app preview`}
-                      aspectRatio="4/3"
                     />
                     <Badge 
                       variant={tool.badge === 'New' ? 'default' : 'secondary'}
@@ -207,7 +206,6 @@ const Index = () => {
                     <PremiumScreenshot
                       src={coach.image}
                       alt={`${coach.title} preview`}
-                      aspectRatio="square"
                       className="sm:rounded-l-xl sm:rounded-r-none"
                     />
                   </div>
@@ -246,7 +244,6 @@ const Index = () => {
                   <PremiumScreenshot
                     src={card.image}
                     alt={`${card.title} illustration`}
-                    aspectRatio="3/2"
                   />
                   <div className="flex flex-col p-5">
                     <div className="flex items-center gap-2 mb-2">

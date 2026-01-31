@@ -134,7 +134,7 @@ const Index = () => {
                       {[
                         "Keep what works",
                         "Calmly and deliberately make adjustments",
-                        "Execute your plan consistently to build volume and gorwing accuracy",
+                        "Execute your plan consistently to build volume and growing accuracy",
                       ].map((item) => (
                         <div
                           key={item}

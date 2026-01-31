@@ -13,6 +13,7 @@ import LinguaFlowArchitecturePage from "./pages/LinguaFlowArchitecturePage";
 import ContactPage from "./pages/ContactPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import FourStrandsQuizPage from "./pages/FourStrandsQuizPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,8 +32,10 @@ const App = () => (
           <Route path="/coaching" element={<CoachingPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/tools/linguaflow-architecture" element={<LinguaFlowArchitecturePage />} />
+          <Route path="/four-strands-quiz" element={<FourStrandsQuizPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

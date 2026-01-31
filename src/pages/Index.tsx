@@ -133,7 +133,7 @@ const Index = () => {
                     <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl">
                       {[
                         "Keep what works",
-                        "Calmly and deliberately adjust what does not work",
+                        "Calmly and deliberately make adjustments",
                         "Execute your plan consistently to build volume and accuracy",
                       ].map((item) => (
                         <div

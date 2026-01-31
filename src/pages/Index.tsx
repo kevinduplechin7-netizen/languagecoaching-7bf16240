@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap, Mail, Calendar } from 'lucide-react';
+import { BookOpen, List, Target, BarChart3, Route, Clock, Sparkles, CheckCircle2, ArrowRight, Compass, MessagesSquare, ExternalLink, GraduationCap, Mail, Calendar, ClipboardCheck } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
@@ -82,6 +82,36 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+
+        {/* Four Strands Quiz Banner */}
+        <section className="py-8 md:py-10 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-orange-500/10 border-y border-border/30">
+          <div className="container-calm">
+            <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-xl">
+                  <ClipboardCheck className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <Badge variant="outline" className="mb-1 text-xs border-primary/30 text-primary">
+                    Interactive Diagnostic
+                  </Badge>
+                  <h2 className="text-lg md:text-xl font-semibold text-foreground">
+                    Audit Your Learning Balance
+                  </h2>
+                </div>
+              </div>
+              <p className="text-muted-foreground flex-1 md:text-center">
+                Take a quick quiz to diagnose how well your language learning covers all Four Strands.
+              </p>
+              <Button asChild className="gap-2 whitespace-nowrap">
+                <Link to="/four-strands-quiz">
+                  Take the Quiz
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
         
         {/* Flagship Tools */}
         <section className="py-16 md:py-20">

@@ -131,17 +131,19 @@ const Index = () => {
                     </p>
 
                     <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl">
-                      {["Keep what works", "Remove what doesn&apos;t", "Adjust calmly", "Repeat consistently"].map(
-                        (item) => (
-                          <div
-                            key={item}
-                            className="flex items-center gap-2 bg-background/60 rounded-xl border border-border/40 p-3"
-                          >
-                            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
-                            <span className="text-sm text-muted-foreground">{item}</span>
-                          </div>
-                        ),
-                      )}
+                      {[
+                        "Keep what works",
+                        "Calmly and deliberately adjust what does not work",
+                        "Execute your plan consistently to build volume and accuracy",
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-2 bg-background/60 rounded-xl border border-border/40 p-3"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
+                          <span className="text-sm text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
                     </div>
 
                     {/* Gentle stats section (framed as approximate + varies by learner/language) */}

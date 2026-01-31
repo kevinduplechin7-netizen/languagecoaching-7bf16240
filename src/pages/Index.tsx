@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import PremiumScreenshot from '@/components/PremiumScreenshot';
-
 const flagshipTools = [
   {
     title: 'Sentence Paths',
@@ -125,7 +124,7 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {flagshipTools.map((tool) => (
-                
+                <a
                   key={tool.title}
                   href={tool.href}
                   target="_blank"
@@ -215,74 +214,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Progress, Not Perfection - Philosophy Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-background via-accent/5 to-background">
-          <div className="container-calm">
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-8">
-                <Badge variant="outline" className="mb-3 text-xs border-primary/30 text-primary">
-                  Coaching Philosophy
-                </Badge>
-                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                  Progress, Not Perfection
-                </h2>
-              </div>
-              
-              <div className="bg-card rounded-xl border border-border/50 p-8 md:p-10 shadow-sm">
-                <div className="space-y-6 text-muted-foreground leading-relaxed">
-                  <p className="text-base md:text-lg">
-                    Language growth isn't about finding the perfect method or the perfect app.
-                  </p>
-                  <p className="text-foreground font-medium text-lg md:text-xl">
-                    It's about steady execution.
-                  </p>
-                  
-                  <div className="space-y-3 py-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Keep what works</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Remove what doesn't</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Adjust calmly</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Repeat consistently</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4 pt-4 border-t border-border/30">
-                    <p>
-                      Stop chasing better tools.<br />
-                      Start using the ones you already have.
-                    </p>
-                    <p>
-                      Make a simple plan. Follow it. Refine it as you go.
-                    </p>
-                    <p>
-                      The results compound — faster, easier, and more natural over time.
-                    </p>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-border/30 text-center">
-                    <p className="text-muted-foreground/70 mb-2">
-                      Perfection slows you down.
-                    </p>
-                    <p className="text-foreground font-semibold text-lg">
-                      Execution moves you forward.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* AI Coaches */}
         <section className="py-12 md:py-16">
           <div className="container-calm">
@@ -294,7 +225,7 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {aiCoaches.map((coach) => (
-                
+                <a
                   key={coach.title}
                   href={coach.href}
                   target="_blank"
@@ -372,7 +303,7 @@ const Index = () => {
                 Whether you're curious about coaching, want a quote for custom software, or just want to say hello — I'd love to hear from you. If you're new here, feel free to book a free intro session. No pressure, just a conversation.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                
+                <a
                   href="https://calendly.com/kevin-duplechin"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -381,7 +312,7 @@ const Index = () => {
                   <Calendar className="w-4 h-4 mr-2" aria-hidden="true" />
                   Book a free intro call
                 </a>
-                
+                <a
                   href="mailto:kevinduplechin7@gmail.com"
                   className="btn-secondary-calm w-full sm:w-auto"
                 >

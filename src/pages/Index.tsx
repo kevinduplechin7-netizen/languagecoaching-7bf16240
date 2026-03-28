@@ -17,6 +17,7 @@ import {
   Calendar,
   ClipboardCheck,
   TrendingUp,
+  Youtube,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -34,6 +35,7 @@ const flagshipTools = [
     icon: Route,
     image: "/screenshots/sentence-paths-preview.png",
     badge: "Featured",
+    youtube: "https://youtube.com/@sentencepaths?si=rQtSU5ykzCRotLvo",
   },
   {
     title: "Accrue Language",
@@ -300,6 +302,18 @@ const Index = () => {
                       </h3>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+                    {tool.youtube && (
+                      <a
+                        href={tool.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground/70 hover:text-primary transition-colors"
+                      >
+                        <Youtube className="w-3.5 h-3.5" />
+                        Tips & shorts on YouTube
+                      </a>
+                    )}
                   </div>
                 </a>
               ))}

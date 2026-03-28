@@ -15,6 +15,7 @@ import {
   Beef,
   Bookmark,
   LucideIcon,
+  Youtube,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -30,6 +31,7 @@ interface Tool {
   icon: LucideIcon;
   supports?: string[];
   badge?: 'New' | 'Featured';
+  youtube?: string;
 }
 export const tools: Tool[] = [
   {
@@ -41,6 +43,7 @@ export const tools: Tool[] = [
     color: "from-primary/20 to-accent",
     icon: Route,
     badge: 'New',
+    youtube: 'https://youtube.com/@sentencepaths?si=rQtSU5ykzCRotLvo',
   },
   {
     title: "Dump Space",
@@ -214,6 +217,18 @@ export default function ToolsPage() {
                   <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
                     <span className="font-medium">Best for:</span> {tool.bestFor}
                   </p>
+                )}
+                {tool.youtube && (
+                  <a
+                    href={tool.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted-foreground/70 hover:text-primary transition-colors"
+                  >
+                    <Youtube className="w-3.5 h-3.5" />
+                    Tips & shorts on YouTube
+                  </a>
                 )}
               </a>
             ))}

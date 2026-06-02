@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -363,15 +363,11 @@ const evidenceOptions = [
   "Periodic review and adjustments",
 ];
 
-type FormStatus = "idle" | "sending" | "sent" | "error";
-
 export default function CoachingPage() {
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
   const [templateKey, setTemplateKey] = useState<keyof typeof messageTemplates>("individual");
   const [requestType, setRequestType] = useState(messageTemplates.individual.requestType);
   const [message, setMessage] = useState(messageTemplates.individual.message);
-  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
-  const [formNotice, setFormNotice] = useState<string | null>(null);
 
   const copyText = async (text: string, successMessage: string) => {
     try {
@@ -406,52 +402,6 @@ export default function CoachingPage() {
     setTemplateKey(value);
     setRequestType(selectedTemplate.requestType);
     setMessage(selectedTemplate.message);
-    setFormStatus("idle");
-    setFormNotice(null);
-  };
-
-  const handleContactFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setCopyStatus(null);
-    setFormNotice(null);
-
-    if (contactFormEndpoint.includes("YOUR_FORM_ID")) {
-      setFormStatus("error");
-      setFormNotice(
-        "Form endpoint is not configured yet. Create a Formspree form, replace YOUR_FORM_ID in this file, then redeploy. The copy buttons still work.",
-      );
-      return;
-    }
-
-    setFormStatus("sending");
-
-    try {
-      const formData = new FormData(event.currentTarget);
-      formData.append("_subject", `Language Coaching Website Request - ${requestType}`);
-      formData.append("selected_template", messageTemplates[templateKey].label);
-
-      const response = await fetch(contactFormEndpoint, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Form submission failed.");
-      }
-
-      setFormStatus("sent");
-      setFormNotice("Thank you. Your request was sent to Kevin. He will reply by email.");
-      event.currentTarget.reset();
-      handleTemplateChange("individual");
-    } catch {
-      setFormStatus("error");
-      setFormNotice(
-        "The form could not send. Please copy the message or email Kevin directly at kevinduplechin7@gmail.com.",
-      );
-    }
   };
 
   const scrollToQuoteContact = () => {
@@ -518,17 +468,19 @@ export default function CoachingPage() {
                   page. Kevin will reply by email.
                 </p>
                 <div className="p-4 bg-muted/30 rounded-lg border border-border">
-                  <p className="text-sm font-semibold text-foreground mb-2">Setup note</p>
+                  <p className="text-sm font-semibold text-foreground mb-2">Secure email request</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    This form is coded for Formspree. Replace{" "}
-                    <span className="font-mono text-foreground">YOUR_FORM_ID</span> in this file with your real
-                    Formspree endpoint before publishing.
+                    This form sends your request directly to Kevin through Formspree. You can also copy the message or
+                    email address if you prefer to send it from your own inbox.
                   </p>
                 </div>
               </div>
 
-              <form className="space-y-5" onSubmit={handleContactFormSubmit}>
+              <form className="space-y-5" action={contactFormEndpoint} method="POST">
                 <input type="hidden" name="send_to" value={quoteEmail} />
+                <input type="hidden" name="_subject" value={`Language Coaching Website Request - ${requestType}`} />
+                <input type="hidden" name="selected_template" value={messageTemplates[templateKey].label} />
+                <input type="hidden" name="form_source" value="Language Coaching website coaching page" />
                 <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -619,19 +571,10 @@ export default function CoachingPage() {
                   />
                 </label>
 
-                {formNotice && (
-                  <p
-                    className={`text-sm font-medium ${formStatus === "sent" ? "text-primary" : "text-destructive"}`}
-                    role="status"
-                  >
-                    {formNotice}
-                  </p>
-                )}
-
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button type="submit" className="gap-2" disabled={formStatus === "sending"}>
+                  <Button type="submit" className="gap-2">
                     <Send className="w-4 h-4" />
-                    {formStatus === "sending" ? "Sending..." : "Send request to Kevin"}
+                    Send request to Kevin
                   </Button>
                   <Button type="button" variant="outline" className="gap-2" onClick={copyCurrentFormMessage}>
                     <ClipboardCheck className="w-4 h-4" />

@@ -1,68 +1,172 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Calendar, Mail, Users, UserCog, Globe, CheckCircle2, BookOpen, Target, List, FileText, Sparkles, Smartphone, Eye } from 'lucide-react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Calendar,
+  Mail,
+  Users,
+  UserCog,
+  Globe,
+  CheckCircle2,
+  BookOpen,
+  Target,
+  List,
+  FileText,
+  Sparkles,
+  Smartphone,
+  Eye,
+  Church,
+  Building2,
+  Landmark,
+  Languages,
+  ClipboardCheck,
+  Handshake,
+} from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
+const quoteEmail = "kevinduplechin7@gmail.com";
+
+const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(
+  "Saturday Workshop Quote Request",
+)}&body=${encodeURIComponent(`Hello,
+
+I would like to request a Saturday workshop quote.
+
+Organization / church name:
+Type of organization:
+Approximate number of participants:
+Workshop interest:
+- Mission trip preparation
+- Local missions / immigrant or refugee ministry
+- Minority-language learning
+- Language-learning strategy
+- Sentence Paths implementation
+- Team coaching / learner support
+- Other:
+
+Preferred Saturday or timeframe:
+Desired workshop length:
+Additional notes:
+
+Thank you.`)}`;
+
 const steps = [
-  { label: 'Clarify', caption: 'what matters to you' },
-  { label: 'Choose', caption: 'goals + path' },
-  { label: 'Practice', caption: 'the right activities' },
-  { label: 'Evidence', caption: 'track · review · adjust' },
+  { label: "Clarify", caption: "what matters to you" },
+  { label: "Choose", caption: "goals + path" },
+  { label: "Practice", caption: "the right activities" },
+  { label: "Evidence", caption: "track · review · adjust" },
 ];
 
 const coachingCards = [
   {
     icon: Users,
-    title: 'Training Learners',
-    description: 'Practical coaching for real conversations. We clarify your goals, choose a simple weekly rhythm, and build confidence through targeted practice - without overwhelm.',
-    bullets: [
-      'Clear goals tied to real contexts',
-      'Sustainable weekly plan',
-      'Encouraging, effective feedback',
-    ],
+    title: "Training Learners",
+    description:
+      "Practical coaching for real conversations. We clarify your goals, choose a simple weekly rhythm, and build confidence through targeted practice - without overwhelm.",
+    bullets: ["Clear goals tied to real contexts", "Sustainable weekly plan", "Encouraging, effective feedback"],
   },
   {
     icon: UserCog,
-    title: 'Training Language Coaches',
-    description: 'Coach development with structure and field realism. I help teams translate research into repeatable coaching habits - with templates, session patterns, and a clear way to track progress.',
+    title: "Training Language Coaches",
+    description:
+      "Coach development with structure and field realism. I help teams translate research into repeatable coaching habits - with templates, session patterns, and a clear way to track progress.",
     bullets: [
-      'Session design and goal-setting',
-      'Feedback habits that help learners grow',
-      'Coaching systems that hold up in busy seasons',
+      "Session design and goal-setting",
+      "Feedback habits that help learners grow",
+      "Coaching systems that hold up in busy seasons",
     ],
   },
   {
     icon: Globe,
-    title: 'Ministry and cross-cultural contexts',
-    description: 'Language learning in cross-cultural work comes with unique constraints. I help you build a plan that respects workload, relationships, and the conversations that matter most.',
+    title: "Ministry and cross-cultural contexts",
+    description:
+      "Language learning in cross-cultural work comes with unique constraints. I help you build a plan that respects workload, relationships, and the conversations that matter most.",
     bullets: [
-      'Stronger practice design',
-      'Better alignment between training and real tasks',
-      'Clearer progress tracking',
+      "Stronger practice design",
+      "Better alignment between training and real tasks",
+      "Clearer progress tracking",
     ],
   },
 ];
 
+const workshopAudiences = [
+  { icon: Church, label: "Churches and mission teams" },
+  { icon: Building2, label: "Schools, nonprofits, and businesses" },
+  { icon: Landmark, label: "Government and public-service teams" },
+  { icon: Languages, label: "Minority-language and helper-based programs" },
+];
+
+const workshopTopics = [
+  "Mission trip language preparation",
+  "Local missions, immigrant ministry, and refugee outreach",
+  "Minority-language learning when apps and AI tools are limited",
+  "Language-learning strategy for teams and organizations",
+  "Coaching systems, learner support, and progress tracking",
+  "ACTFL-style goals, can-do planning, and practical evidence of growth",
+  "Sentence Paths implementation and custom study workflows",
+  "Multilingual study routines for busy adults and field teams",
+];
+
+const workshopRates = [
+  {
+    title: "Mission Trip / Local Missions Language Workshop",
+    price: "Starting at $750",
+    description:
+      "A focused Saturday session for churches preparing teams for mission trips, local cross-cultural ministry, refugee or immigrant outreach, or basic language-learning orientation.",
+  },
+  {
+    title: "Half-Day Saturday Workshop",
+    price: "Starting at $1,250",
+    description:
+      "Up to 3 hours of live training, guided planning, and practical next steps for churches, schools, nonprofits, businesses, government teams, mission organizations, or language programs.",
+  },
+  {
+    title: "Full-Day Saturday Workshop",
+    price: "Starting at $2,250",
+    description: "Up to 6 hours of training, implementation planning, team exercises, and follow-up recommendations.",
+  },
+  {
+    title: "Minority Language & Helper-Based Learning Workshop",
+    price: "Starting at $1,250",
+    description:
+      "For teams working with languages that are not well supported by mainstream apps, AI tools, or commercial resources.",
+  },
+  {
+    title: "Custom Saturday Intensive",
+    price: "Starting at $3,500",
+    description:
+      "For organizations that need a deeper language-program audit, Sentence Paths implementation plan, learner-support redesign, or custom training workflow.",
+  },
+  {
+    title: "Follow-Up Advisory Session",
+    price: "$175/hour",
+    description:
+      "Optional follow-up support after the workshop. Best for implementation questions, review, coaching-system refinement, or next-step planning.",
+  },
+];
+
 const readingPath = [
-  { title: 'Start here: Four Strands', href: '/resources#four-strands', icon: BookOpen },
-  { title: 'Choose goals: Can-do statements', href: '/standards', icon: Target },
-  { title: 'Pick activities', href: '/activities', icon: List },
-  { title: 'Track evidence', href: '/standards', icon: FileText },
+  { title: "Start here: Four Strands", href: "/resources#four-strands", icon: BookOpen },
+  { title: "Choose goals: Can-do statements", href: "/standards", icon: Target },
+  { title: "Pick activities", href: "/activities", icon: List },
+  { title: "Track evidence", href: "/standards", icon: FileText },
 ];
 
 const questions = [
-  'What do you want and need to do with the language?',
-  'What feels most important right now?',
-  'Where do you feel stuck?',
-  'What kind of support helps you most?',
+  "What do you want and need to do with the language?",
+  "What feels most important right now?",
+  "Where do you feel stuck?",
+  "What kind of support helps you most?",
 ];
 
 const evidenceOptions = [
-  'Goals (can-do statements)',
-  'Quick practice notes',
-  'Short samples (audio, writing, screenshots)',
-  'Periodic review and adjustments',
+  "Goals (can-do statements)",
+  "Quick practice notes",
+  "Short samples (audio, writing, screenshots)",
+  "Periodic review and adjustments",
 ];
 
 export default function CoachingPage() {
@@ -82,13 +186,125 @@ export default function CoachingPage() {
 
           {/* Header */}
           <div className="max-w-2xl mb-12">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
-              Coaching
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Coaching</h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Support that meets you where you are - and helps you move forward with a realistic plan you can actually keep.
+              Support that meets you where you are - and helps you move forward with a realistic plan you can actually
+              keep.
             </p>
           </div>
+
+          {/* Saturday Workshops */}
+          <section className="mb-16 relative">
+            <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/5 via-accent/30 to-primary/10 border-2 border-primary/20 shadow-lg">
+              <Badge className="absolute -top-3 left-6 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold shadow-md">
+                <Handshake className="w-3 h-3 mr-1" />
+                Limited Saturday Availability
+              </Badge>
+
+              <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary/15 rounded-xl">
+                      <Calendar className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-primary mb-1">Organizations, churches, and teams</p>
+                      <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+                        Saturday Workshops for language-learning systems
+                      </h2>
+                    </div>
+                  </div>
+
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-5 max-w-2xl">
+                    Kevin Duplechin offers limited Saturday workshops for churches, schools, nonprofits, businesses,
+                    government teams, mission organizations, and language programs.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                    With an M.A. in Linguistics and 15+ years of language-learning, field, and coaching experience with
+                    Pioneer Bible Translators, Kevin helps teams build practical systems for sustainable language
+                    growth.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                    {workshopAudiences.map((audience) => (
+                      <div
+                        key={audience.label}
+                        className="flex items-center gap-3 p-3 bg-background/70 border border-border rounded-lg"
+                      >
+                        <audience.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-sm font-medium text-foreground">{audience.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button asChild size="lg" className="gap-2">
+                      <a href={saturdayWorkshopMailto}>
+                        <Mail className="w-4 h-4" />
+                        Request a Saturday Workshop Quote
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="gap-2">
+                      <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
+                        <Calendar className="w-4 h-4" />
+                        Schedule a conversation
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="bg-background/80 border border-border rounded-xl p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <ClipboardCheck className="w-5 h-5 text-primary" />
+                    <h3 className="text-base font-semibold text-foreground">Workshop focus areas</h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {workshopTopics.map((topic) => (
+                      <li key={topic} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{topic}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Workshop rates */}
+          <section className="mb-16">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+              <div>
+                <h2 className="text-xl font-semibold text-foreground">Saturday workshop rates</h2>
+                <p className="mt-2 text-muted-foreground max-w-2xl">
+                  Availability is limited because Kevin's primary work is ongoing language-learning service and
+                  coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
+                </p>
+              </div>
+              <Button asChild variant="outline" className="gap-2 md:flex-shrink-0">
+                <a href={saturdayWorkshopMailto}>
+                  <Mail className="w-4 h-4" />
+                  Request a quote
+                </a>
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {workshopRates.map((rate) => (
+                <article key={rate.title} className="card-calm h-full">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{rate.title}</h3>
+                  <p className="text-xl font-semibold text-primary mb-4">{rate.price}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{rate.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-3xl">
+              Church and nonprofit needs vary widely. The mission-trip / local missions workshop is intended as a
+              lower-entry option for focused Saturday training, while larger organization workshops, audits, and custom
+              implementation projects are quoted according to scope.
+            </p>
+          </section>
 
           {/* Custom Language App Design - Premium Offer */}
           <section className="mb-16 relative">
@@ -98,7 +314,7 @@ export default function CoachingPage() {
                 <Sparkles className="w-3 h-3 mr-1" />
                 Premium Add-on
               </Badge>
-              
+
               <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
                 {/* Left: Main content */}
                 <div className="flex-1">
@@ -110,19 +326,20 @@ export default function CoachingPage() {
                       Want a custom app for learning your language?
                     </h2>
                   </div>
-                  
+
                   <p className="text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
-                    I can help you design a personalized language-learning app tailored to your goals, content, and learning style.
+                    I can help you design a personalized language-learning app tailored to your goals, content, and
+                    learning style.
                   </p>
-                  
+
                   {/* Bullet list */}
                   <ul className="space-y-3 mb-8">
                     {[
-                      'Your exact vocabulary + domains (work, travel, ministry, exams)',
-                      'Your preferred method (reading, audio drills, stories, Anki-ready exports)',
-                      'Progress tracking that matches how you actually study',
-                      'Local-first / offline options available',
-                      'Built around your schedule and motivation style',
+                      "Your exact vocabulary + domains (work, travel, ministry, exams)",
+                      "Your preferred method (reading, audio drills, stories, Anki-ready exports)",
+                      "Progress tracking that matches how you actually study",
+                      "Local-first / offline options available",
+                      "Built around your schedule and motivation style",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-3 text-foreground">
                         <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -130,15 +347,11 @@ export default function CoachingPage() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   {/* CTAs */}
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild size="lg" className="gap-2">
-                      <a
-                        href="https://calendly.com/kevin-duplechin"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
                         <Calendar className="w-4 h-4" />
                         Book an App Design Session
                       </a>
@@ -151,7 +364,7 @@ export default function CoachingPage() {
                     </Button>
                   </div>
                 </div>
-                
+
                 {/* Right: How it works - mini steps */}
                 <div className="mt-8 lg:mt-0 lg:w-72 flex-shrink-0">
                   <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
@@ -159,17 +372,15 @@ export default function CoachingPage() {
                   </h3>
                   <div className="space-y-4">
                     {[
-                      { step: 1, label: 'Define your language + goal' },
-                      { step: 2, label: 'Choose your learning loop (stories / drills / reading)' },
-                      { step: 3, label: 'Build your personal toolkit' },
+                      { step: 1, label: "Define your language + goal" },
+                      { step: 2, label: "Choose your learning loop (stories / drills / reading)" },
+                      { step: 3, label: "Build your personal toolkit" },
                     ].map((item) => (
                       <div key={item.step} className="flex items-start gap-3">
                         <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
                           {item.step}
                         </span>
-                        <span className="text-sm text-foreground leading-snug pt-1">
-                          {item.label}
-                        </span>
+                        <span className="text-sm text-foreground leading-snug pt-1">{item.label}</span>
                       </div>
                     ))}
                   </div>
@@ -209,9 +420,7 @@ export default function CoachingPage() {
                     </div>
                     <h3 className="text-lg font-semibold text-foreground">{card.title}</h3>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {card.description}
-                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">{card.description}</p>
                   <ul className="mt-auto space-y-2">
                     {card.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -228,7 +437,7 @@ export default function CoachingPage() {
           {/* Already working with me */}
           <section className="mb-16 p-8 bg-muted/30 rounded-xl border border-border">
             <h2 className="text-xl font-semibold text-foreground mb-8">Already working with me?</h2>
-            
+
             {/* What to read first */}
             <div className="mb-8">
               <h3 className="text-base font-semibold text-foreground mb-4">What to read first</h3>
@@ -254,7 +463,8 @@ export default function CoachingPage() {
             <div className="mb-8">
               <h3 className="text-base font-semibold text-foreground mb-3">How we meet</h3>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                Sessions can range from weekly to once a month, depending on your needs and bandwidth. I usually suggest starting more frequently, then tapering as your systems stabilize and momentum builds.
+                Sessions can range from weekly to once a month, depending on your needs and bandwidth. I usually suggest
+                starting more frequently, then tapering as your systems stabilize and momentum builds.
               </p>
             </div>
 
@@ -275,7 +485,9 @@ export default function CoachingPage() {
             <div>
               <h3 className="text-base font-semibold text-foreground mb-3">How we document progress</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-2xl">
-                We'll choose a progress-tracking method that truly fits you - something that feels natural and motivating - and we'll keep it clear enough for both of us to use confidently in sessions and between sessions.
+                We'll choose a progress-tracking method that truly fits you - something that feels natural and
+                motivating - and we'll keep it clear enough for both of us to use confidently in sessions and between
+                sessions.
               </p>
               <p className="text-sm text-muted-foreground mb-3">Lightweight evidence options:</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -294,18 +506,13 @@ export default function CoachingPage() {
 
           {/* CTA */}
           <div className="text-center mb-16">
-            <a
-              href="https://calendly.com/kevin-duplechin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary-calm inline-flex items-center gap-2"
-            >
-              <Calendar className="w-4 h-4" aria-hidden="true" />
-              Schedule a consultation
+            <a href={saturdayWorkshopMailto} className="btn-primary-calm inline-flex items-center gap-2">
+              <Mail className="w-4 h-4" aria-hidden="true" />
+              Request a Saturday workshop quote
             </a>
             <p className="mt-4">
               <a
-                href="mailto:kevin.duplechin@pioneerbible.org"
+                href={`mailto:${quoteEmail}`}
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" aria-hidden="true" />
@@ -319,16 +526,22 @@ export default function CoachingPage() {
             <h2 className="text-xl font-semibold text-foreground mb-6">Professional Role & Independence</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
               <p>
-                I am a language coach with Pioneer Bible Translators, where my professional work focuses on language development in support of Bible translation and related field activities.
+                I am a language coach with Pioneer Bible Translators, where my professional work focuses on language
+                development in support of Bible translation and related field activities.
               </p>
               <p>
-                The language coaching services, instructional explanations, lesson designs, sentence builds, learning paths, and educational materials presented on this site are created independently and outside the scope of my assigned responsibilities with Pioneer Bible Translators.
+                The language coaching services, instructional explanations, lesson designs, sentence builds, learning
+                paths, and educational materials presented on this site are created independently and outside the scope
+                of my assigned responsibilities with Pioneer Bible Translators.
               </p>
               <p>
-                These materials are not produced as part of any Pioneer Bible Translators project, are not works made for hire, and do not incorporate proprietary Pioneer Bible Translators resources, Scripture texts, translations, or internal materials.
+                These materials are not produced as part of any Pioneer Bible Translators project, are not works made
+                for hire, and do not incorporate proprietary Pioneer Bible Translators resources, Scripture texts,
+                translations, or internal materials.
               </p>
               <p>
-                All content on this page reflects my personal research, experience, and pedagogical design and is offered in a private, independent capacity.
+                All content on this page reflects my personal research, experience, and pedagogical design and is
+                offered in a private, independent capacity.
               </p>
               <p className="font-medium text-foreground">
                 No endorsement, review, or ownership by Pioneer Bible Translators is implied.
@@ -340,16 +553,21 @@ export default function CoachingPage() {
           <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
             <h2 className="text-xl font-semibold text-foreground mb-6">Intellectual Foundations & Attribution</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
-              <p>
-                My coaching approach is informed by:
-              </p>
+              <p>My coaching approach is informed by:</p>
               <ul className="list-disc list-inside space-y-2 ml-2">
-                <li>Cross-cultural language training frameworks developed through the Wheaton Institute for Cross-Cultural Training</li>
-                <li>Research in second language acquisition, including the work of Paul Nation on comprehensible input, frequency-based learning, and extensive exposure</li>
+                <li>
+                  Cross-cultural language training frameworks developed through the Wheaton Institute for Cross-Cultural
+                  Training
+                </li>
+                <li>
+                  Research in second language acquisition, including the work of Paul Nation on comprehensible input,
+                  frequency-based learning, and extensive exposure
+                </li>
                 <li>My own applied experience working with languages in real-world, cross-cultural environments</li>
               </ul>
               <p>
-                These influences inform the principles behind my approach. All instructional materials and expressions presented here are original works authored by me.
+                These influences inform the principles behind my approach. All instructional materials and expressions
+                presented here are original works authored by me.
               </p>
             </div>
           </section>
@@ -358,11 +576,10 @@ export default function CoachingPage() {
           <section className="mb-12 p-8 bg-muted/30 rounded-xl border border-border">
             <h2 className="text-xl font-semibold text-foreground mb-6">Copyright Notice</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
-              <p className="font-medium text-foreground">
-                © 2026 Kevin Duplechin. All rights reserved.
-              </p>
+              <p className="font-medium text-foreground">© 2026 Kevin Duplechin. All rights reserved.</p>
               <p>
-                All instructional text, lesson structures, explanations, learning paths, and materials presented here are the intellectual property of Kevin Duplechin and are protected under United States copyright law.
+                All instructional text, lesson structures, explanations, learning paths, and materials presented here
+                are the intellectual property of Kevin Duplechin and are protected under United States copyright law.
               </p>
             </div>
           </section>

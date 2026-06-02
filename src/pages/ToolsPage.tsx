@@ -16,6 +16,7 @@ import {
   Bookmark,
   LucideIcon,
   Youtube,
+  Copy,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -33,15 +34,6 @@ interface Tool {
   supports?: string[];
   badge?: "New" | "Featured";
   youtube?: string;
-}
-
-interface FunBuild {
-  title: string;
-  href: string;
-  description: string;
-  bestFor: string;
-  color: string;
-  icon: LucideIcon;
 }
 
 export const tools: Tool[] = [
@@ -106,7 +98,7 @@ export const tools: Tool[] = [
     title: "Fluent Hour Phase Actor",
     href: "https://chatgpt.com/g/g-695ca3f3a694819187975bb509bc15cb-fluent-hour-phase-actor",
     description:
-      "A GPT that converts a Fluent Hour session or phase into a timed, speakable script in the target language—preserving structure/labels, keeping dialogue natural and level-appropriate, and adding pacing, repeat loops, and correction recasts to fill the full time. If the target language is missing, it asks one question and stops. Output is target-language only and uses number words.",
+      "A GPT that converts a Fluent Hour session or phase into a timed, speakable script in the target language—preserving structure/labels, keeping dialogue natural and level-appropriate, and adding pacing, repeat loops, and correction recasts to fill the full time. If the target language is missing, it asks one question and stops. Output is target-language only and uses number words (no digits).",
     bestFor: "turning English phases into ready-to-run target-language phases fast.",
     color: "from-slate-light to-accent",
     icon: Clapperboard,
@@ -131,7 +123,7 @@ export const tools: Tool[] = [
   },
 ];
 
-const funBuilds: FunBuild[] = [
+const funBuilds = [
   {
     title: "Lunchie Invite",
     href: "https://lunchie-invite-6cddf1e4.base44.app/",
@@ -158,137 +150,59 @@ const funBuilds: FunBuild[] = [
   },
 ];
 
-function ToolCard({ tool }: { tool: Tool }) {
+function openExternalUrl(url: string) {
+  // Important: use a real user-click handler and force a top-level new tab.
+  // This prevents YouTube/ChatGPT/Gemini-style sites from being loaded inside the Lovable/site iframe,
+  // which can cause ERR_BLOCKED_BY_RESPONSE.
+  const opened = window.open(url, "_blank", "noopener,noreferrer");
+
+  if (opened) {
+    opened.opener = null;
+    opened.focus();
+    return;
+  }
+
+  // Popup blockers should not trigger on a direct button click, but this fallback keeps the page usable.
+  const fallbackLink = document.createElement("a");
+  fallbackLink.href = url;
+  fallbackLink.target = "_blank";
+  fallbackLink.rel = "noopener noreferrer";
+  document.body.appendChild(fallbackLink);
+  fallbackLink.click();
+  document.body.removeChild(fallbackLink);
+}
+
+async function copyExternalUrl(url: string) {
+  try {
+    await navigator.clipboard.writeText(url);
+    window.alert("Link copied. Paste it into a new browser tab.");
+  } catch {
+    window.prompt("Copy this link and paste it into a new browser tab:", url);
+  }
+}
+
+function ExternalButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <article className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full relative">
-      {tool.badge && (
-        <span
-          className={`absolute -top-2 -right-2 px-2 py-0.5 text-xs font-semibold rounded-full ${
-            tool.badge === "New"
-              ? "bg-primary text-primary-foreground"
-              : "bg-accent text-accent-foreground border border-primary/30"
-          }`}
-        >
-          {tool.badge}
-        </span>
-      )}
-
-      <div
-        className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}
-      >
-        <tool.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
-      </div>
-
-      <div className="flex items-start justify-between gap-2 mb-2">
-        <h2 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-          {tool.title}
-        </h2>
-        <ExternalLink
-          className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5"
-          aria-hidden="true"
-        />
-      </div>
-
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {tool.description}
-        {tool.designedLink && (
-          <>
-            {" "}
-            <Link to={tool.designedLink} className="underline hover:text-primary transition-colors">
-              Designed
-            </Link>
-            {tool.descriptionSuffix}
-          </>
-        )}
-      </p>
-
-      {tool.missionPartnerNote && (
-        <p className="text-xs text-muted-foreground/70 mt-2">
-          <Link to="/contact" className="underline hover:text-primary transition-colors">
-            Mission partner access is available on request for organizational use.
-          </Link>
-        </p>
-      )}
-
-      {Array.isArray(tool.supports) && (
-        <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
-          {tool.supports.map((item) => (
-            <li key={item}>• {item}</li>
-          ))}
-        </ul>
-      )}
-
-      <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
-        <span className="font-medium">Best for:</span> {tool.bestFor}
-      </p>
-
-      <div className="mt-auto pt-4 flex flex-wrap gap-2">
-        <a
-          href={tool.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border/70 bg-background px-3 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-          aria-label={`Open ${tool.title}`}
-        >
-          Open tool
-          <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-        </a>
-
-        {tool.youtube && (
-          <a
-            href={tool.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border/70 bg-background px-3 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-            aria-label={`Open ${tool.title} on YouTube`}
-          >
-            <Youtube className="w-3.5 h-3.5" aria-hidden="true" />
-            YouTube tips
-          </a>
-        )}
-      </div>
-    </article>
+    <button
+      type="button"
+      onClick={() => openExternalUrl(href)}
+      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border/60 bg-background px-3 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+    >
+      {children}
+    </button>
   );
 }
 
-function FunBuildCard({ build }: { build: FunBuild }) {
+function CopyButton({ href, label = "Copy link" }: { href: string; label?: string }) {
   return (
-    <article className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full">
-      <div
-        className={`w-10 h-10 rounded-lg bg-gradient-to-br ${build.color} flex items-center justify-center mb-4 border border-border/30`}
-      >
-        <build.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
-      </div>
-
-      <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-          {build.title}
-        </h3>
-        <ExternalLink
-          className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5"
-          aria-hidden="true"
-        />
-      </div>
-
-      <p className="text-sm text-muted-foreground leading-relaxed">{build.description}</p>
-
-      <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
-        <span className="font-medium">Best for:</span> {build.bestFor}
-      </p>
-
-      <div className="mt-auto pt-4">
-        <a
-          href={build.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border/70 bg-background px-3 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-          aria-label={`Open ${build.title}`}
-        >
-          Open tool
-          <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-        </a>
-      </div>
-    </article>
+    <button
+      type="button"
+      onClick={() => copyExternalUrl(href)}
+      className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border/40 bg-transparent px-3 py-2 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors"
+    >
+      <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+      {label}
+    </button>
   );
 }
 
@@ -316,7 +230,84 @@ export default function ToolsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {tools.map((tool) => (
-              <ToolCard key={tool.title} tool={tool} />
+              <article
+                key={tool.title}
+                className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full relative"
+              >
+                {tool.badge && (
+                  <span
+                    className={`absolute -top-2 -right-2 px-2 py-0.5 text-xs font-semibold rounded-full ${
+                      tool.badge === "New"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-accent text-accent-foreground border border-primary/30"
+                    }`}
+                  >
+                    {tool.badge}
+                  </span>
+                )}
+
+                <div
+                  className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center mb-4 border border-border/30`}
+                >
+                  <tool.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
+                </div>
+
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h2 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {tool.title}
+                  </h2>
+                </div>
+
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {tool.description}
+                  {tool.designedLink && (
+                    <>
+                      {" "}
+                      <Link to={tool.designedLink} className="underline hover:text-primary transition-colors">
+                        Designed
+                      </Link>
+                      {tool.descriptionSuffix}
+                    </>
+                  )}
+                </p>
+
+                {tool.missionPartnerNote && (
+                  <p className="text-xs text-muted-foreground/70 mt-2">
+                    <Link to="/contact" className="underline hover:text-primary transition-colors">
+                      Mission partner access is available on request for organizational use.
+                    </Link>
+                  </p>
+                )}
+
+                {Array.isArray(tool.supports) && (
+                  <ul className="mt-2 text-xs text-muted-foreground/80 space-y-0.5">
+                    {tool.supports.map((item, i) => (
+                      <li key={i}>• {item}</li>
+                    ))}
+                  </ul>
+                )}
+
+                <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
+                  <span className="font-medium">Best for:</span> {tool.bestFor}
+                </p>
+
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <ExternalButton href={tool.href}>
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    Open tool
+                  </ExternalButton>
+
+                  {tool.youtube && (
+                    <>
+                      <ExternalButton href={tool.youtube}>
+                        <Youtube className="h-3.5 w-3.5" aria-hidden="true" />
+                        YouTube tips
+                      </ExternalButton>
+                      <CopyButton href={tool.youtube} label="Copy YouTube link" />
+                    </>
+                  )}
+                </div>
+              </article>
             ))}
           </div>
 
@@ -328,7 +319,35 @@ export default function ToolsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {funBuilds.map((build) => (
-                <FunBuildCard key={build.title} build={build} />
+                <article
+                  key={build.title}
+                  className="group p-5 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 flex flex-col h-full"
+                >
+                  <div
+                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${build.color} flex items-center justify-center mb-4 border border-border/30`}
+                  >
+                    <build.icon className="w-5 h-5 text-foreground/70" strokeWidth={1.5} />
+                  </div>
+
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {build.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">{build.description}</p>
+
+                  <p className="text-xs text-muted-foreground/70 mt-3 pt-2 border-t border-border/40">
+                    <span className="font-medium">Best for:</span> {build.bestFor}
+                  </p>
+
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                    <ExternalButton href={build.href}>
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                      Open tool
+                    </ExternalButton>
+                  </div>
+                </article>
               ))}
             </div>
           </div>

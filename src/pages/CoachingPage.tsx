@@ -53,7 +53,8 @@ Thank you.`;
 
 const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
 const saturdayWorkshopGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(quoteEmail)}&su=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
-const quoteContactAnchor = "#saturday-workshop-quote-contact";
+const gmailBlockedNote =
+  "If Gmail is blocked in the site preview, copy the email address and template below, or open the link in a normal browser tab after publishing.";
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -172,6 +173,24 @@ const evidenceOptions = [
 ];
 
 export default function CoachingPage() {
+  const openGmailQuoteRequest = () => {
+    const gmailWindow = window.open(saturdayWorkshopGmailUrl, "_blank", "noopener,noreferrer");
+
+    if (gmailWindow) {
+      gmailWindow.opener = null;
+    }
+  };
+
+  const copyQuoteEmail = async () => {
+    const message = `${quoteEmail}\n\nSubject: ${quoteSubject}\n\n${quoteBody}`;
+
+    try {
+      await navigator.clipboard.writeText(message);
+    } catch {
+      window.prompt("Copy this quote request:", message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -240,11 +259,9 @@ export default function CoachingPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button asChild size="lg" className="gap-2">
-                      <a href={quoteContactAnchor}>
-                        <Mail className="w-4 h-4" />
-                        Open quote contact details
-                      </a>
+                    <Button type="button" size="lg" className="gap-2" onClick={openGmailQuoteRequest}>
+                      <Mail className="w-4 h-4" />
+                      Request a Saturday Workshop Quote
                     </Button>
                     <Button asChild variant="outline" size="lg" className="gap-2">
                       <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
@@ -253,6 +270,10 @@ export default function CoachingPage() {
                       </a>
                     </Button>
                   </div>
+                  <p className="mt-3 text-xs text-muted-foreground">
+                    Quote button opens Gmail in a separate browser tab. If your preview blocks it, use the contact box
+                    below.
+                  </p>
                 </div>
 
                 <div className="bg-background/80 border border-border rounded-xl p-6">
@@ -283,11 +304,14 @@ export default function CoachingPage() {
                   coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
                 </p>
               </div>
-              <Button asChild variant="outline" className="gap-2 md:flex-shrink-0">
-                <a href={quoteContactAnchor}>
-                  <Mail className="w-4 h-4" />
-                  Open quote contact details
-                </a>
+              <Button
+                type="button"
+                variant="outline"
+                className="gap-2 md:flex-shrink-0"
+                onClick={openGmailQuoteRequest}
+              >
+                <Mail className="w-4 h-4" />
+                Request a quote
               </Button>
             </div>
 
@@ -308,7 +332,7 @@ export default function CoachingPage() {
             </p>
           </section>
 
-          {/* Quote contact details - visible fallback so quote requests never appear to do nothing */}
+          {/* Quote contact details - fallback if Gmail or popups are blocked */}
           <section
             id="saturday-workshop-quote-contact"
             className="mb-16 scroll-mt-24 rounded-2xl border-2 border-primary/30 bg-primary/5 p-8 md:p-10 shadow-lg"
@@ -353,12 +377,15 @@ export default function CoachingPage() {
                       {quoteEmail}
                     </a>
                   </p>
+                  <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{gmailBlockedNote}</p>
                   <div className="flex flex-col gap-3">
-                    <Button asChild size="lg" className="gap-2">
-                      <a href={saturdayWorkshopGmailUrl} target="_blank" rel="noopener noreferrer">
-                        <Mail className="w-4 h-4" />
-                        Open Gmail quote request
-                      </a>
+                    <Button type="button" size="lg" className="gap-2" onClick={openGmailQuoteRequest}>
+                      <Mail className="w-4 h-4" />
+                      Open Gmail in a new tab
+                    </Button>
+                    <Button type="button" variant="outline" size="lg" className="gap-2" onClick={copyQuoteEmail}>
+                      <Mail className="w-4 h-4" />
+                      Copy email + quote template
                     </Button>
                     <Button asChild variant="outline" size="lg" className="gap-2">
                       <a href={saturdayWorkshopMailto}>
@@ -366,6 +393,16 @@ export default function CoachingPage() {
                         Use default email app
                       </a>
                     </Button>
+                  </div>
+                  <div className="mt-5 rounded-lg border border-border bg-muted/30 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                      Quote email template
+                    </p>
+                    <p className="text-sm font-medium text-foreground mb-2">To: {quoteEmail}</p>
+                    <p className="text-sm font-medium text-foreground mb-3">Subject: {quoteSubject}</p>
+                    <pre className="whitespace-pre-wrap text-xs text-muted-foreground leading-relaxed font-sans">
+                      {quoteBody}
+                    </pre>
                   </div>
                 </div>
               </div>
@@ -572,12 +609,17 @@ export default function CoachingPage() {
 
           {/* CTA */}
           <div className="text-center mb-16">
-            <a href={quoteContactAnchor} className="btn-primary-calm inline-flex items-center gap-2">
+            <button
+              type="button"
+              onClick={openGmailQuoteRequest}
+              className="btn-primary-calm inline-flex items-center gap-2"
+            >
               <Mail className="w-4 h-4" aria-hidden="true" />
-              Open Saturday workshop quote contact details
-            </a>
+              Request a Saturday workshop quote
+            </button>
             <p className="mt-4 text-sm text-muted-foreground">
-              This button now scrolls to an on-page contact box first, so it does not depend on your browser email app.
+              Opens a Gmail quote request in a separate browser tab. If your preview blocks it, use the contact box
+              above.
             </p>
           </div>
 

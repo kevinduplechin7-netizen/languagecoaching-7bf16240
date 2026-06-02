@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -29,9 +30,9 @@ import { Button } from "@/components/ui/button";
 
 const quoteEmail = "kevinduplechin7@gmail.com";
 
-const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(
-  "Saturday Workshop Quote Request",
-)}&body=${encodeURIComponent(`Hello,
+const quoteRequestSubject = "Saturday Workshop Quote Request";
+
+const quoteRequestBody = `Hello,
 
 I would like to request a Saturday workshop quote.
 
@@ -51,10 +52,12 @@ Preferred Saturday or timeframe:
 Desired workshop length:
 Additional notes:
 
-Thank you.`)}`;
+Thank you.`;
 
-const quoteButtonNote =
-  "This button uses a normal email link, not Gmail, so it will not trigger the mail.google.com blocked error.";
+const quoteRequestText = `To: ${quoteEmail}
+Subject: ${quoteRequestSubject}
+
+${quoteRequestBody}`;
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -173,6 +176,25 @@ const evidenceOptions = [
 ];
 
 export default function CoachingPage() {
+  const [copyStatus, setCopyStatus] = useState<string | null>(null);
+
+  const copyText = async (text: string, successMessage: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyStatus(successMessage);
+    } catch {
+      setCopyStatus(`Copy this email address: ${quoteEmail}`);
+    }
+  };
+
+  const copyQuoteRequest = () => {
+    copyText(quoteRequestText, "Quote request copied. Paste it into your email and send it to Kevin.");
+  };
+
+  const copyEmailAddress = () => {
+    copyText(quoteEmail, "Email address copied.");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -241,11 +263,9 @@ export default function CoachingPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button asChild size="lg" className="gap-2">
-                      <a href={saturdayWorkshopMailto} aria-label="Email Kevin to request a Saturday workshop quote">
-                        <Mail className="w-4 h-4" />
-                        Email Saturday Workshop Quote Request
-                      </a>
+                    <Button type="button" size="lg" className="gap-2" onClick={copyQuoteRequest}>
+                      <Mail className="w-4 h-4" />
+                      Request a Saturday Workshop Quote
                     </Button>
                     <Button asChild variant="outline" size="lg" className="gap-2">
                       <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
@@ -253,18 +273,6 @@ export default function CoachingPage() {
                         Schedule a conversation
                       </a>
                     </Button>
-                  </div>
-                  <div className="mt-4 rounded-lg border border-primary/20 bg-background/70 p-4 text-sm text-muted-foreground">
-                    <p className="font-medium text-foreground">
-                      Quote contact:{" "}
-                      <a href={`mailto:${quoteEmail}`} className="text-primary hover:text-primary/80">
-                        {quoteEmail}
-                      </a>
-                    </p>
-                    <p className="mt-1">
-                      {quoteButtonNote} If no email app opens, copy the email address and send the quote details
-                      manually.
-                    </p>
                   </div>
                 </div>
 
@@ -296,11 +304,9 @@ export default function CoachingPage() {
                   coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
                 </p>
               </div>
-              <Button asChild variant="outline" className="gap-2 md:flex-shrink-0">
-                <a href={saturdayWorkshopMailto} aria-label="Email Kevin to request a Saturday workshop quote">
-                  <Mail className="w-4 h-4" />
-                  Email quote request
-                </a>
+              <Button type="button" variant="outline" className="gap-2 md:flex-shrink-0" onClick={copyQuoteRequest}>
+                <Mail className="w-4 h-4" />
+                Request a quote
               </Button>
             </div>
 
@@ -319,6 +325,38 @@ export default function CoachingPage() {
               lower-entry option for focused Saturday training, while larger organization workshops, audits, and custom
               implementation projects are quoted according to scope.
             </p>
+          </section>
+
+          {/* Quote contact */}
+          <section className="mb-16 p-8 bg-card rounded-xl border border-border shadow-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl">
+                <p className="text-sm font-medium text-primary mb-2">Quote contact</p>
+                <h2 className="text-xl font-semibold text-foreground mb-3">Request a Saturday Workshop Quote</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  For workshop quotes, send a brief request with your organization or church name, estimated number of
+                  participants, preferred Saturday or timeframe, workshop focus, and desired length.
+                </p>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Direct email: <span className="font-medium text-foreground">{quoteEmail}</span>
+                </p>
+                {copyStatus && (
+                  <p className="mt-3 text-sm font-medium text-primary" role="status">
+                    {copyStatus}
+                  </p>
+                )}
+              </div>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:min-w-64">
+                <Button type="button" className="gap-2" onClick={copyQuoteRequest}>
+                  <Mail className="w-4 h-4" />
+                  Copy quote request
+                </Button>
+                <Button type="button" variant="outline" className="gap-2" onClick={copyEmailAddress}>
+                  <ClipboardCheck className="w-4 h-4" />
+                  Copy email address
+                </Button>
+              </div>
+            </div>
           </section>
 
           {/* Custom Language App Design - Premium Offer */}
@@ -521,25 +559,16 @@ export default function CoachingPage() {
 
           {/* CTA */}
           <div className="text-center mb-16">
-            <p className="mb-4 text-sm font-medium text-muted-foreground">
-              No Gmail embed is used here. This button opens a normal email quote request.
-            </p>
-            <a
-              href={saturdayWorkshopMailto}
+            <button
+              type="button"
+              onClick={copyQuoteRequest}
               className="btn-primary-calm inline-flex items-center gap-2"
-              aria-label="Email Kevin to request a Saturday workshop quote"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
-              Email Saturday workshop quote request
-            </a>
-            <p className="mt-4">
-              <a
-                href={`mailto:${quoteEmail}`}
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="w-4 h-4" aria-hidden="true" />
-                Email Kevin directly: {quoteEmail}
-              </a>
+              Request a Saturday workshop quote
+            </button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Quote requests: <span className="font-medium text-foreground">{quoteEmail}</span>
             </p>
           </div>
 

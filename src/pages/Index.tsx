@@ -18,6 +18,12 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+const scrollToPageTop = () => {
+  window.setTimeout(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, 0);
+};
+
 const experienceHighlights = [
   "M.A. in Linguistics",
   "15+ years of language-learning, field, and coaching experience",
@@ -107,7 +113,7 @@ const Index = () => {
 
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Button asChild size="lg" className="gap-2 w-full sm:w-auto">
-                  <Link to="/coaching">
+                  <Link to="/coaching" onClick={scrollToPageTop}>
                     View coaching opportunities
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
@@ -211,7 +217,7 @@ const Index = () => {
                 </p>
               </div>
               <Button asChild className="gap-2 lg:flex-shrink-0">
-                <Link to="/coaching">
+                <Link to="/coaching" onClick={scrollToPageTop}>
                   See full plan details
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
@@ -328,13 +334,13 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Button asChild variant="outline" className="gap-2 w-full sm:w-auto">
-                  <Link to="/resources">
+                  <Link to="/resources" onClick={scrollToPageTop}>
                     Browse learning resources
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="gap-2 w-full sm:w-auto">
-                  <Link to="/standards">
+                  <Link to="/standards" onClick={scrollToPageTop}>
                     <Target className="w-4 h-4" aria-hidden="true" />
                     View standards
                   </Link>
@@ -357,7 +363,7 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button asChild size="lg" className="gap-2 w-full sm:w-auto">
-                  <Link to="/coaching">
+                  <Link to="/coaching" onClick={scrollToPageTop}>
                     Go to coaching page
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>

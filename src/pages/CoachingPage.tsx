@@ -28,8 +28,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const quoteEmail = "kevinduplechin7@gmail.com";
-const quoteSubject = "Saturday Workshop Quote Request";
-const quoteBody = `Hello,
+
+const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(
+  "Saturday Workshop Quote Request",
+)}&body=${encodeURIComponent(`Hello,
 
 I would like to request a Saturday workshop quote.
 
@@ -49,12 +51,10 @@ Preferred Saturday or timeframe:
 Desired workshop length:
 Additional notes:
 
-Thank you.`;
+Thank you.`)}`;
 
-const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
-const saturdayWorkshopGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(quoteEmail)}&su=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
-const gmailBlockedNote =
-  "If Gmail is blocked in the site preview, copy the email address and template below, or open the link in a normal browser tab after publishing.";
+const quoteButtonNote =
+  "This button uses a normal email link, not Gmail, so it will not trigger the mail.google.com blocked error.";
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -173,24 +173,6 @@ const evidenceOptions = [
 ];
 
 export default function CoachingPage() {
-  const openGmailQuoteRequest = () => {
-    const gmailWindow = window.open(saturdayWorkshopGmailUrl, "_blank", "noopener,noreferrer");
-
-    if (gmailWindow) {
-      gmailWindow.opener = null;
-    }
-  };
-
-  const copyQuoteEmail = async () => {
-    const message = `${quoteEmail}\n\nSubject: ${quoteSubject}\n\n${quoteBody}`;
-
-    try {
-      await navigator.clipboard.writeText(message);
-    } catch {
-      window.prompt("Copy this quote request:", message);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -259,9 +241,11 @@ export default function CoachingPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button type="button" size="lg" className="gap-2" onClick={openGmailQuoteRequest}>
-                      <Mail className="w-4 h-4" />
-                      Request a Saturday Workshop Quote
+                    <Button asChild size="lg" className="gap-2">
+                      <a href={saturdayWorkshopMailto} aria-label="Email Kevin to request a Saturday workshop quote">
+                        <Mail className="w-4 h-4" />
+                        Email Saturday Workshop Quote Request
+                      </a>
                     </Button>
                     <Button asChild variant="outline" size="lg" className="gap-2">
                       <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
@@ -270,10 +254,18 @@ export default function CoachingPage() {
                       </a>
                     </Button>
                   </div>
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    Quote button opens Gmail in a separate browser tab. If your preview blocks it, use the contact box
-                    below.
-                  </p>
+                  <div className="mt-4 rounded-lg border border-primary/20 bg-background/70 p-4 text-sm text-muted-foreground">
+                    <p className="font-medium text-foreground">
+                      Quote contact:{" "}
+                      <a href={`mailto:${quoteEmail}`} className="text-primary hover:text-primary/80">
+                        {quoteEmail}
+                      </a>
+                    </p>
+                    <p className="mt-1">
+                      {quoteButtonNote} If no email app opens, copy the email address and send the quote details
+                      manually.
+                    </p>
+                  </div>
                 </div>
 
                 <div className="bg-background/80 border border-border rounded-xl p-6">
@@ -304,14 +296,11 @@ export default function CoachingPage() {
                   coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
                 </p>
               </div>
-              <Button
-                type="button"
-                variant="outline"
-                className="gap-2 md:flex-shrink-0"
-                onClick={openGmailQuoteRequest}
-              >
-                <Mail className="w-4 h-4" />
-                Request a quote
+              <Button asChild variant="outline" className="gap-2 md:flex-shrink-0">
+                <a href={saturdayWorkshopMailto} aria-label="Email Kevin to request a Saturday workshop quote">
+                  <Mail className="w-4 h-4" />
+                  Email quote request
+                </a>
               </Button>
             </div>
 
@@ -330,83 +319,6 @@ export default function CoachingPage() {
               lower-entry option for focused Saturday training, while larger organization workshops, audits, and custom
               implementation projects are quoted according to scope.
             </p>
-          </section>
-
-          {/* Quote contact details - fallback if Gmail or popups are blocked */}
-          <section
-            id="saturday-workshop-quote-contact"
-            className="mb-16 scroll-mt-24 rounded-2xl border-2 border-primary/30 bg-primary/5 p-8 md:p-10 shadow-lg"
-          >
-            <div className="max-w-3xl">
-              <Badge className="mb-4 bg-primary text-primary-foreground">Quote contact section</Badge>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                Request a Saturday Workshop Quote
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                For churches, mission teams, schools, nonprofits, businesses, government teams, mission organizations,
-                and minority-language programs, use one of the contact options below. The Gmail button opens a browser
-                compose window; the fallback button uses your default email app.
-              </p>
-
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-6 items-start">
-                <div className="rounded-xl border border-border bg-background/80 p-5">
-                  <h3 className="text-base font-semibold text-foreground mb-3">What to include</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {[
-                      "Organization or church name",
-                      "Approximate number of participants",
-                      "Workshop interest or ministry context",
-                      "Preferred Saturday or general timeframe",
-                      "Desired workshop length",
-                      "Any language, culture, or minority-language needs",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="rounded-xl border border-border bg-background/80 p-5">
-                  <h3 className="text-base font-semibold text-foreground mb-3">Contact Kevin</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Direct contact email:
-                    <br />
-                    <a href={`mailto:${quoteEmail}`} className="font-semibold text-primary hover:text-primary/80">
-                      {quoteEmail}
-                    </a>
-                  </p>
-                  <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{gmailBlockedNote}</p>
-                  <div className="flex flex-col gap-3">
-                    <Button type="button" size="lg" className="gap-2" onClick={openGmailQuoteRequest}>
-                      <Mail className="w-4 h-4" />
-                      Open Gmail in a new tab
-                    </Button>
-                    <Button type="button" variant="outline" size="lg" className="gap-2" onClick={copyQuoteEmail}>
-                      <Mail className="w-4 h-4" />
-                      Copy email + quote template
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="gap-2">
-                      <a href={saturdayWorkshopMailto}>
-                        <Mail className="w-4 h-4" />
-                        Use default email app
-                      </a>
-                    </Button>
-                  </div>
-                  <div className="mt-5 rounded-lg border border-border bg-muted/30 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
-                      Quote email template
-                    </p>
-                    <p className="text-sm font-medium text-foreground mb-2">To: {quoteEmail}</p>
-                    <p className="text-sm font-medium text-foreground mb-3">Subject: {quoteSubject}</p>
-                    <pre className="whitespace-pre-wrap text-xs text-muted-foreground leading-relaxed font-sans">
-                      {quoteBody}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Custom Language App Design - Premium Offer */}
@@ -609,17 +521,25 @@ export default function CoachingPage() {
 
           {/* CTA */}
           <div className="text-center mb-16">
-            <button
-              type="button"
-              onClick={openGmailQuoteRequest}
+            <p className="mb-4 text-sm font-medium text-muted-foreground">
+              No Gmail embed is used here. This button opens a normal email quote request.
+            </p>
+            <a
+              href={saturdayWorkshopMailto}
               className="btn-primary-calm inline-flex items-center gap-2"
+              aria-label="Email Kevin to request a Saturday workshop quote"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
-              Request a Saturday workshop quote
-            </button>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Opens a Gmail quote request in a separate browser tab. If your preview blocks it, use the contact box
-              above.
+              Email Saturday workshop quote request
+            </a>
+            <p className="mt-4">
+              <a
+                href={`mailto:${quoteEmail}`}
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Mail className="w-4 h-4" aria-hidden="true" />
+                Email Kevin directly: {quoteEmail}
+              </a>
             </p>
           </div>
 

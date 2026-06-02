@@ -195,6 +195,13 @@ export default function CoachingPage() {
     copyText(quoteEmail, "Email address copied.");
   };
 
+  const scrollToQuoteContact = () => {
+    document.getElementById("quote-contact")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -263,7 +270,7 @@ export default function CoachingPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button type="button" size="lg" className="gap-2" onClick={copyQuoteRequest}>
+                    <Button type="button" size="lg" className="gap-2" onClick={scrollToQuoteContact}>
                       <Mail className="w-4 h-4" />
                       Request a Saturday Workshop Quote
                     </Button>
@@ -304,7 +311,7 @@ export default function CoachingPage() {
                   coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
                 </p>
               </div>
-              <Button type="button" variant="outline" className="gap-2 md:flex-shrink-0" onClick={copyQuoteRequest}>
+              <Button type="button" variant="outline" className="gap-2 md:flex-shrink-0" onClick={scrollToQuoteContact}>
                 <Mail className="w-4 h-4" />
                 Request a quote
               </Button>
@@ -328,7 +335,10 @@ export default function CoachingPage() {
           </section>
 
           {/* Quote contact */}
-          <section className="mb-16 p-8 bg-card rounded-xl border border-border shadow-sm">
+          <section
+            id="quote-contact"
+            className="mb-16 p-8 bg-card rounded-xl border border-border shadow-sm scroll-mt-24"
+          >
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="max-w-2xl">
                 <p className="text-sm font-medium text-primary mb-2">Quote contact</p>
@@ -349,11 +359,11 @@ export default function CoachingPage() {
               <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:min-w-64">
                 <Button type="button" className="gap-2" onClick={copyQuoteRequest}>
                   <Mail className="w-4 h-4" />
-                  Copy quote request
+                  Copy quote request template
                 </Button>
                 <Button type="button" variant="outline" className="gap-2" onClick={copyEmailAddress}>
                   <ClipboardCheck className="w-4 h-4" />
-                  Copy email address
+                  Copy email
                 </Button>
               </div>
             </div>
@@ -561,7 +571,7 @@ export default function CoachingPage() {
           <div className="text-center mb-16">
             <button
               type="button"
-              onClick={copyQuoteRequest}
+              onClick={scrollToQuoteContact}
               className="btn-primary-calm inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />

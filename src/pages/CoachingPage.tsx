@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -19,6 +19,8 @@ import {
   Languages,
   ClipboardCheck,
   Handshake,
+  Send,
+  MessageSquareText,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -26,6 +28,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const quoteEmail = "kevinduplechin7@gmail.com";
+
+// Formspree endpoint for coaching and workshop requests.
+const contactFormEndpoint = "https://formspree.io/f/xpqeaply";
 
 const quoteRequestSubject = "Saturday Workshop Quote Request";
 
@@ -82,6 +87,125 @@ const individualCoachingText = `To: ${quoteEmail}
 Subject: ${individualCoachingSubject}
 
 ${individualCoachingBody}`;
+
+const requestTypes = [
+  "Individual coaching",
+  "Saturday workshop quote",
+  "Mission trip / local missions workshop",
+  "Minority-language or helper-based learning",
+  "Sentence Paths implementation",
+  "Organization or team training",
+  "General question",
+];
+
+const messageTemplates = {
+  individual: {
+    label: "Individual coaching request",
+    requestType: "Individual coaching",
+    message: `Hello Kevin,
+
+I would like to ask about individual language coaching.
+
+Language or languages:
+Current level or background:
+Main goal:
+Plan interest:
+- Single Strategy Session ($150)
+- 3-Session Starter Plan ($375, save $75)
+- 6-Session Momentum Plan ($675, save $225)
+- Not sure yet
+
+What feels stuck or unclear right now:
+Preferred timeframe:
+Additional notes:
+
+Thank you.`,
+  },
+  workshop: {
+    label: "Saturday workshop quote",
+    requestType: "Saturday workshop quote",
+    message: quoteRequestBody,
+  },
+  mission: {
+    label: "Mission trip / local missions workshop",
+    requestType: "Mission trip / local missions workshop",
+    message: `Hello Kevin,
+
+I would like to ask about a mission trip or local missions language workshop.
+
+Church / organization name:
+Type of ministry or outreach:
+Approximate number of participants:
+Language or cultural context, if known:
+Preferred Saturday or timeframe:
+Desired workshop length:
+Main goals for the team:
+Additional notes:
+
+Thank you.`,
+  },
+  minority: {
+    label: "Minority-language / helper-based learning",
+    requestType: "Minority-language or helper-based learning",
+    message: `Hello Kevin,
+
+I would like help with a minority-language or helper-based language-learning situation.
+
+Language or region:
+Learner background:
+Available resources or language helpers:
+Main problem we are trying to solve:
+Preferred timeframe:
+Desired kind of support:
+Additional notes:
+
+Thank you.`,
+  },
+  sentencePaths: {
+    label: "Sentence Paths implementation",
+    requestType: "Sentence Paths implementation",
+    message: `Hello Kevin,
+
+I would like to ask about Sentence Paths implementation or a custom language-learning workflow.
+
+Learner or organization context:
+Language or languages:
+Current materials:
+Main goal:
+What we want Sentence Paths to help with:
+Preferred timeframe:
+Additional notes:
+
+Thank you.`,
+  },
+  organization: {
+    label: "Organization or team training",
+    requestType: "Organization or team training",
+    message: `Hello Kevin,
+
+I would like to ask about language-learning training for an organization or team.
+
+Organization name:
+Type of organization:
+Approximate number of participants:
+Learner roles or backgrounds:
+Training need:
+Preferred Saturday or timeframe:
+Desired length:
+Additional notes:
+
+Thank you.`,
+  },
+  blank: {
+    label: "Blank message",
+    requestType: "General question",
+    message: `Hello Kevin,
+
+I would like to ask about:
+
+Thank you.`,
+  },
+};
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -239,8 +363,15 @@ const evidenceOptions = [
   "Periodic review and adjustments",
 ];
 
+type FormStatus = "idle" | "sending" | "sent" | "error";
+
 export default function CoachingPage() {
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
+  const [templateKey, setTemplateKey] = useState<keyof typeof messageTemplates>("individual");
+  const [requestType, setRequestType] = useState(messageTemplates.individual.requestType);
+  const [message, setMessage] = useState(messageTemplates.individual.message);
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
+  const [formNotice, setFormNotice] = useState<string | null>(null);
 
   const copyText = async (text: string, successMessage: string) => {
     try {
@@ -266,8 +397,72 @@ export default function CoachingPage() {
     copyText(quoteEmail, "Email address copied.");
   };
 
+  const copyCurrentFormMessage = () => {
+    copyText(message, "Message copied. You can paste it into your email if the form does not submit.");
+  };
+
+  const handleTemplateChange = (value: keyof typeof messageTemplates) => {
+    const selectedTemplate = messageTemplates[value];
+    setTemplateKey(value);
+    setRequestType(selectedTemplate.requestType);
+    setMessage(selectedTemplate.message);
+    setFormStatus("idle");
+    setFormNotice(null);
+  };
+
+  const handleContactFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCopyStatus(null);
+    setFormNotice(null);
+
+    if (contactFormEndpoint.includes("YOUR_FORM_ID")) {
+      setFormStatus("error");
+      setFormNotice(
+        "Form endpoint is not configured yet. Create a Formspree form, replace YOUR_FORM_ID in this file, then redeploy. The copy buttons still work.",
+      );
+      return;
+    }
+
+    setFormStatus("sending");
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      formData.append("_subject", `Language Coaching Website Request - ${requestType}`);
+      formData.append("selected_template", messageTemplates[templateKey].label);
+
+      const response = await fetch(contactFormEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed.");
+      }
+
+      setFormStatus("sent");
+      setFormNotice("Thank you. Your request was sent to Kevin. He will reply by email.");
+      event.currentTarget.reset();
+      handleTemplateChange("individual");
+    } catch {
+      setFormStatus("error");
+      setFormNotice(
+        "The form could not send. Please copy the message or email Kevin directly at kevinduplechin7@gmail.com.",
+      );
+    }
+  };
+
   const scrollToQuoteContact = () => {
     document.getElementById("quote-contact")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const scrollToContactForm = () => {
+    document.getElementById("contact-form")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -294,7 +489,168 @@ export default function CoachingPage() {
               Support that meets you where you are - and helps you move forward with a realistic plan you can actually
               keep.
             </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <Button type="button" className="gap-2" onClick={scrollToContactForm}>
+                <Send className="w-4 h-4" />
+                Send a coaching request
+              </Button>
+              <Button type="button" variant="outline" className="gap-2" onClick={scrollToQuoteContact}>
+                <Mail className="w-4 h-4" />
+                Workshop quote details
+              </Button>
+            </div>
           </div>
+
+          {/* Contact form */}
+          <section
+            id="contact-form"
+            className="mb-16 p-8 md:p-10 bg-card rounded-2xl border border-border shadow-sm scroll-mt-24"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
+                  <MessageSquareText className="w-3.5 h-3.5" />
+                  Simple request form
+                </div>
+                <h2 className="text-2xl font-semibold text-foreground mb-3">Tell Kevin what you need</h2>
+                <p className="text-muted-foreground leading-relaxed mb-5">
+                  Choose a request type, optionally load a starter template, edit the message, and send it from this
+                  page. Kevin will reply by email.
+                </p>
+                <div className="p-4 bg-muted/30 rounded-lg border border-border">
+                  <p className="text-sm font-semibold text-foreground mb-2">Setup note</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    This form is coded for Formspree. Replace{" "}
+                    <span className="font-mono text-foreground">YOUR_FORM_ID</span> in this file with your real
+                    Formspree endpoint before publishing.
+                  </p>
+                </div>
+              </div>
+
+              <form className="space-y-5" onSubmit={handleContactFormSubmit}>
+                <input type="hidden" name="send_to" value={quoteEmail} />
+                <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label className="space-y-2">
+                    <span className="text-sm font-medium text-foreground">Name</span>
+                    <input
+                      required
+                      name="name"
+                      type="text"
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                      placeholder="Your name"
+                    />
+                  </label>
+                  <label className="space-y-2">
+                    <span className="text-sm font-medium text-foreground">Email</span>
+                    <input
+                      required
+                      name="email"
+                      type="email"
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                </div>
+
+                <label className="space-y-2 block">
+                  <span className="text-sm font-medium text-foreground">Organization, church, or team</span>
+                  <input
+                    name="organization"
+                    type="text"
+                    className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                    placeholder="Optional"
+                  />
+                </label>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label className="space-y-2">
+                    <span className="text-sm font-medium text-foreground">Request type</span>
+                    <select
+                      required
+                      name="request_type"
+                      value={requestType}
+                      onChange={(event) => setRequestType(event.target.value)}
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                    >
+                      {requestTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="space-y-2">
+                    <span className="text-sm font-medium text-foreground">Use a starter template</span>
+                    <select
+                      value={templateKey}
+                      onChange={(event) => handleTemplateChange(event.target.value as keyof typeof messageTemplates)}
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                    >
+                      {Object.entries(messageTemplates).map(([key, template]) => (
+                        <option key={key} value={key}>
+                          {template.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+
+                <label className="space-y-2 block">
+                  <span className="text-sm font-medium text-foreground">Preferred timeframe</span>
+                  <input
+                    name="preferred_timeframe"
+                    type="text"
+                    className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                    placeholder="Optional: preferred Saturday, month, or general timeframe"
+                  />
+                </label>
+
+                <label className="space-y-2 block">
+                  <span className="text-sm font-medium text-foreground">Message</span>
+                  <textarea
+                    required
+                    name="message"
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    rows={13}
+                    className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                  />
+                </label>
+
+                {formNotice && (
+                  <p
+                    className={`text-sm font-medium ${formStatus === "sent" ? "text-primary" : "text-destructive"}`}
+                    role="status"
+                  >
+                    {formNotice}
+                  </p>
+                )}
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button type="submit" className="gap-2" disabled={formStatus === "sending"}>
+                    <Send className="w-4 h-4" />
+                    {formStatus === "sending" ? "Sending..." : "Send request to Kevin"}
+                  </Button>
+                  <Button type="button" variant="outline" className="gap-2" onClick={copyCurrentFormMessage}>
+                    <ClipboardCheck className="w-4 h-4" />
+                    Copy message
+                  </Button>
+                  <Button type="button" variant="ghost" className="gap-2" onClick={copyEmailAddress}>
+                    <Mail className="w-4 h-4" />
+                    Copy email
+                  </Button>
+                </div>
+
+                {copyStatus && (
+                  <p className="text-sm font-medium text-primary" role="status">
+                    {copyStatus}
+                  </p>
+                )}
+              </form>
+            </div>
+          </section>
 
           {/* Individual coaching plans */}
           <section className="mb-16">
@@ -307,22 +663,11 @@ export default function CoachingPage() {
                   Packages are discounted for learners who want a coaching arc instead of one-off advice.
                 </p>
               </div>
-              <Button
-                type="button"
-                variant="outline"
-                className="gap-2 lg:flex-shrink-0"
-                onClick={copyIndividualCoachingRequest}
-              >
+              <Button type="button" variant="outline" className="gap-2 lg:flex-shrink-0" onClick={scrollToContactForm}>
                 <Mail className="w-4 h-4" />
-                Copy individual coaching request
+                Ask about individual coaching
               </Button>
             </div>
-
-            {copyStatus && (
-              <p className="mb-4 text-sm font-medium text-primary" role="status">
-                {copyStatus}
-              </p>
-            )}
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {individualPlans.map((plan) => (
@@ -399,7 +744,7 @@ export default function CoachingPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button type="button" size="lg" className="gap-2" onClick={scrollToQuoteContact}>
+                    <Button type="button" size="lg" className="gap-2" onClick={scrollToContactForm}>
                       <Mail className="w-4 h-4" />
                       Request a Saturday Workshop Quote
                     </Button>
@@ -440,7 +785,7 @@ export default function CoachingPage() {
                   coaching. Workshops are quoted by scope, group size, preparation needs, and follow-up requirements.
                 </p>
               </div>
-              <Button type="button" variant="outline" className="gap-2 md:flex-shrink-0" onClick={scrollToQuoteContact}>
+              <Button type="button" variant="outline" className="gap-2 md:flex-shrink-0" onClick={scrollToContactForm}>
                 <Mail className="w-4 h-4" />
                 Request a quote
               </Button>
@@ -473,8 +818,8 @@ export default function CoachingPage() {
                 <p className="text-sm font-medium text-primary mb-2">Quote contact</p>
                 <h2 className="text-xl font-semibold text-foreground mb-3">Request a Saturday Workshop Quote</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  For workshop quotes, send a brief request with your organization or church name, estimated number of
-                  participants, preferred Saturday or timeframe, workshop focus, and desired length.
+                  For workshop quotes, use the form above or send a brief request with your organization or church name,
+                  estimated number of participants, preferred Saturday or timeframe, workshop focus, and desired length.
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground">
                   Direct email: <span className="font-medium text-foreground">{quoteEmail}</span>
@@ -486,7 +831,11 @@ export default function CoachingPage() {
                 )}
               </div>
               <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:min-w-64">
-                <Button type="button" className="gap-2" onClick={copyQuoteRequest}>
+                <Button type="button" className="gap-2" onClick={scrollToContactForm}>
+                  <Send className="w-4 h-4" />
+                  Fill out request form
+                </Button>
+                <Button type="button" variant="outline" className="gap-2" onClick={copyQuoteRequest}>
                   <Mail className="w-4 h-4" />
                   Copy quote request template
                 </Button>
@@ -617,14 +966,14 @@ export default function CoachingPage() {
           <div className="text-center mb-16">
             <button
               type="button"
-              onClick={scrollToQuoteContact}
+              onClick={scrollToContactForm}
               className="btn-primary-calm inline-flex items-center gap-2"
             >
-              <Mail className="w-4 h-4" aria-hidden="true" />
-              Request a Saturday workshop quote
+              <Send className="w-4 h-4" aria-hidden="true" />
+              Send a coaching or workshop request
             </button>
             <p className="mt-4 text-sm text-muted-foreground">
-              Quote requests: <span className="font-medium text-foreground">{quoteEmail}</span>
+              Direct email: <span className="font-medium text-foreground">{quoteEmail}</span>
             </p>
           </div>
 

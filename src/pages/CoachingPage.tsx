@@ -13,9 +13,6 @@ import {
   Target,
   List,
   FileText,
-  Sparkles,
-  Smartphone,
-  Eye,
   Church,
   Building2,
   Landmark,
@@ -58,6 +55,33 @@ const quoteRequestText = `To: ${quoteEmail}
 Subject: ${quoteRequestSubject}
 
 ${quoteRequestBody}`;
+
+const individualCoachingSubject = "Individual Coaching Plan Request";
+
+const individualCoachingBody = `Hello,
+
+I would like to ask about individual language coaching.
+
+Name:
+Language or languages:
+Current level or background:
+Main goal:
+Plan interest:
+- Single Strategy Session ($150)
+- 3-Session Starter Plan ($375, save $75)
+- 6-Session Momentum Plan ($675, save $225)
+- Not sure yet
+
+What feels stuck or unclear right now:
+Preferred timeframe:
+Additional notes:
+
+Thank you.`;
+
+const individualCoachingText = `To: ${quoteEmail}
+Subject: ${individualCoachingSubject}
+
+${individualCoachingBody}`;
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -154,6 +178,46 @@ const workshopRates = [
   },
 ];
 
+const individualPlans = [
+  {
+    title: "Single Strategy Session",
+    price: "$150",
+    savings: "Baseline rate",
+    description:
+      "One focused session to clarify your next step, review your current study plan, troubleshoot a problem, or choose a better learning path.",
+    bestFor: "A learner who needs one clear decision or one practical reset.",
+    includes: ["Study-plan review", "Resource and method guidance", "A clear next-step recommendation"],
+  },
+  {
+    title: "3-Session Starter Plan",
+    price: "$375",
+    savings: "Save $75 compared with three single sessions",
+    description: "A short coaching arc for learners who feel stuck, scattered, or unsure what to do next.",
+    bestFor: "A learner who needs a clear plan, better resources, and a realistic weekly rhythm.",
+    includes: [
+      "Session 1 - language learning audit",
+      "Session 2 - custom weekly plan and activity rhythm",
+      "Session 3 - review, adjust, and next-step strategy",
+    ],
+  },
+  {
+    title: "6-Session Momentum Plan",
+    price: "$675",
+    savings: "Save $225 compared with six single sessions",
+    description: "A fuller coaching arc for learners who want support while building a sustainable language routine.",
+    bestFor:
+      "A serious self-directed learner who wants diagnosis, structure, accountability, and adjustment after real practice.",
+    includes: [
+      "Language learning audit",
+      "Goal and can-do planning",
+      "Custom weekly rhythm",
+      "Resource and method selection",
+      "Accountability check-ins",
+      "Final next-steps plan",
+    ],
+  },
+];
+
 const readingPath = [
   { title: "Start here: Four Strands", href: "/resources#four-strands", icon: BookOpen },
   { title: "Choose goals: Can-do statements", href: "/standards", icon: Target },
@@ -191,6 +255,13 @@ export default function CoachingPage() {
     copyText(quoteRequestText, "Quote request copied. Paste it into your email and send it to Kevin.");
   };
 
+  const copyIndividualCoachingRequest = () => {
+    copyText(
+      individualCoachingText,
+      "Individual coaching request copied. Paste it into your email and send it to Kevin.",
+    );
+  };
+
   const copyEmailAddress = () => {
     copyText(quoteEmail, "Email address copied.");
   };
@@ -224,6 +295,64 @@ export default function CoachingPage() {
               keep.
             </p>
           </div>
+
+          {/* Individual coaching plans */}
+          <section className="mb-16">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
+              <div>
+                <p className="text-sm font-medium text-primary mb-2">For individual learners</p>
+                <h2 className="text-xl font-semibold text-foreground">Individual coaching plans</h2>
+                <p className="mt-2 text-muted-foreground max-w-2xl">
+                  Short coaching packages for learners who want clarity, structure, and a plan they can actually keep.
+                  Packages are discounted for learners who want a coaching arc instead of one-off advice.
+                </p>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                className="gap-2 lg:flex-shrink-0"
+                onClick={copyIndividualCoachingRequest}
+              >
+                <Mail className="w-4 h-4" />
+                Copy individual coaching request
+              </Button>
+            </div>
+
+            {copyStatus && (
+              <p className="mb-4 text-sm font-medium text-primary" role="status">
+                {copyStatus}
+              </p>
+            )}
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {individualPlans.map((plan) => (
+                <article key={plan.title} className="card-calm h-full flex flex-col">
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{plan.title}</h3>
+                      <p className="text-2xl font-semibold text-primary">{plan.price}</p>
+                    </div>
+                    <Badge variant="secondary" className="text-xs leading-snug text-center max-w-32">
+                      {plan.savings}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{plan.description}</p>
+                  <div className="p-4 bg-muted/30 rounded-lg border border-border mb-5">
+                    <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Best for</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{plan.bestFor}</p>
+                  </div>
+                  <ul className="mt-auto space-y-2">
+                    {plan.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
 
           {/* Saturday Workshops */}
           <section className="mb-16 relative">
@@ -365,89 +494,6 @@ export default function CoachingPage() {
                   <ClipboardCheck className="w-4 h-4" />
                   Copy email
                 </Button>
-              </div>
-            </div>
-          </section>
-
-          {/* Custom Language App Design - Premium Offer */}
-          <section className="mb-16 relative">
-            <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/5 via-accent/30 to-primary/10 border-2 border-primary/20 shadow-lg">
-              {/* Premium Badge */}
-              <Badge className="absolute -top-3 left-6 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold shadow-md">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Premium Add-on
-              </Badge>
-
-              <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
-                {/* Left: Main content */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/15 rounded-xl">
-                      <Smartphone className="w-6 h-6 text-primary" />
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
-                      Want a custom app for learning your language?
-                    </h2>
-                  </div>
-
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
-                    I can help you design a personalized language-learning app tailored to your goals, content, and
-                    learning style.
-                  </p>
-
-                  {/* Bullet list */}
-                  <ul className="space-y-3 mb-8">
-                    {[
-                      "Your exact vocabulary + domains (work, travel, ministry, exams)",
-                      "Your preferred method (reading, audio drills, stories, Anki-ready exports)",
-                      "Progress tracking that matches how you actually study",
-                      "Local-first / offline options available",
-                      "Built around your schedule and motivation style",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-foreground">
-                        <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Button asChild size="lg" className="gap-2">
-                      <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
-                        <Calendar className="w-4 h-4" />
-                        Book an App Design Session
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="gap-2">
-                      <Link to="/tools">
-                        <Eye className="w-4 h-4" />
-                        See examples of what we can build
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Right: How it works - mini steps */}
-                <div className="mt-8 lg:mt-0 lg:w-72 flex-shrink-0">
-                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
-                    How it works
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      { step: 1, label: "Define your language + goal" },
-                      { step: 2, label: "Choose your learning loop (stories / drills / reading)" },
-                      { step: 3, label: "Build your personal toolkit" },
-                    ].map((item) => (
-                      <div key={item.step} className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
-                          {item.step}
-                        </span>
-                        <span className="text-sm text-foreground leading-snug pt-1">{item.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </section>

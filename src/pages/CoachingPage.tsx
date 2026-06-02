@@ -28,10 +28,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const quoteEmail = "kevinduplechin7@gmail.com";
-
-const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(
-  "Saturday Workshop Quote Request",
-)}&body=${encodeURIComponent(`Hello,
+const quoteSubject = "Saturday Workshop Quote Request";
+const quoteBody = `Hello,
 
 I would like to request a Saturday workshop quote.
 
@@ -51,7 +49,11 @@ Preferred Saturday or timeframe:
 Desired workshop length:
 Additional notes:
 
-Thank you.`)}`;
+Thank you.`;
+
+const saturdayWorkshopMailto = `mailto:${quoteEmail}?subject=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
+const saturdayWorkshopGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(quoteEmail)}&su=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
+const quoteContactAnchor = "#saturday-workshop-quote-contact";
 
 const steps = [
   { label: "Clarify", caption: "what matters to you" },
@@ -239,9 +241,9 @@ export default function CoachingPage() {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild size="lg" className="gap-2">
-                      <a href={saturdayWorkshopMailto}>
+                      <a href={quoteContactAnchor}>
                         <Mail className="w-4 h-4" />
-                        Request a Saturday Workshop Quote
+                        Open quote contact details
                       </a>
                     </Button>
                     <Button asChild variant="outline" size="lg" className="gap-2">
@@ -282,9 +284,9 @@ export default function CoachingPage() {
                 </p>
               </div>
               <Button asChild variant="outline" className="gap-2 md:flex-shrink-0">
-                <a href={saturdayWorkshopMailto}>
+                <a href={quoteContactAnchor}>
                   <Mail className="w-4 h-4" />
-                  Request a quote
+                  Open quote contact details
                 </a>
               </Button>
             </div>
@@ -304,6 +306,70 @@ export default function CoachingPage() {
               lower-entry option for focused Saturday training, while larger organization workshops, audits, and custom
               implementation projects are quoted according to scope.
             </p>
+          </section>
+
+          {/* Quote contact details - visible fallback so quote requests never appear to do nothing */}
+          <section
+            id="saturday-workshop-quote-contact"
+            className="mb-16 scroll-mt-24 rounded-2xl border-2 border-primary/30 bg-primary/5 p-8 md:p-10 shadow-lg"
+          >
+            <div className="max-w-3xl">
+              <Badge className="mb-4 bg-primary text-primary-foreground">Quote contact section</Badge>
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                Request a Saturday Workshop Quote
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                For churches, mission teams, schools, nonprofits, businesses, government teams, mission organizations,
+                and minority-language programs, use one of the contact options below. The Gmail button opens a browser
+                compose window; the fallback button uses your default email app.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-6 items-start">
+                <div className="rounded-xl border border-border bg-background/80 p-5">
+                  <h3 className="text-base font-semibold text-foreground mb-3">What to include</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {[
+                      "Organization or church name",
+                      "Approximate number of participants",
+                      "Workshop interest or ministry context",
+                      "Preferred Saturday or general timeframe",
+                      "Desired workshop length",
+                      "Any language, culture, or minority-language needs",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background/80 p-5">
+                  <h3 className="text-base font-semibold text-foreground mb-3">Contact Kevin</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Direct contact email:
+                    <br />
+                    <a href={`mailto:${quoteEmail}`} className="font-semibold text-primary hover:text-primary/80">
+                      {quoteEmail}
+                    </a>
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    <Button asChild size="lg" className="gap-2">
+                      <a href={saturdayWorkshopGmailUrl} target="_blank" rel="noopener noreferrer">
+                        <Mail className="w-4 h-4" />
+                        Open Gmail quote request
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="gap-2">
+                      <a href={saturdayWorkshopMailto}>
+                        <Mail className="w-4 h-4" />
+                        Use default email app
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Custom Language App Design - Premium Offer */}
@@ -506,18 +572,12 @@ export default function CoachingPage() {
 
           {/* CTA */}
           <div className="text-center mb-16">
-            <a href={saturdayWorkshopMailto} className="btn-primary-calm inline-flex items-center gap-2">
+            <a href={quoteContactAnchor} className="btn-primary-calm inline-flex items-center gap-2">
               <Mail className="w-4 h-4" aria-hidden="true" />
-              Request a Saturday workshop quote
+              Open Saturday workshop quote contact details
             </a>
-            <p className="mt-4">
-              <a
-                href={`mailto:${quoteEmail}`}
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="w-4 h-4" aria-hidden="true" />
-                Get in touch
-              </a>
+            <p className="mt-4 text-sm text-muted-foreground">
+              This button now scrolls to an on-page contact box first, so it does not depend on your browser email app.
             </p>
           </div>
 

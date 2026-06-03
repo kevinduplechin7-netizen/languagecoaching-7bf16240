@@ -5,7 +5,6 @@ import {
   Calendar,
   CheckCircle2,
   ClipboardCheck,
-  GraduationCap,
   Handshake,
   Languages,
   Linkedin,

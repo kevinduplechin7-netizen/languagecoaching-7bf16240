@@ -160,6 +160,7 @@ const Index = () => {
                     href={LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={openLinkedIn}
                     aria-label="Connect with Kevin Duplechin on LinkedIn"
                     className="group relative flex-shrink-0"
                   >
@@ -182,6 +183,7 @@ const Index = () => {
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={openLinkedIn}
                       className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
                     >
                       <Linkedin className="w-4 h-4" aria-hidden="true" />

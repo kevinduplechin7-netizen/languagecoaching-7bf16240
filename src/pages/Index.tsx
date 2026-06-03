@@ -21,6 +21,20 @@ import kevinPhoto from "@/assets/kevin-duplechin.png.asset.json";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/kevin-duplechin-63b48a158/";
 
+const openLinkedIn = (e: React.MouseEvent) => {
+  e.preventDefault();
+  // Force a real new tab from the top window so the sandboxed preview iframe
+  // doesn't try to load LinkedIn inline (LinkedIn refuses to be framed).
+  const win = window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer");
+  if (!win) {
+    try {
+      window.top!.location.href = LINKEDIN_URL;
+    } catch {
+      window.location.href = LINKEDIN_URL;
+    }
+  }
+};
+
 const scrollToPageTop = () => {
   window.setTimeout(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -146,6 +160,7 @@ const Index = () => {
                     href={LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={openLinkedIn}
                     aria-label="Connect with Kevin Duplechin on LinkedIn"
                     className="group relative flex-shrink-0"
                   >
@@ -168,6 +183,7 @@ const Index = () => {
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={openLinkedIn}
                       className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
                     >
                       <Linkedin className="w-4 h-4" aria-hidden="true" />

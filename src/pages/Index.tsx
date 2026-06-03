@@ -142,15 +142,38 @@ const Index = () => {
           <div className="container-calm">
             <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-xl">
-                    <GraduationCap className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
+                <div className="flex items-start gap-5 mb-5">
+                  <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Connect with Kevin Duplechin on LinkedIn"
+                    className="group relative flex-shrink-0"
+                  >
+                    <img
+                      src={kevinPhoto.url}
+                      alt="Kevin Duplechin, linguist and language coach"
+                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border border-border shadow-sm transition-transform group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground shadow-md ring-2 ring-background">
+                      <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
+                    </span>
+                  </a>
                   <div>
                     <p className="text-sm font-medium text-primary">Experience and background</p>
                     <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
                       Practical coaching shaped by real field language learning
                     </h2>
+                    <a
+                      href={LINKEDIN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                    >
+                      <Linkedin className="w-4 h-4" aria-hidden="true" />
+                      Connect on LinkedIn
+                    </a>
                   </div>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">

@@ -29,7 +29,7 @@ const scrollToPageTop = () => {
 
 const experienceHighlights = [
   "M.A. in Linguistics",
-  "15+ years of language-learning and coaching experience, including field language learning in Papua New Guinea across multiple languages",
+  "15+ years of experience in Applied Linguistics including extensive fieldwork in Papua New Guinea",
   "Language coach with Pioneer Bible Translators",
   "Experience with learners, coaches, teams, and minority-language contexts",
 ];

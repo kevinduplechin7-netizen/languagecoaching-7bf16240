@@ -18,6 +18,7 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import kevinPhoto from "@/assets/kevin-duplechin.png.asset.json";
+import kevinSensei from "@/assets/kevin-with-sensei.png.asset.json";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/kevin-duplechin-63b48a158/";
 

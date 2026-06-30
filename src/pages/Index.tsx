@@ -229,13 +229,23 @@ const Index = () => {
                     Personally mentored by the Sensei himself — an honorary title I wear proudly alongside the very
                     real degrees and fieldwork above.{" "}
                     <a
-                      href="https://sentencepaths.com"
+                      href="https://sentencepaths.com/legend"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline font-medium"
                     >
-                      Meet the real Sensei →
+                      Read the Legend of the Sensei scroll →
                     </a>
+                    <span className="block mt-1">
+                      <a
+                        href="https://sentencepaths.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline font-medium"
+                      >
+                        Meet the real Sensei →
+                      </a>
+                    </span>
                   </p>
                 </div>
               </div>

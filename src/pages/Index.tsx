@@ -218,8 +218,8 @@ const Index = () => {
                     Sentence Paths Sensei Apprentice
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Personally mentored by the Sensei himself. He swears it counts — and I swear the rest of the
-                    degrees and fieldwork above are real.{" "}
+                    Personally mentored by the Sensei himself — an honorary title I wear proudly alongside the very
+                    real degrees and fieldwork above.{" "}
                     <a
                       href="https://sentencepaths.com"
                       target="_blank"

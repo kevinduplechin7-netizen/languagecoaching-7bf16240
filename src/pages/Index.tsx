@@ -215,7 +215,15 @@ const Index = () => {
                     Bonus credential <span className="text-muted-foreground/60 normal-case tracking-normal">(the one I'm most proud of)</span>
                   </p>
                   <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
-                    Sentence Paths Sensei Apprentice
+                    <a
+                      href="https://sentencepaths.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors underline-offset-4 hover:underline"
+                    >
+                      Sentence Paths
+                    </a>{" "}
+                    Sensei Apprentice
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Personally mentored by the Sensei himself — an honorary title I wear proudly alongside the very

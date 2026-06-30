@@ -18,6 +18,7 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import kevinPhoto from "@/assets/kevin-duplechin.png.asset.json";
+import kevinSensei from "@/assets/kevin-with-sensei.png.asset.json";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/kevin-duplechin-63b48a158/";
 
@@ -191,8 +192,49 @@ const Index = () => {
                 ))}
               </div>
             </div>
+
+            {/* Sensei's apprentice — tongue-in-cheek bonus credential */}
+            <div className="mt-10 pt-8 border-t border-border/60">
+              <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center max-w-3xl mx-auto">
+                <a
+                  href="https://sentencepaths.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block flex-shrink-0 mx-auto md:mx-0"
+                  aria-label="Visit Sentence Paths"
+                >
+                  <img
+                    src={kevinSensei.url}
+                    alt="Watercolor illustration of Kevin seated with the Sentence Paths Sensei, a raccoon in robes holding a calligraphy brush"
+                    className="w-44 h-44 sm:w-52 sm:h-52 rounded-xl object-cover shadow-md border border-amber-200/60 ring-1 ring-amber-100/40 hover:shadow-lg transition-shadow"
+                    loading="lazy"
+                  />
+                </a>
+                <div className="text-center md:text-left">
+                  <p className="text-xs font-medium uppercase tracking-wider text-amber-700/80 mb-2">
+                    Bonus credential <span className="text-muted-foreground/60 normal-case tracking-normal">(the one I'm most proud of)</span>
+                  </p>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+                    Sentence Paths Sensei Apprentice
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Personally mentored by the Sensei himself. He swears it counts — and I swear the rest of the
+                    degrees and fieldwork above are real.{" "}
+                    <a
+                      href="https://sentencepaths.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline font-medium"
+                    >
+                      Meet the real Sensei →
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+
 
         {/* Coaching opportunities */}
         <section className="py-12 md:py-16 bg-muted/20 border-y border-border/40">

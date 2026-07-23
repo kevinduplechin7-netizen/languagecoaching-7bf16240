@@ -17,7 +17,7 @@ const resourceCategories = [
     id: 'activities',
     title: 'Activities Index',
     tag: 'Activity',
-    description: 'Twenty research-informed activities organized by strand. Turn research principles into weekly practice.',
+    description: 'Twenty research-informed activities from Paul Nation\u2019s Four Strands framework, organized by strand. Turn research principles into weekly practice.',
     icon: List,
     href: '/activities',
     internal: true,

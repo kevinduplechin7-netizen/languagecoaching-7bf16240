@@ -284,32 +284,73 @@ export default function ActivitiesPage() {
           <div className="max-w-2xl mb-8">
             <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Activities Index</h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Twenty research-informed activities organized by strand. Click any activity to see details, benefits, and
-              variations.
+              Twenty research-informed activities drawn from Paul Nation's Four Strands framework, organized by strand.
+              Click any activity to see details, benefits, and variations.
             </p>
           </div>
 
-          {/* Research note */}
+          {/* Attribution & sources */}
           <section className="mb-8 p-6 bg-card rounded-lg border border-border">
-            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-2">Research foundation</p>
+            <p className="text-sm font-semibold text-foreground uppercase tracking-wide mb-2">
+              Attribution &amp; sources
+            </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This activities index is organized around Paul Nation's Four Strands framework: meaning-focused input,
-              meaning-focused output, language-focused learning, and fluency development. Nation's work argues that a
-              balanced language program should make room for all four kinds of practice rather than relying on only
-              explanation, memorization, conversation, or input alone.
+              The framework and the specific activities on this page are drawn from the work of{" "}
+              <strong className="text-foreground">Paul Nation</strong> (Emeritus Professor, Te Herenga Waka—Victoria
+              University of Wellington). The Four Strands — meaning-focused input, meaning-focused output,
+              language-focused learning, and fluency development — argue that a balanced course gives roughly equal time
+              to each strand. Activities such as the 4/3/2 fluency task, speed reading, ten-minute writing, linked
+              skills, issue logs, and word cards are Nation's; descriptions below are paraphrased for a coaching
+              audience. Any errors of interpretation are mine, not his.
             </p>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              For more background, see Paul Nation's university-hosted article{" "}
-              <a
-                href="https://openaccess.wgtn.ac.nz/articles/journal_contribution/The_four_strands/12552167"
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:text-primary/80 underline underline-offset-4"
-              >
-                The Four Strands
-              </a>{" "}
-              from Te Herenga Waka—Victoria University of Wellington.
-            </p>
+            <p className="mt-4 text-sm font-semibold text-foreground uppercase tracking-wide">Primary sources</p>
+            <ul className="mt-2 text-sm text-muted-foreground leading-relaxed space-y-2 list-disc pl-5">
+              <li>
+                Nation, I. S. P. (2007). The four strands. <em>Innovation in Language Learning and Teaching</em>, 1(1),
+                2–13.{" "}
+                <a
+                  href="https://openaccess.wgtn.ac.nz/articles/journal_contribution/The_four_strands/12552167"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary hover:text-primary/80 underline underline-offset-4"
+                >
+                  Open-access PDF
+                </a>
+                .
+              </li>
+              <li>
+                Nation, I. S. P. <em>What do you need to know to learn a foreign language?</em> (free pamphlet).{" "}
+                <a
+                  href="https://www.wgtn.ac.nz/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/foreign-language_1125.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary hover:text-primary/80 underline underline-offset-4"
+                >
+                  PDF
+                </a>
+                .
+              </li>
+              <li>
+                Nation, I. S. P. &amp; Newton, J. (2009). <em>Teaching ESL/EFL Listening and Speaking</em>. Routledge.
+                (Source for the 4/3/2 activity and linked-skills sequences.)
+              </li>
+              <li>
+                Nation, I. S. P. (2013). <em>Learning Vocabulary in Another Language</em> (2nd ed.). Cambridge
+                University Press. (Word cards, vocabulary principles.)
+              </li>
+              <li>
+                Full publications list:{" "}
+                <a
+                  href="https://www.wgtn.ac.nz/lals/resources/paul-nations-resources"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary hover:text-primary/80 underline underline-offset-4"
+                >
+                  Paul Nation's resources at Victoria University of Wellington
+                </a>
+                .
+              </li>
+            </ul>
           </section>
 
           {/* Table of contents */}

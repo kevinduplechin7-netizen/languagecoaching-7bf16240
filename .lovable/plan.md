@@ -101,7 +101,7 @@ Key styling details:
 [Resources Section]
   ...existing cards...
 
-[Custom App Ad Banner]
+
 ```
 
 ### Notes

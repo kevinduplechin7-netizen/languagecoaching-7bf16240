@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  BarChart2,
   BookOpen,
   Calendar,
   CheckCircle2,
   ClipboardCheck,
+  Clock,
   Handshake,
   Languages,
   Linkedin,
   Mail,
   MessageCircle,
+  Route,
   Target,
   Users,
 } from "lucide-react";

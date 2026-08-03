@@ -16,7 +16,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import kevinPhoto from "@/assets/kevin-duplechin.png.asset.json";
-import kevinSensei from "@/assets/kevin-with-sensei.png.asset.json";
 import {
   CONTACT_EMAIL,
   FOUR_STRANDS_STATEMENT,

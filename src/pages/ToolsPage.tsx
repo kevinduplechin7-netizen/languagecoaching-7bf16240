@@ -39,7 +39,7 @@ interface Tool {
 export const tools: Tool[] = [
   {
     title: "Sentence Paths",
-    href: "https://sentencepathslite.lovable.app/",
+    href: "https://sentencepaths.com",
     description:
       "Real fluency grows sentence by sentence. Listen. Read. Write. Speak. Immerse yourself in thousands of meaningful sentences—import your own materials or bring text from anywhere. Write by hand with stylus ink mode.",
     bestFor: "practicing more, in more ways—brick by brick, one sentence at a time.",
@@ -221,7 +221,7 @@ export default function ToolsPage() {
           </Link>
 
           <div className="max-w-2xl mb-12">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Tools</h1>
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">Language Builds</h1>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">Calm software. Precise workflows.</p>
             <p className="mt-2 text-base text-muted-foreground/80 leading-relaxed">
               Built for serious language learners—especially when the problem is too specific for generic apps.

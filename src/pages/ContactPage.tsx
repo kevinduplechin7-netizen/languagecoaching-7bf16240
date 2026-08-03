@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { CONTACT_EMAIL } from "@/data/offers";
 
 export default function ContactPage() {
   return (
@@ -47,20 +48,30 @@ export default function ContactPage() {
               </div>
             </section>
 
-            {/* PBT internal access block */}
+            {/* Coaching and workshop routing */}
             <section className="p-6 rounded-xl border border-border/60 bg-card">
               <h2 className="text-base font-semibold text-foreground mb-3">
-                PBT internal access
+                Coaching and workshop requests
               </h2>
               <div className="text-sm text-muted-foreground leading-relaxed space-y-4">
                 <p>
-                  LinguaFlow is currently available at no cost for Pioneer Bible Translators personnel for internal organizational use.
+                  Coaching and workshop requests are handled through the request forms on the coaching page, so nothing
+                  gets lost in an inbox.
                 </p>
                 <p>
-                  To request access, include your PBT email address, your role/team, and intended use (uploading texts, offline reading, or pack distribution).
+                  Submitting a request does not schedule a meeting. If your request is accepted, you will receive
+                  private payment instructions by email, and the scheduling link is sent after payment is confirmed.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                  <Link to="/coaching#coaching-plans" className="btn-primary-calm justify-center">
+                    Choose a Coaching Plan
+                  </Link>
+                  <Link to="/coaching#workshops" className="btn-secondary-calm justify-center">
+                    Request a Workshop
+                  </Link>
+                </div>
                 <p className="text-muted-foreground/80">
-                  Suggested subject: <span className="font-medium text-foreground/80">"LinguaFlow access (PBT)"</span>
+                  Direct email: <span className="font-medium text-foreground/80">{CONTACT_EMAIL}</span>
                 </p>
               </div>
             </section>

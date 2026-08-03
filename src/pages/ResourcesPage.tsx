@@ -33,7 +33,7 @@ const resourceCategories = [
   },
   {
     id: 'tools',
-    title: 'Tools',
+    title: 'Language Builds',
     tag: 'Tool',
     description: 'Quiet software that reduces friction and keeps progress visible.',
     icon: Wrench,
@@ -44,7 +44,7 @@ const resourceCategories = [
     id: 'coaching',
     title: 'Coaching',
     tag: 'Coaching',
-    description: 'Support that meets you where you are \u2014 and helps you move forward with a realistic plan.',
+    description: 'Private coaching packages and organizational workshops built on Paul Nation\u2019s Four Strands.',
     icon: Users,
     href: '/coaching',
     internal: true,

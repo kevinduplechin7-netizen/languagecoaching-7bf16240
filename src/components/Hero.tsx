@@ -51,7 +51,7 @@ export default function Hero() {
               <BookOpen className="w-4 h-4 mr-2" aria-hidden="true" />
               Browse resources
             </Link>
-            <Link to="/coaching" className="btn-secondary-calm w-full sm:w-auto">
+            <Link to="/coaching#coaching-plans" className="btn-secondary-calm w-full sm:w-auto">
               <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" />
               Coaching approach
             </Link>

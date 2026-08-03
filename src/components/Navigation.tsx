@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/resources', label: 'Resources' },
   { href: '/coaching', label: 'Coaching' },
+  { href: '/resources', label: 'Resources' },
   { href: '/standards', label: 'Standards' },
   { href: '/tools', label: 'Language Builds' },
 ];
@@ -80,15 +80,13 @@ export default function Navigation() {
           </div>
 
           {/* Desktop CTA */}
-          <a
-            href="https://calendly.com/kevin-duplechin"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/coaching#coaching-plans"
             className="hidden md:inline-flex items-center gap-2 btn-primary-calm text-sm"
           >
-            <Calendar className="w-4 h-4" aria-hidden="true" />
-            Schedule
-          </a>
+            Choose a Coaching Plan
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -128,17 +126,15 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="mt-4 pt-4 border-t border-border">
-              <a
-                href="https://calendly.com/kevin-duplechin"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/coaching#coaching-plans"
                 onClick={handleLinkClick}
                 className="flex items-center justify-center gap-2 btn-primary-calm w-full"
                 tabIndex={isOpen ? 0 : -1}
               >
-                <Calendar className="w-4 h-4" aria-hidden="true" />
-                Schedule a consultation
-              </a>
+                Choose a Coaching Plan
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>

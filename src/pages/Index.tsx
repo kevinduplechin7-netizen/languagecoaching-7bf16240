@@ -170,6 +170,69 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Flagship Tools */}
+        <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+          <div className="container-calm">
+            <div className="max-w-2xl mb-8 md:mb-10">
+              <p className="text-sm font-medium text-primary mb-2">Flagship tools</p>
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">Built for serious language learners</h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Calm, focused software for practice, tracking, and session structure. These are the tools I use most in my
+                own coaching and language work.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {flagshipTools.map((tool) => (
+                <a
+                  key={tool.title}
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col h-full rounded-xl border border-border/60 bg-card overflow-hidden hover:border-primary/30 hover:shadow-md transition-all duration-200"
+                >
+                  <div className="relative aspect-video overflow-hidden bg-muted border-b border-border/40">
+                    <img
+                      src={tool.image}
+                      alt={`${tool.title} interface preview`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    {tool.badge && (
+                      <span className="absolute top-3 right-3 px-2 py-0.5 text-xs font-semibold rounded-full bg-primary text-primary-foreground">
+                        {tool.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <tool.icon className="w-4 h-4 text-primary" aria-hidden="true" />
+                      <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {tool.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">{tool.description}</p>
+                    <div className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary">
+                      Open tool
+                      <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <Button asChild variant="outline" className="gap-2">
+                <Link to="/tools" onClick={scrollToPageTop}>
+                  View all tools
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Experience */}
         <section className="py-10 md:py-14">
           <div className="container-calm">

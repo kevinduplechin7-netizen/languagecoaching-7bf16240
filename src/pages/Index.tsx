@@ -89,6 +89,36 @@ const workshopTopics = [
   "Sentence Paths implementation and custom study workflows",
 ];
 
+const flagshipTools = [
+  {
+    title: "Sentence Paths",
+    description:
+      "Real fluency grows sentence by sentence. Listen, read, write, and speak through thousands of meaningful sentences—import your own materials or bring text from anywhere.",
+    href: "https://sentencepathslite.lovable.app/",
+    icon: Route,
+    image: "/screenshots/sentence-paths-preview.png",
+    badge: "Featured" as const,
+  },
+  {
+    title: "Accrue Language",
+    description:
+      "Track language learning by time, not streaks. See honest totals by day, week, month, and year across languages and activities without gamification or pressure.",
+    href: "https://accruelanguage.lovable.app/",
+    icon: BarChart2,
+    image: "/screenshots/accrue-language-preview.png",
+    badge: "Featured" as const,
+  },
+  {
+    title: "FluentHour",
+    description:
+      "A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.",
+    href: "https://fluenthour.lovable.app/",
+    icon: Clock,
+    image: "/screenshots/fluenthour-preview.png",
+    badge: "Featured" as const,
+  },
+];
+
 const approachSteps = [
   { title: "Clarify", description: "Name the language goals and real situations that matter most." },
   { title: "Choose", description: "Select a realistic path, not an overwhelming pile of resources." },

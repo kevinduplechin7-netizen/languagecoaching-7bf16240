@@ -1,29 +1,37 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  BarChart2,
-  BookOpen,
-  Calendar,
   CheckCircle2,
   ClipboardCheck,
-  Clock,
   Handshake,
-  Languages,
+  Layers,
   Linkedin,
   Mail,
   MessageCircle,
-  Route,
-  Target,
   Users,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import kevinPhoto from "@/assets/kevin-duplechin.png.asset.json";
 import kevinSensei from "@/assets/kevin-with-sensei.png.asset.json";
-
-const LINKEDIN_URL = "https://www.linkedin.com/in/kevin-duplechin-63b48a158/";
+import {
+  CONTACT_EMAIL,
+  FOUR_STRANDS_STATEMENT,
+  KEVIN_BIO,
+  LINKEDIN_URL,
+  SENTENCE_PATHS_URL,
+  coachingPlans,
+  credentialHighlights,
+  fourStrands,
+  sentencePathsFeatureGroups,
+  sentencePathsMilestones,
+  workshopOffers,
+  workshopTopics,
+  WORKSHOP_PRICING_NOTE,
+} from "@/data/offers";
 
 const scrollToPageTop = () => {
   window.setTimeout(() => {
@@ -31,102 +39,40 @@ const scrollToPageTop = () => {
   }, 0);
 };
 
-const experienceHighlights = [
-  "M.A. in Linguistics",
-  "15+ years of experience in applied linguistics including extensive fieldwork in Papua New Guinea",
-  "Language coach with Pioneer Bible Translators",
-  "Experience with learners, coaches, teams, and minority-language contexts",
-];
-
 const coachingOpportunities = [
   {
     icon: MessageCircle,
     title: "Individual language coaching",
     description:
-      "Single sessions, 3-session starter plans, and 6-session momentum plans for learners who need clarity, structure, and realistic next steps.",
-    bullets: ["Study-plan review", "Weekly rhythm design", "Resource and method guidance"],
+      "Strategy sessions and multi-session plans for learners who need clarity, structure, and realistic next steps.",
+    bullets: ["Plan review and diagnosis", "Weekly rhythm design", "Resource and activity guidance"],
+    href: "/coaching#coaching-plans",
   },
   {
     icon: Users,
-    title: "Coach and learner support",
+    title: "Coach and team support",
     description:
-      "Training support for language coaches, field teams, and organizations that need repeatable coaching habits instead of scattered advice.",
+      "Support for language coaches, field teams, and organizations that want repeatable coaching habits instead of scattered advice.",
     bullets: ["Session design", "Feedback habits", "Progress documentation"],
+    href: "/coaching#coaching-plans",
   },
   {
     icon: Handshake,
-    title: "Saturday workshops",
+    title: "Workshops for organizations",
     description:
-      "Limited Saturday workshops for churches, schools, nonprofits, businesses, government teams, mission organizations, and language programs.",
-    bullets: ["Mission trip preparation", "Local ministry language orientation", "Minority-language learning systems"],
+      "Half-day and full-day workshops for churches, schools, nonprofits, businesses, mission organizations, and language programs.",
+    bullets: ["Four Strands training", "Team implementation planning", "Language-helper strategy"],
+    href: "/coaching#workshops",
   },
-];
-
-const planCards = [
-  {
-    title: "Single Strategy Session",
-    price: "$150",
-    note: "One focused reset",
-  },
-  {
-    title: "3-Session Starter Plan",
-    price: "$375",
-    note: "Save $75 compared with three single sessions",
-  },
-  {
-    title: "6-Session Momentum Plan",
-    price: "$675",
-    note: "Save $225 compared with six single sessions",
-  },
-];
-
-const workshopTopics = [
-  "Mission trip language preparation",
-  "Local missions, immigrant ministry, and refugee outreach",
-  "Minority-language learning when mainstream apps are limited",
-  "Language-learning strategy for teams and organizations",
-  "ACTFL-style goals, can-do planning, and evidence of progress",
-  "Sentence Paths implementation and custom study workflows",
-];
-
-const flagshipTools = [
-  {
-    title: "Sentence Paths",
-    description:
-      "Real fluency grows sentence by sentence. Listen, read, write, and speak through thousands of meaningful sentences—import your own materials or bring text from anywhere.",
-    href: "https://sentencepathslite.lovable.app/",
-    icon: Route,
-    image: "/screenshots/sentence-paths-preview.png",
-    badge: "Featured" as const,
-  },
-  {
-    title: "Accrue Language",
-    description:
-      "Track language learning by time, not streaks. See honest totals by day, week, month, and year across languages and activities without gamification or pressure.",
-    href: "https://accruelanguage.lovable.app/",
-    icon: BarChart2,
-    image: "/screenshots/accrue-language-preview.png",
-    badge: "Featured" as const,
-  },
-  {
-    title: "FluentHour",
-    description:
-      "A structured one-hour language session framework. Start the timer, follow a calm sequence, and finish knowing exactly what you accomplished.",
-    href: "https://fluenthour.lovable.app/",
-    icon: Clock,
-    image: "/screenshots/fluenthour-preview.png",
-    badge: "Featured" as const,
-  },
-];
-
-const approachSteps = [
-  { title: "Clarify", description: "Name the language goals and real situations that matter most." },
-  { title: "Choose", description: "Select a realistic path, not an overwhelming pile of resources." },
-  { title: "Practice", description: "Build a weekly rhythm around input, output, fluency, and focused study." },
-  { title: "Document", description: "Use simple evidence so progress becomes visible and adjustable." },
 ];
 
 const Index = () => {
+  usePageMeta({
+    title: "Language Learning Coaching | Kevin Duplechin, Applied Linguist",
+    description:
+      "Private language-learning coaching and organizational workshops built on Paul Nation's Four Strands. Clear plans, real progress, no overwhelm.",
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -136,231 +82,77 @@ const Index = () => {
           <div className="container-calm">
             <div className="max-w-4xl mx-auto text-center">
               <Badge variant="secondary" className="mb-6 bg-background/80 border-primary/20 text-muted-foreground">
-                Language Learning Coaching with Kevin Duplechin
+                Applied linguist · Language-learning coach · Creator of Sentence Paths
               </Badge>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight tracking-tight text-balance">
-                Calm, research-informed coaching for serious language learners and teams
+                Language coaching that turns scattered study into a plan you can keep
               </h1>
 
               <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl mx-auto">
-                I help learners, coaches, churches, schools, nonprofits, mission teams, and organizations build
-                language-learning plans that are realistic, evidence-based, and sustainable.
+                I help learners, coaches, teams, and organizations build balanced, sustainable language-learning systems
+                — grounded in applied linguistics and shaped for your real schedule.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Button asChild size="lg" className="gap-2 w-full sm:w-auto">
-                  <Link to="/coaching" onClick={scrollToPageTop}>
-                    View coaching opportunities
+                  <Link to="/coaching#coaching-plans" onClick={scrollToPageTop}>
+                    Choose a Coaching Plan
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="gap-2 w-full sm:w-auto">
-                  <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
-                    <Calendar className="w-4 h-4" aria-hidden="true" />
-                    Schedule a conversation
-                  </a>
+                  <Link to="/coaching#workshops" onClick={scrollToPageTop}>
+                    <Handshake className="w-4 h-4" aria-hidden="true" />
+                    Request a Workshop
+                  </Link>
                 </Button>
               </div>
 
               <p className="mt-5 text-sm text-muted-foreground/70">
-                Independent coaching available by request for individual learners, teams, churches, and organizations.
+                Coaching begins with a short request. Scheduling details are sent privately after a request is accepted.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Flagship Tools */}
-        <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8">
-          <div className="container-calm">
-            <div className="max-w-2xl mb-8 md:mb-10">
-              <p className="text-sm font-medium text-primary mb-2">Flagship tools</p>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">Built for serious language learners</h2>
-              <p className="mt-3 text-muted-foreground leading-relaxed">
-                Calm, focused software for practice, tracking, and session structure. These are the tools I use most in my
-                own coaching and language work.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {flagshipTools.map((tool) => (
-                <a
-                  key={tool.title}
-                  href={tool.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col h-full rounded-xl border border-border/60 bg-card overflow-hidden hover:border-primary/30 hover:shadow-md transition-all duration-200"
-                >
-                  <div className="relative aspect-video overflow-hidden bg-muted border-b border-border/40">
-                    <img
-                      src={tool.image}
-                      alt={`${tool.title} interface preview`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    {tool.badge && (
-                      <span className="absolute top-3 right-3 px-2 py-0.5 text-xs font-semibold rounded-full bg-primary text-primary-foreground">
-                        {tool.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <tool.icon className="w-4 h-4 text-primary" aria-hidden="true" />
-                      <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {tool.title}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">{tool.description}</p>
-                    <div className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary">
-                      Open tool
-                      <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <Button asChild variant="outline" className="gap-2">
-                <Link to="/tools" onClick={scrollToPageTop}>
-                  View all tools
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section className="py-10 md:py-14">
-          <div className="container-calm">
-            <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center">
-              <div>
-                <div className="flex items-start gap-5 mb-5">
-                  <a
-                    href={LINKEDIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Connect with Kevin Duplechin on LinkedIn"
-                    className="group relative flex-shrink-0"
-                  >
-                    <img
-                      src={kevinPhoto.url}
-                      alt="Kevin Duplechin, linguist and language coach"
-                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border border-border shadow-sm transition-transform group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground shadow-md ring-2 ring-background">
-                      <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
-                    </span>
-                  </a>
-                  <div>
-                    <p className="text-sm font-medium text-primary">Experience and background</p>
-                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
-                      Practical coaching shaped by real field language learning
-                    </h2>
-                    <a
-                      href={LINKEDIN_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
-                    >
-                      <Linkedin className="w-4 h-4" aria-hidden="true" />
-                      Connect on LinkedIn
-                    </a>
-                  </div>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  My work sits at the intersection of linguistics, cross-cultural learning, coaching, and practical
-                  implementation. The goal is not to impress learners with theory. The goal is to turn sound principles
-                  into a path people can actually follow.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {experienceHighlights.map((item) => (
-                  <div key={item} className="flex items-start gap-3 p-4 bg-card rounded-xl border border-border/60">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
-                    <span className="text-sm font-medium text-foreground leading-relaxed">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Sensei's apprentice — tongue-in-cheek bonus credential */}
-            <div className="mt-10 pt-8 border-t border-border/60">
-              <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center max-w-3xl mx-auto">
-                <a
-                  href="https://sentencepaths.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block flex-shrink-0 mx-auto md:mx-0"
-                  aria-label="Visit Sentence Paths"
-                >
-                  <img
-                    src={kevinSensei.url}
-                    alt="Watercolor illustration of Kevin seated with the Sentence Paths Sensei, a raccoon in robes holding a calligraphy brush"
-                    className="w-44 h-44 sm:w-52 sm:h-52 rounded-xl object-cover shadow-md border border-amber-200/60 ring-1 ring-amber-100/40 hover:shadow-lg transition-shadow"
-                    loading="lazy"
-                  />
-                </a>
-                <div className="text-center md:text-left">
-                  <p className="text-xs font-medium uppercase tracking-wider text-amber-700/80 mb-2">
-                    Bonus credential <span className="text-muted-foreground/60 normal-case tracking-normal">(the one I'm most proud of)</span>
-                  </p>
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
-                    <a
-                      href="https://sentencepaths.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary transition-colors underline-offset-4 hover:underline"
-                    >
-                      Sentence Paths
-                    </a>{" "}
-                    Sensei Apprentice
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Personally mentored by the Sensei himself — an honorary title I wear proudly alongside the very
-                    real degrees and fieldwork above.{" "}
-                    <a
-                      href="https://sentencepaths.com/legend"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline font-medium"
-                    >
-                      Read the Legend of the Sensei scroll →
-                    </a>
-                    <span className="block mt-1">
-                      <a
-                        href="https://sentencepaths.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline font-medium"
-                      >
-                        Meet the real Sensei →
-                      </a>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Coaching opportunities */}
+        {/* Four Strands */}
         <section className="py-12 md:py-16 bg-muted/20 border-y border-border/40">
           <div className="container-calm">
             <div className="max-w-2xl mb-8">
-              <Badge variant="outline" className="mb-3 text-xs border-primary/30 text-primary">
-                Coaching Opportunities
-              </Badge>
+              <div className="flex items-center gap-3 mb-3">
+                <Layers className="w-5 h-5 text-primary" aria-hidden="true" />
+                <p className="text-sm font-medium text-primary">The approach</p>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
+                Built on Paul Nation's Four Strands
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">{FOUR_STRANDS_STATEMENT}</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {fourStrands.map((strand, index) => (
+                <article key={strand.title} className="card-calm h-full">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-3">
+                    {index + 1}
+                  </span>
+                  <h3 className="text-base font-semibold text-foreground mb-2">{strand.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{strand.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Coaching opportunities */}
+        <section className="py-12 md:py-16">
+          <div className="container-calm">
+            <div className="max-w-2xl mb-8">
+              <p className="text-sm font-medium text-primary mb-2">Coaching opportunities</p>
               <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">Ways to work together</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Choose the level of support that fits your situation: one-on-one planning, coach development, or focused
-                Saturday training for a group.
+                Choose the level of support that fits your situation: private coaching, coach and team development, or a
+                workshop for your organization.
               </p>
             </div>
 
@@ -372,7 +164,7 @@ const Index = () => {
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">{card.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">{card.description}</p>
-                  <ul className="mt-auto space-y-2">
+                  <ul className="space-y-2 mb-5">
                     {card.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
@@ -380,78 +172,184 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    to={card.href}
+                    onClick={scrollToPageTop}
+                    className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                  >
+                    Learn more
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Individual plans */}
-        <section className="py-12 md:py-16">
+        {/* Coaching plans summary */}
+        <section className="py-12 md:py-16 bg-muted/20 border-y border-border/40">
           <div className="container-calm">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
               <div>
-                <p className="text-sm font-medium text-primary mb-2">Individual coaching</p>
+                <p className="text-sm font-medium text-primary mb-2">Coaching packages</p>
                 <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Simple plans with clear savings</h2>
                 <p className="mt-3 text-muted-foreground leading-relaxed max-w-2xl">
-                  Choose one focused reset, a short starter arc, or a fuller momentum plan with diagnosis, structure,
-                  accountability, and adjustment.
+                  One focused session, a starter arc to build your system, or a longer plan for accountability and
+                  refinement.
                 </p>
               </div>
               <Button asChild className="gap-2 lg:flex-shrink-0">
-                <Link to="/coaching" onClick={scrollToPageTop}>
-                  See full plan details
+                <Link to="/coaching#coaching-plans" onClick={scrollToPageTop}>
+                  Choose a Coaching Plan
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {planCards.map((plan) => (
-                <article key={plan.title} className="bg-card rounded-xl border border-border/60 p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{plan.title}</h3>
-                  <p className="text-2xl font-semibold text-primary mb-2">{plan.price}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{plan.note}</p>
+              {coachingPlans.map((plan) => (
+                <article key={plan.id} className="bg-card rounded-xl border border-border/60 p-6 flex flex-col">
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
+                    {plan.badge && (
+                      <Badge className="bg-primary text-primary-foreground text-xs flex-shrink-0">{plan.badge}</Badge>
+                    )}
+                  </div>
+                  <p className="text-2xl font-semibold text-primary">{plan.price}</p>
+                  {plan.savings && <p className="mt-1 text-sm font-medium text-foreground">{plan.savings}</p>}
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{plan.purpose}</p>
+                  <Link
+                    to="/coaching#coaching-plans"
+                    onClick={scrollToPageTop}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                  >
+                    {plan.cta}
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Sentence Paths — major feature */}
+        <section className="py-14 md:py-20">
+          <div className="container-calm">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center mb-12">
+              <div>
+                <Badge variant="outline" className="mb-4 text-xs border-primary/30 text-primary">
+                  Sentence Paths
+                </Badge>
+                <h2 className="text-2xl md:text-4xl font-semibold text-foreground tracking-tight mb-4">
+                  A sentence-based language-learning platform for real practice volume
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                  Sentence Paths is built around meaningful sentences you actually want to use. Listen, read, write, and
+                  speak your way through thousands of them — with your own materials, at your own pace.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  It supports the same Four Strands balance that coaching is built on, and it makes long-term effort
+                  visible by counting the words and sentences you have genuinely worked through.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button asChild size="lg" className="gap-2">
+                    <a href={SENTENCE_PATHS_URL} target="_blank" rel="noopener noreferrer">
+                      Explore Sentence Paths
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="gap-2">
+                    <Link to="/coaching#coaching-plans" onClick={scrollToPageTop}>
+                      Get coaching alongside it
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="rounded-xl overflow-hidden border border-border/60 bg-muted shadow-sm">
+                <img
+                  src="/screenshots/sentence-paths-preview.png"
+                  alt="Sentence Paths showing cumulative word-volume progress toward five million words"
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div className="mb-10">
+              <h3 className="text-base font-semibold text-foreground mb-4">Long-term word-volume milestones</h3>
+              <div className="flex flex-wrap gap-2">
+                {sentencePathsMilestones.map((milestone) => (
+                  <span
+                    key={milestone.label}
+                    className="px-3 py-1.5 rounded-full bg-accent text-sm font-medium text-foreground border border-border/60"
+                  >
+                    {milestone.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {sentencePathsFeatureGroups.map((group) => (
+                <article key={group.title} className="card-calm h-full">
+                  <h3 className="text-base font-semibold text-foreground mb-4">{group.title}</h3>
+                  <ul className="space-y-2">
+                    {group.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <p className="mt-6 text-sm text-muted-foreground/80 max-w-3xl">
+              Feature availability may vary by language, content, and device. Sentence Paths and coaching are separate
+              offers; Sentence Paths may be incorporated into a coaching plan when appropriate.
+            </p>
+          </div>
+        </section>
+
         {/* Workshops */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-primary/5 via-accent/25 to-primary/10 border-y border-border/40">
+        <section
+          id="workshops-preview"
+          className="py-12 md:py-16 bg-gradient-to-br from-primary/5 via-accent/25 to-primary/10 border-y border-border/40 scroll-mt-24"
+        >
           <div className="container-calm">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-background/80 rounded-xl border border-border">
-                    <Calendar className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-primary">Limited Saturday availability</p>
-                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
-                      Workshops for teams and organizations
-                    </h2>
-                  </div>
-                </div>
+                <p className="text-sm font-medium text-primary mb-2">For organizations</p>
+                <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                  Workshops for teams and organizations
+                </h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Saturday workshops are available for churches, schools, nonprofits, businesses, government teams,
-                  mission organizations, and language programs that need practical language-learning systems.
+                  Practical training in language-learning systems for churches, schools, nonprofits, businesses, mission
+                  organizations, and language programs. Available online or in person.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button asChild className="gap-2">
-                    <Link to="/coaching#quote-contact">
-                      <Mail className="w-4 h-4" aria-hidden="true" />
-                      Request a workshop quote
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="gap-2">
-                    <a href="https://calendly.com/kevin-duplechin" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="w-4 h-4" aria-hidden="true" />
-                      Schedule a conversation
-                    </a>
-                  </Button>
+
+                <div className="space-y-3 mb-6">
+                  {workshopOffers.map((offer) => (
+                    <div key={offer.id} className="p-4 bg-background/80 border border-border rounded-xl">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <h3 className="text-base font-semibold text-foreground">{offer.name}</h3>
+                        <p className="text-sm font-semibold text-primary flex-shrink-0">{offer.price}</p>
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{offer.description}</p>
+                    </div>
+                  ))}
                 </div>
+
+                <p className="text-sm text-muted-foreground/80 mb-6">{WORKSHOP_PRICING_NOTE}</p>
+
+                <Button asChild className="gap-2">
+                  <Link to="/coaching#workshops" onClick={scrollToPageTop}>
+                    <Mail className="w-4 h-4" aria-hidden="true" />
+                    Request a Workshop
+                  </Link>
+                </Button>
               </div>
 
               <div className="bg-background/80 border border-border rounded-xl p-6">
@@ -472,90 +370,137 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Approach */}
+        {/* About Kevin */}
         <section className="py-12 md:py-16">
           <div className="container-calm">
-            <div className="max-w-2xl mb-8">
-              <div className="flex items-center gap-3 mb-3">
-                <Languages className="w-5 h-5 text-primary" aria-hidden="true" />
-                <p className="text-sm font-medium text-primary">Coaching approach</p>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">Progress, not overwhelm</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                The method is simple: clarify the goal, choose the right activities, practice consistently, and document
-                what is actually happening.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {approachSteps.map((step, index) => (
-                <div key={step.title} className="card-calm text-center py-7">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-semibold mb-4">
-                    {index + 1}
-                  </span>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center">
+              <div>
+                <div className="flex items-start gap-5 mb-5">
+                  <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Connect with Kevin Duplechin on LinkedIn"
+                    className="group relative flex-shrink-0"
+                  >
+                    <img
+                      src={kevinPhoto.url}
+                      alt="Kevin Duplechin, applied linguist and language coach"
+                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border border-border shadow-sm transition-transform group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground shadow-md ring-2 ring-background">
+                      <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
+                    </span>
+                  </a>
+                  <div>
+                    <p className="text-sm font-medium text-primary">About Kevin</p>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+                      Applied linguist, coach, and coach trainer
+                    </h2>
+                    <a
+                      href={LINKEDIN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                    >
+                      <Linkedin className="w-4 h-4" aria-hidden="true" />
+                      Connect on LinkedIn
+                    </a>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <p className="text-muted-foreground leading-relaxed">{KEVIN_BIO}</p>
+              </div>
 
-        {/* Resource bridge, not tools */}
-        <section className="py-12 md:py-16 bg-muted/20 border-y border-border/40">
-          <div className="container-calm">
-            <div className="max-w-3xl mx-auto text-center">
-              <BookOpen className="w-8 h-8 text-primary mx-auto mb-4" aria-hidden="true" />
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                Research-informed, but practical
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                My coaching draws on frameworks like ACTFL, CEFR, Canadian Language Benchmarks, the Four Strands, can-do
-                planning, and evidence-based progress tracking — always translated into practical steps for real
-                learners.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <Button asChild variant="outline" className="gap-2 w-full sm:w-auto">
-                  <Link to="/resources" onClick={scrollToPageTop}>
-                    Browse learning resources
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="gap-2 w-full sm:w-auto">
-                  <Link to="/standards" onClick={scrollToPageTop}>
-                    <Target className="w-4 h-4" aria-hidden="true" />
-                    View standards
-                  </Link>
-                </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {credentialHighlights.map((item) => (
+                  <div key={item} className="flex items-start gap-3 p-4 bg-card rounded-xl border border-border/60">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-sm font-medium text-foreground leading-relaxed">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sensei's apprentice — tongue-in-cheek bonus credential */}
+            <div className="mt-10 pt-8 border-t border-border/60">
+              <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center max-w-3xl mx-auto">
+                <a
+                  href={SENTENCE_PATHS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block flex-shrink-0 mx-auto md:mx-0"
+                  aria-label="Visit Sentence Paths"
+                >
+                  <img
+                    src={kevinSensei.url}
+                    alt="Watercolor illustration of Kevin seated with the Sentence Paths Sensei, a raccoon in robes holding a calligraphy brush"
+                    className="w-44 h-44 sm:w-52 sm:h-52 rounded-xl object-cover shadow-md border border-amber-200/60 ring-1 ring-amber-100/40 hover:shadow-lg transition-shadow"
+                    loading="lazy"
+                  />
+                </a>
+                <div className="text-center md:text-left">
+                  <p className="text-xs font-medium uppercase tracking-wider text-amber-700/80 mb-2">
+                    Bonus credential{" "}
+                    <span className="text-muted-foreground/60 normal-case tracking-normal">
+                      (the one I'm most proud of)
+                    </span>
+                  </p>
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+                    <a
+                      href={SENTENCE_PATHS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors underline-offset-4 hover:underline"
+                    >
+                      Sentence Paths
+                    </a>{" "}
+                    Sensei Apprentice
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Personally mentored by the Sensei himself — an honorary title I wear proudly alongside the very real
+                    degrees and fieldwork above.{" "}
+                    <a
+                      href={`${SENTENCE_PATHS_URL}/legend`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline font-medium"
+                    >
+                      Read the Legend of the Sensei scroll →
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Final CTA */}
-        <section className="py-16 md:py-20 pb-20 md:pb-24">
+        <section className="py-16 md:py-20 pb-20 md:pb-24 bg-muted/20 border-t border-border/40">
           <div className="container-calm">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
                 Ready to clarify your next step?
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-7">
-                Start with the coaching page to compare individual plans, workshop options, quote requests, and the full
-                coaching approach.
+                Submit a short coaching request. If it is a good fit, I will email you confirmation and private payment
+                instructions, and the scheduling link follows once payment is confirmed.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button asChild size="lg" className="gap-2 w-full sm:w-auto">
-                  <Link to="/coaching" onClick={scrollToPageTop}>
-                    Go to coaching page
+                  <Link to="/coaching#coaching-plans" onClick={scrollToPageTop}>
+                    Choose a Coaching Plan
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </Button>
-                <a href="mailto:kevinduplechin7@gmail.com" className="btn-secondary-calm w-full sm:w-auto">
-                  <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
-                  Email Kevin
-                </a>
+                <Button asChild variant="outline" size="lg" className="gap-2 w-full sm:w-auto">
+                  <Link to="/coaching#workshops" onClick={scrollToPageTop}>
+                    <Handshake className="w-4 h-4" aria-hidden="true" />
+                    Request a Workshop
+                  </Link>
+                </Button>
               </div>
-              <p className="mt-6 text-sm text-muted-foreground/60">kevinduplechin7@gmail.com</p>
+              <p className="mt-6 text-sm text-muted-foreground/60">{CONTACT_EMAIL}</p>
             </div>
           </div>
         </section>

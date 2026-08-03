@@ -66,10 +66,25 @@ export default function CoachingPage() {
   const workshopFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!location.hash) return;
-    const el = document.querySelector(location.hash);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [location.hash]);
+    if (!location.hash) {
+      window.scrollTo({ top: 0 });
+      return;
+    }
+    const id = location.hash;
+    let frames = 0;
+    let raf = 0;
+    const tryScroll = () => {
+      const el = document.querySelector(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (frames++ < 60) raf = requestAnimationFrame(tryScroll);
+    };
+    raf = requestAnimationFrame(tryScroll);
+    return () => cancelAnimationFrame(raf);
+  }, [location.hash, location.key]);
+
 
   const choosePlan = (planId: string) => {
     setSelectedPlan(planId);

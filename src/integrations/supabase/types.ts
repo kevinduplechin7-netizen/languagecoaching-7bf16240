@@ -14,16 +14,138 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          author_name: string
+          canonical_url: string | null
+          category: string
+          content: string
+          created_at: string
+          excerpt: string
+          featured_image_url: string | null
+          id: string
+          is_featured: boolean
+          published_at: string | null
+          reading_time_minutes: number | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string
+          canonical_url?: string | null
+          category: string
+          content: string
+          created_at?: string
+          excerpt: string
+          featured_image_url?: string | null
+          id?: string
+          is_featured?: boolean
+          published_at?: string | null
+          reading_time_minutes?: number | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string
+          canonical_url?: string | null
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          featured_image_url?: string | null
+          id?: string
+          is_featured?: boolean
+          published_at?: string | null
+          reading_time_minutes?: number | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      funnel_events: {
+        Row: {
+          anon_id: string | null
+          campaign: string | null
+          content: string | null
+          created_at: string
+          event_name: string
+          id: string
+          medium: string | null
+          path: string | null
+          props: Json
+          source: string | null
+        }
+        Insert: {
+          anon_id?: string | null
+          campaign?: string | null
+          content?: string | null
+          created_at?: string
+          event_name: string
+          id?: string
+          medium?: string | null
+          path?: string | null
+          props?: Json
+          source?: string | null
+        }
+        Update: {
+          anon_id?: string | null
+          campaign?: string | null
+          content?: string | null
+          created_at?: string
+          event_name?: string
+          id?: string
+          medium?: string | null
+          path?: string | null
+          props?: Json
+          source?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +272,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const

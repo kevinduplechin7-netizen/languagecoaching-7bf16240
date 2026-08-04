@@ -12,13 +12,21 @@ import { trackFunnelEvent } from "@/lib/funnelAnalytics";
 
 type Post = Tables<"blog_posts">;
 
+function ArticleText({ value }: { value: string }) {
+  const parts = value.split(/(https?:\/\/[^\s]+)/g);
+  return <>{parts.map((part, index) => part.startsWith("http")
+    ? <a key={`${part}-${index}`} href={part} target="_blank" rel="noopener noreferrer" className="font-medium text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary">{part}</a>
+    : part)}</>;
+}
+
 function ArticleBody({ content }: { content: string }) {
-  return <div className="space-y-5">{content.split(/\n{2,}/).filter(Boolean).map((block, index) => {
+  return <div className="space-y-6">{content.split(/\n{2,}/).filter(Boolean).map((block, index) => {
     const value = block.trim();
-    if (value.startsWith("## ")) return <h2 key={index} className="pt-5 text-2xl font-semibold text-foreground">{value.slice(3)}</h2>;
+    if (value.startsWith("## ")) return <h2 key={index} className="pt-7 text-2xl font-semibold leading-snug text-foreground">{value.slice(3)}</h2>;
     if (value.startsWith("### ")) return <h3 key={index} className="pt-3 text-xl font-semibold text-foreground">{value.slice(4)}</h3>;
-    if (value.startsWith("- ")) return <ul key={index} className="list-disc pl-6 space-y-2 text-muted-foreground">{value.split("\n").map((line) => <li key={line}>{line.replace(/^- /, "")}</li>)}</ul>;
-    return <p key={index} className="text-muted-foreground leading-8">{value}</p>;
+    if (value.startsWith("- ")) return <ul key={index} className="list-disc space-y-2.5 pl-6 text-muted-foreground marker:text-primary">{value.split("\n").map((line) => <li key={line} className="pl-1 leading-7"><ArticleText value={line.replace(/^- /, "")} /></li>)}</ul>;
+    if (value.startsWith("> ")) return <blockquote key={index} className="border-l-2 border-primary py-1 pl-5 text-lg font-medium leading-8 text-foreground"><ArticleText value={value.slice(2)} /></blockquote>;
+    return <p key={index} className="text-muted-foreground leading-8"><ArticleText value={value} /></p>;
   })}</div>;
 }
 

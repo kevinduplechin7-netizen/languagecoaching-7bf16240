@@ -1,0 +1,2 @@
+ALTER TABLE public.funnel_events DROP CONSTRAINT IF EXISTS funnel_events_event_name_check;
+ALTER TABLE public.funnel_events ADD CONSTRAINT funnel_events_event_name_check CHECK (event_name IN ('checkup_landing_viewed','checkup_started','checkup_question_answered','checkup_completed','newsletter_offer_viewed','newsletter_signup_clicked','full_plan_viewed','article_viewed','checkup_coaching_clicked','coaching_page_viewed'))

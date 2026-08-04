@@ -5,9 +5,9 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/coaching', label: 'Coaching' },
+  { href: '/checkup', label: 'Checkup' },
+  { href: '/articles', label: 'Articles' },
   { href: '/resources', label: 'Resources' },
-  { href: '/standards', label: 'Standards' },
-  { href: '/tools', label: 'Language Builds' },
 ];
 
 export default function Navigation() {

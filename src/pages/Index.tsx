@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -421,6 +422,13 @@ const Index = () => {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-14 md:py-18 border-t border-border/40">
+          <div className="container-calm">
+            <NewsletterSignup location="homepage" className="max-w-4xl mx-auto p-6 md:p-9 border border-border rounded-lg bg-card" />
           </div>
         </section>
 

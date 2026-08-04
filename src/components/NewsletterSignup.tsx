@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
-import { Mail, Settings } from "lucide-react";
+import { ExternalLink, Mail, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { getSubstackEmbedUrl, hasSubstackConfiguration, SUBSTACK_PUBLICATION_URL } from "@/config/substack";
 import { getUtmParameters, trackFunnelEvent } from "@/lib/funnelAnalytics";
 import { cn } from "@/lib/utils";
@@ -72,12 +73,15 @@ export default function NewsletterSignup({ location, className, compact = false 
         title="Subscribe to Language Learning Notes"
         className="w-full h-40 border-0 bg-background"
         loading="lazy"
-        onLoad={trackClick}
       />
+      <div className="mt-3 text-center">
+        <Button asChild variant="outline" size="sm">
+          <a href={SUBSTACK_PUBLICATION_URL} target="_blank" rel="noopener noreferrer" onClick={trackClick}>
+            Subscribe free on Substack <ExternalLink aria-hidden="true" />
+          </a>
+        </Button>
+      </div>
       <p className="sr-only">Newsletter subscriptions are processed by Substack.</p>
-      <a href={SUBSTACK_PUBLICATION_URL} className="sr-only" target="_blank" rel="noopener noreferrer" onClick={trackClick}>
-        Open Language Learning Notes on Substack
-      </a>
     </section>
   );
 }

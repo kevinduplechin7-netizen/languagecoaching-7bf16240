@@ -14,6 +14,11 @@ import ContactPage from "./pages/ContactPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import FourStrandsQuizPage from "./pages/FourStrandsQuizPage";
+import CheckupPage from "./pages/CheckupPage";
+import ArticlesPage from "./pages/ArticlesPage";
+import ArticleDetailPage from "./pages/ArticleDetailPage";
+import NewsletterPage from "./pages/NewsletterPage";
+import AdminContentPage from "./pages/AdminContentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +38,11 @@ const App = () => (
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/tools/linguaflow-architecture" element={<LinguaFlowArchitecturePage />} />
           <Route path="/four-strands-quiz" element={<FourStrandsQuizPage />} />
+          <Route path="/checkup" element={<CheckupPage />} />
+          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/articles/:slug" element={<ArticleDetailPage />} />
+          <Route path="/newsletter" element={<NewsletterPage />} />
+          <Route path="/admin/content" element={<AdminContentPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />

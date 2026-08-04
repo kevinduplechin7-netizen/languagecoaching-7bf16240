@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { CONTACT_EMAIL, LINKEDIN_URL, SENTENCE_PATHS_URL } from "@/data/offers";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Footer() {
   return (
     <footer className="py-10 border-t border-border">
       <div className="container-calm">
+        <NewsletterSignup location="footer" compact className="max-w-2xl mx-auto mb-8 pb-8 border-b border-border" />
         <p className="text-sm text-muted-foreground/80 text-center tracking-wide">
           Kevin Duplechin · Applied Linguist & Language-Learning Coach
         </p>
@@ -33,6 +35,9 @@ export default function Footer() {
           <Link to="/tools" className="hover:text-foreground transition-colors">
             Language Builds
           </Link>
+          <Link to="/checkup" className="hover:text-foreground transition-colors">Learner Checkup</Link>
+          <Link to="/articles" className="hover:text-foreground transition-colors">Articles</Link>
+          <Link to="/newsletter" className="hover:text-foreground transition-colors">Newsletter</Link>
         </div>
 
         <div className="mt-3 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground/50">

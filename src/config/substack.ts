@@ -1,15 +1,20 @@
 /**
  * Public Substack configuration.
  *
- * 1. Set VITE_SUBSTACK_PUBLICATION_URL in the project's public build configuration
- *    (example: https://your-publication.substack.com).
- * 2. Paste the official external-site signup iframe code from Substack between
+ * 1. VITE_SUBSTACK_PUBLICATION_URL may override the public publication URL.
+ * 2. When available, paste the official external-site signup iframe code between
  *    the backticks below. This is public embed markup, never a secret.
  *
  * The app validates and extracts only the iframe's HTTPS Substack URL. It never
  * injects this string as HTML.
  */
-export const SUBSTACK_PUBLICATION_URL = (import.meta.env.VITE_SUBSTACK_PUBLICATION_URL ?? "").trim();
+const DEFAULT_SUBSTACK_PUBLICATION_URL = "https://languagelearningnotes.substack.com";
+
+export const SUBSTACK_PUBLICATION_URL = (
+  import.meta.env.VITE_SUBSTACK_PUBLICATION_URL ?? DEFAULT_SUBSTACK_PUBLICATION_URL
+).trim();
+
+export const SUBSTACK_SUBSCRIBE_URL = `${SUBSTACK_PUBLICATION_URL.replace(/\/$/, "")}/subscribe`;
 
 export const SUBSTACK_SIGNUP_EMBED_CODE = ``;
 
@@ -33,7 +38,7 @@ export function getSubstackEmbedUrl(): string | null {
 }
 
 export function hasSubstackConfiguration(): boolean {
-  if (!SUBSTACK_PUBLICATION_URL || !getSubstackEmbedUrl()) return false;
+  if (!SUBSTACK_PUBLICATION_URL) return false;
   try {
     const publication = new URL(SUBSTACK_PUBLICATION_URL);
     return publication.protocol === "https:" && allowedSubstackHost(publication.hostname);

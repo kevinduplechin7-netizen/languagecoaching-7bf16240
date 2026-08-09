@@ -65,12 +65,14 @@ const RedFlag = ({ title, desc }: { title: string; desc: string }) => (
 );
 
 // --- QUIZ DATA ---
+// Every question carries a `help` line that explains any terminology in plain language.
 const questionsMaster = [
   // INPUT (MFI) Questions
   {
     id: 'mfi_1',
     strand: 'MFI',
     text: "When your learners read or listen to stories, how many words are unknown to them?",
+    help: "Roughly how many words per page they cannot understand. For comfortable reading, learners need to know about 98 out of every 100 words.",
     options: [
       { text: "They struggle with many words (10+ per page)", score: 0 },
       { text: "They use a dictionary often (5-10 per page)", score: 1 },
@@ -81,16 +83,18 @@ const questionsMaster = [
     id: 'mfi_2',
     strand: 'MFI',
     text: "How much class time is dedicated to pure listening or reading for pleasure?",
+    help: "\"Extensive reading/listening\" means large amounts of easy material read or heard for enjoyment and meaning, with no test or analysis afterwards.",
     options: [
       { text: "Almost none, we mostly analyze text", score: 0 },
       { text: "Some, but usually followed by comprehension tests", score: 1 },
-      { text: "A significant amount (Extensive Reading/Listening)", score: 3 }
+      { text: "A significant amount (extensive reading or listening \u2014 lots of easy material, read or heard for enjoyment)", score: 3 }
     ]
   },
   {
     id: 'mfi_3',
     strand: 'MFI',
     text: "Are the materials interesting and compelling to the learners?",
+    help: "\"Compelling\" means learners actually want to know what happens next, so they keep going without being told to.",
     options: [
       { text: "No, they are textbook passages", score: 0 },
       { text: "Somewhat", score: 1 },
@@ -101,10 +105,11 @@ const questionsMaster = [
     id: 'mfi_4',
     strand: 'MFI',
     text: "Do you use materials created or adapted specifically for the learners' level?",
+    help: "\"Authentic\" materials are made for native speakers. \"Graded readers\" are books written with a controlled, limited vocabulary so learners can read them easily.",
     options: [
-      { text: "No, we use 'authentic' native materials", score: 0 },
+      { text: "No, we use 'authentic' native materials (made for native speakers)", score: 0 },
       { text: "Sometimes", score: 1 },
-      { text: "Yes, graded readers or co-created stories", score: 3 }
+      { text: "Yes, graded readers (level-controlled books) or co-created stories", score: 3 }
     ]
   },
   // OUTPUT (MFO) Questions
@@ -112,6 +117,7 @@ const questionsMaster = [
     id: 'mfo_1',
     strand: 'MFO',
     text: "Do learners speak or write to convey a real message?",
+    help: "A \"real message\" means they are telling the listener something the listener does not already know \u2014 not repeating a sentence everyone can already see.",
     options: [
       { text: "No, they mostly repeat or fill in blanks", score: 0 },
       { text: "Sometimes, but usually to practice grammar", score: 1 },
@@ -122,6 +128,7 @@ const questionsMaster = [
     id: 'mfo_2',
     strand: 'MFO',
     text: "Are learners pushed to use language slightly beyond their comfort zone?",
+    help: "\"Pushed output\" means being stretched to say a little more than is easy. \"Negotiating meaning\" is working with a partner \u2014 rephrasing, asking again \u2014 until you are understood.",
     options: [
       { text: "No, they stick to what they know perfectly", score: 0 },
       { text: "Occasionally", score: 1 },
@@ -132,6 +139,7 @@ const questionsMaster = [
     id: 'mfo_3',
     strand: 'MFO',
     text: "Is the topic of speaking/writing familiar to them?",
+    help: "Speaking goes better when learners have already read or heard about the topic, so they have ideas and words ready.",
     options: [
       { text: "No, it's often new and difficult", score: 0 },
       { text: "Sometimes", score: 1 },
@@ -141,9 +149,10 @@ const questionsMaster = [
   {
     id: 'mfo_4',
     strand: 'MFO',
-    text: "Do they use strategies like circumlocution (talking around a missing word)?",
+    text: "Do they work around missing words instead of stopping?",
+    help: "This is called \"circumlocution\": describing a word you don't know \u2014 saying \"the tool for turning bolts\" instead of \"wrench\". \"L1\" means the learner's first language.",
     options: [
-      { text: "No, they stop or switch to L1", score: 0 },
+      { text: "No, they stop or switch to their first language", score: 0 },
       { text: "Sometimes", score: 1 },
       { text: "Yes, frequently", score: 3 }
     ]
@@ -153,26 +162,29 @@ const questionsMaster = [
     id: 'lfl_1',
     strand: 'LFL',
     text: "How do you teach vocabulary?",
+    help: "\"Spaced repetition\" means reviewing words at growing intervals. \"High-frequency\" words are the ones that appear most often in the language. A \"semantic set\" is a group of similar words (all the colors, all the fruits) \u2014 teaching them together makes them easy to confuse.",
     options: [
       { text: "I don't teach it explicitly", score: 0 },
-      { text: "Large lists of related words (colors, kitchen items)", score: 1 },
-      { text: "Spaced repetition of high-frequency words, avoiding semantic sets", score: 3 }
+      { text: "Large lists of related words (all the colors, all the kitchen items)", score: 1 },
+      { text: "Spaced review of the most common words, avoiding groups of similar words", score: 3 }
     ]
   },
   {
     id: 'lfl_2',
     strand: 'LFL',
     text: "How much time is spent on grammar explanation and drills?",
+    help: "\"Drills\" are repeated practice of one pattern. Deliberate language study is valuable, but it should stay a modest slice of the total time.",
     options: [
       { text: "None", score: 0 },
-      { text: "Most of the class (>50%)", score: 1 },
-      { text: "A moderate amount (~25%) focused on useful features", score: 3 }
+      { text: "Most of the class (more than half)", score: 1 },
+      { text: "A moderate amount (about a quarter), focused on useful features", score: 3 }
     ]
   },
   {
     id: 'lfl_3',
     strand: 'LFL',
-    text: "Do you engage in intensive reading (analyzing details)?",
+    text: "Do you use intensive reading?",
+    help: "\"Intensive reading\" means slowly analyzing a short, difficult text \u2014 looking closely at words, grammar, and structure. It is useful in small doses, but it is not how learners build reading volume.",
     options: [
       { text: "Never", score: 0 },
       { text: "Always, it's our main reading method", score: 1 },
@@ -183,10 +195,11 @@ const questionsMaster = [
     id: 'lfl_4',
     strand: 'LFL',
     text: "Do students do deliberate study (e.g., word cards) outside class?",
+    help: "\"Word cards\" are two-sided cards with the word on one side and the meaning on the other. \"Retrieval practice\" means trying to recall the answer from memory before flipping the card \u2014 not just reading both sides.",
     options: [
       { text: "No", score: 0 },
       { text: "Yes, checking definitions once", score: 1 },
-      { text: "Yes, using retrieval practice/flashcards", score: 3 }
+      { text: "Yes, recalling answers from memory with cards or flashcards", score: 3 }
     ]
   },
   // FLUENCY (FD) Questions
@@ -194,6 +207,7 @@ const questionsMaster = [
     id: 'fd_1',
     strand: 'FD',
     text: "Do you have activities where speed is the primary goal?",
+    help: "\"Fluency development\" means getting faster and smoother with language learners already know. Nothing new is taught \u2014 the aim is ease, not accuracy or new content.",
     options: [
       { text: "No, accuracy is always the goal", score: 0 },
       { text: "Rarely", score: 1 },
@@ -203,7 +217,8 @@ const questionsMaster = [
   {
     id: 'fd_2',
     strand: 'FD',
-    text: "Is the material used for fluency practice easy (100% known)?",
+    text: "Is the material used for fluency practice easy (all words already known)?",
+    help: "Fluency practice only works with familiar material. If learners meet new words, the activity becomes study rather than speed practice.",
     options: [
       { text: "We use the same difficult textbook material", score: 0 },
       { text: "Sometimes", score: 1 },
@@ -213,7 +228,8 @@ const questionsMaster = [
   {
     id: 'fd_3',
     strand: 'FD',
-    text: "Do you use the 4/3/2 technique or speed reading?",
+    text: "Do you use repeated-telling (4/3/2) or speed reading activities?",
+    help: "In \"4/3/2\", a learner tells the same talk three times to three partners \u2014 first in 4 minutes, then 3, then 2. \"Speed reading\" is timed reading of easy texts to raise reading rate.",
     options: [
       { text: "Never heard of them", score: 0 },
       { text: "Once or twice", score: 1 },
@@ -224,6 +240,7 @@ const questionsMaster = [
     id: 'fd_4',
     strand: 'FD',
     text: "Is there pressure to perform faster than normal?",
+    help: "Gentle time limits \u2014 a timer, a shorter round, a target rate \u2014 that push learners a little past their comfortable speed.",
     options: [
       { text: "No, students take their time", score: 0 },
       { text: "A little", score: 1 },
@@ -349,7 +366,12 @@ const QuizSection = () => {
           </Badge>
         </div>
         <CardContent className="p-8">
-          <h3 className="text-xl font-semibold text-foreground mb-6">{q.text}</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-3">{q.text}</h3>
+          {q.help && (
+            <p className="mb-6 p-4 bg-muted/40 border border-border rounded-lg text-sm text-muted-foreground leading-relaxed">
+              {q.help}
+            </p>
+          )}
           <div className="space-y-3">
             {q.options.map((opt, idx) => (
               <button

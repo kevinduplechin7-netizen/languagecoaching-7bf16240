@@ -127,6 +127,7 @@ export default function CheckupPage() {
                     <p className="text-sm text-muted-foreground">{strandNames[id]}</p>
                     <p className="mt-2 text-3xl font-semibold text-foreground">{percentages[id]}%</p>
                     <Progress value={percentages[id]} className="h-2 mt-3" />
+                    <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{strandExplanations[id]}</p>
                   </article>
                 ))}
               </section>

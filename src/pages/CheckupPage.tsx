@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { checkupQuestions, sevenDayPlan, strandExplanations, strandNames, strandRecommendations, type StrandId } from "@/data/learnerCheckup";
+import { checkupQuestions, strandExplanations, strandNames, strandRecommendations, type StrandId } from "@/data/learnerCheckup";
+import { buildAdaptivePlan, planEmphasis, planKey, PLAN_SOURCES } from "@/data/adaptivePlans";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { captureUtmParameters, getUtmParameters, trackFunnelEvent } from "@/lib/funnelAnalytics";
 

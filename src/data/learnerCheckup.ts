@@ -124,13 +124,3 @@ export const strandRecommendations: Record<StrandId, string[]> = {
   LFL: ["Select a small number of high-value words or patterns from your real reading, listening, and speaking.", "Cover the answer and recall it from memory, review again a few days later, then notice or use each item in context."],
   FD: ["Repeat an easy task with familiar language and aim for greater ease, not new complexity.", "Try rereading the same easy page, relistening to the same clip, or telling the same story in 4 minutes, then 3, then 2."],
 };
-
-export const sevenDayPlan = [
-  "Day 1 — Listen to or read easy, interesting material for 20 minutes.",
-  "Day 2 — Retell the main ideas aloud or in a short written message.",
-  "Day 3 — Study 8–10 useful words or patterns from that material, recalling each one from memory.",
-  "Day 4 — Return to the same material and notice what is now easier.",
-  "Day 5 — Speak or write about the topic for a real purpose.",
-  "Day 6 — Repeat an easy speaking, reading, or listening task for greater speed and ease.",
-  "Day 7 — Review your week and schedule one activity from each strand for next week.",
-];

@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { checkupQuestions, sevenDayPlan, strandExplanations, strandNames, strandRecommendations, type StrandId } from "@/data/learnerCheckup";
+import { checkupQuestions, strandExplanations, strandNames, strandRecommendations, type StrandId } from "@/data/learnerCheckup";
+import { buildAdaptivePlan, planEmphasis, planKey, PLAN_SOURCES } from "@/data/adaptivePlans";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { captureUtmParameters, getUtmParameters, trackFunnelEvent } from "@/lib/funnelAnalytics";
 
@@ -36,6 +37,9 @@ export default function CheckupPage() {
 
   const ranked = useMemo(() =>
     (Object.keys(percentages) as StrandId[]).sort((a, b) => percentages[b] - percentages[a]), [percentages]);
+
+  const plan = useMemo(() => buildAdaptivePlan(ranked), [ranked]);
+  const emphasis = useMemo(() => planEmphasis(ranked), [ranked]);
 
   const answer = (score: number) => {
     const question = checkupQuestions[index];
@@ -160,11 +164,53 @@ export default function CheckupPage() {
               </section>
 
               <section className="mt-10 p-6 md:p-8 bg-muted/30 border-y border-border print:border print:rounded-lg">
-                <h2 className="text-2xl font-semibold text-foreground">Seven-day sample plan</h2>
-                <ol className="mt-5 grid gap-3">
-                  {sevenDayPlan.map((day) => <li key={day} className="text-sm text-muted-foreground leading-relaxed">{day}</li>)}
+                <h2 className="text-2xl font-semibold text-foreground">Your seven-day plan</h2>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  This week is weighted toward your two lowest strands, using activities from the{" "}
+                  <Link to="/activities" className="text-primary hover:underline">Activities Index</Link>. One of twenty-four
+                  possible plans — your ranking is {planKey(ranked)}.
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2" aria-label="Days given to each strand">
+                  {(Object.entries(emphasis) as [StrandId, number][]).map(([id, days]) => (
+                    <li key={id} className="text-xs px-3 py-1 rounded-full border border-border bg-background text-muted-foreground">
+                      {strandNames[id]}: {days} {days === 1 ? "day" : "days"}
+                    </li>
+                  ))}
+                </ul>
+                <ol className="mt-6 grid gap-4">
+                  {plan.map((entry) => (
+                    <li key={entry.day} className="pl-4 border-l-2 border-primary/30">
+                      <p className="text-sm font-medium text-foreground">
+                        Day {entry.day} — {entry.activity.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {strandNames[entry.strand]} · {entry.activity.minutes}
+                      </p>
+                      <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{entry.activity.task}</p>
+                      <Link to={`/activities#${entry.activity.section}`} className="mt-1.5 inline-block text-xs text-primary hover:underline print:hidden">
+                        See how this activity works
+                      </Link>
+                    </li>
+                  ))}
                 </ol>
+                <div className="mt-7 pt-5 border-t border-border">
+                  <h3 className="text-sm font-semibold text-foreground">Where this comes from</h3>
+                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    The four strands and the roughly equal-time principle come from Paul Nation's published work, as do the
+                    named activities above. The week itself is our arrangement built from those principles — not a plan
+                    published by Nation.
+                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {PLAN_SOURCES.map((source) => (
+                      <li key={source.url} className="text-xs text-muted-foreground leading-relaxed">
+                        {source.label}{" "}
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Source</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </section>
+
 
               <NewsletterSignup location="checkup_results" className="mt-10 p-6 md:p-8 border border-border rounded-lg print:hidden" />
 

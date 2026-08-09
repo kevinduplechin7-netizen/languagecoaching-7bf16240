@@ -38,6 +38,9 @@ export default function CheckupPage() {
   const ranked = useMemo(() =>
     (Object.keys(percentages) as StrandId[]).sort((a, b) => percentages[b] - percentages[a]), [percentages]);
 
+  const plan = useMemo(() => buildAdaptivePlan(ranked), [ranked]);
+  const emphasis = useMemo(() => planEmphasis(ranked), [ranked]);
+
   const answer = (score: number) => {
     const question = checkupQuestions[index];
     const nextScores = { ...scores, [question.strand]: scores[question.strand] + score };

@@ -366,7 +366,12 @@ const QuizSection = () => {
           </Badge>
         </div>
         <CardContent className="p-8">
-          <h3 className="text-xl font-semibold text-foreground mb-6">{q.text}</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-3">{q.text}</h3>
+          {q.help && (
+            <p className="mb-6 p-4 bg-muted/40 border border-border rounded-lg text-sm text-muted-foreground leading-relaxed">
+              {q.help}
+            </p>
+          )}
           <div className="space-y-3">
             {q.options.map((opt, idx) => (
               <button

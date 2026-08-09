@@ -90,10 +90,16 @@ export default function CheckupPage() {
                 <span>Question {index + 1} of {checkupQuestions.length}</span>
                 <span>{strandNames[checkupQuestions[index].strand]}</span>
               </div>
-              <Progress value={((index + 1) / checkupQuestions.length) * 100} className="h-2 mb-8" />
+              <Progress value={((index + 1) / checkupQuestions.length) * 100} className="h-2 mb-3" />
+              <p className="text-sm text-muted-foreground mb-7 leading-relaxed">
+                {strandExplanations[checkupQuestions[index].strand]}
+              </p>
               <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-snug">
                 {checkupQuestions[index].prompt}
               </h1>
+              <p className="mt-3 p-4 bg-muted/40 border border-border rounded-lg text-sm text-muted-foreground leading-relaxed">
+                {checkupQuestions[index].helper}
+              </p>
               <div className="mt-7 grid gap-3">
                 {checkupQuestions[index].options.map((option) => (
                   <Button key={option.label} variant="outline" className="h-auto min-h-14 justify-between whitespace-normal py-3 text-left" onClick={() => answer(option.score)}>

@@ -48,8 +48,7 @@ export const coachingPlans: CoachingPlan[] = [
     price: "$375",
     savings: "Save $75",
     badge: "Most Popular",
-    purpose:
-      "For a learner who wants help building and beginning a personalized language-learning system.",
+    purpose: "For a learner who wants help building and beginning a personalized language-learning system.",
     includes: [
       "Three private coaching sessions",
       "Personalized language-learning plan",
@@ -67,8 +66,7 @@ export const coachingPlans: CoachingPlan[] = [
     name: "6-Session Momentum Plan",
     price: "$675",
     savings: "Save $225",
-    purpose:
-      "For a learner who wants continued coaching, accountability, troubleshooting, and refinement.",
+    purpose: "For a learner who wants continued coaching, accountability, troubleshooting, and refinement.",
     includes: [
       "Six private coaching sessions",
       "Personalized long-term language-learning plan",
@@ -197,8 +195,7 @@ export const ACKNOWLEDGMENT_TEXT =
 export const coachingSteps = [
   {
     title: "Submit Your Request",
-    description:
-      "Tell me briefly what you are learning, what you hope to accomplish, and where you need help.",
+    description: "Tell me briefly what you are learning, what you hope to accomplish, and where you need help.",
   },
   {
     title: "Receive Private Payment Instructions",
@@ -269,8 +266,7 @@ export const coachingFaqs = [
   },
   {
     question: "Are workshops available online?",
-    answer:
-      "Yes. Workshops may be offered online or in person depending on organizational needs and availability.",
+    answer: "Yes. Workshops may be offered online or in person depending on organizational needs and availability.",
   },
 ];
 
@@ -350,12 +346,12 @@ export const sentencePathsMilestones = [
 
 export const credentialHighlights = [
   "M.A. in Linguistics",
+  "Ed.D. student in Second Language Instruction — Instructional Technology focus",
   "Coordinator of Language-Learning Coaches",
   "Extensive applied-linguistics and field experience, including Papua New Guinea",
-  "Work with missionaries, independent learners, coaches, teams, and minority-language contexts",
   "Personal experience learning and maintaining multiple languages",
   "Creator of Sentence Paths",
 ];
 
 export const KEVIN_BIO =
-  "Kevin Duplechin is an applied linguist, language-learning coach, coach trainer, and creator of Sentence Paths. He helps learners move from uncertainty and scattered study activities to balanced, sustainable language-learning systems.";
+  "Kevin Duplechin is an applied linguist, language-learning coach, coach trainer, and creator of Sentence Paths. He is pursuing an Ed.D. in Second Language Instruction with a focus in Instructional Technology at American College of Education. His doctoral study strengthens his ongoing work with research-informed language instruction, educational technology, and learner-centered design. He helps learners move from uncertainty and scattered study activities to balanced, sustainable language-learning systems.";

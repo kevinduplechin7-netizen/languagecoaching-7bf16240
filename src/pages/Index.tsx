@@ -82,7 +82,7 @@ const Index = () => {
           <div className="container-calm">
             <div className="max-w-4xl mx-auto text-center">
               <Badge variant="secondary" className="mb-6 bg-background/80 border-primary/20 text-muted-foreground">
-                Applied linguist · Language-learning coach · Creator of Sentence Paths
+                Applied linguist · Language-learning coach · Ed.D. student · Creator of Sentence Paths
               </Badge>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight tracking-tight text-balance">
@@ -396,7 +396,7 @@ const Index = () => {
                   <div>
                     <p className="text-sm font-medium text-primary">About Kevin</p>
                     <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
-                      Applied linguist, coach, and coach trainer
+                      Applied linguist, coach, coach trainer, and doctoral student
                     </h2>
                     <a
                       href={LINKEDIN_URL}
@@ -421,14 +421,16 @@ const Index = () => {
                 ))}
               </div>
             </div>
-
           </div>
         </section>
 
         {/* Final CTA */}
         <section className="py-14 md:py-18 border-t border-border/40">
           <div className="container-calm">
-            <NewsletterSignup location="homepage" className="max-w-4xl mx-auto p-6 md:p-9 border border-border rounded-lg bg-card" />
+            <NewsletterSignup
+              location="homepage"
+              className="max-w-4xl mx-auto p-6 md:p-9 border border-border rounded-lg bg-card"
+            />
           </div>
         </section>
 

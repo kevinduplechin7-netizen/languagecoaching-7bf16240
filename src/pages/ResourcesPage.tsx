@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, Wrench, Users, ExternalLink, ArrowLeft, Route } from 'lucide-react';
+import { BookOpen, List, Target, Wrench, Users, ExternalLink, ArrowLeft } from 'lucide-react';
 import { SENTENCE_PATHS_URL } from '@/data/offers';
+import sentencePathsRaccoonAsset from '@/assets/sentence-paths-raccoon.png.asset.json';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 

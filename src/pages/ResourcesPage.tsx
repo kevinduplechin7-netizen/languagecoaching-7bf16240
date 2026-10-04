@@ -150,9 +150,12 @@ export default function ResourcesPage() {
             </h2>
             <div className="card-calm">
               <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-accent rounded-lg">
-                  <Route className="w-5 h-5 text-primary" aria-hidden="true" />
-                </div>
+                <img
+                  src={sentencePathsRaccoonAsset.url}
+                  alt="Watercolor illustration of a patient raccoon calmly reading a book while a startled owl flutters among scattered books and papers — “Read 5 million words”"
+                  className="w-full sm:w-56 md:w-64 flex-shrink-0 self-start rounded-xl shadow-sm"
+                  loading="lazy"
+                />
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="text-lg font-semibold text-foreground">Sentence Paths</h3>

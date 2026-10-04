@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, List, Target, Wrench, Users, ExternalLink, ArrowLeft } from 'lucide-react';
+import { BookOpen, List, Target, Wrench, Users, ExternalLink, ArrowLeft, Route } from 'lucide-react';
+import { SENTENCE_PATHS_URL } from '@/data/offers';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -110,6 +111,9 @@ export default function ResourcesPage() {
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
               A curated collection of guides, activities, standards, and tools for language learners and coaches.
             </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Coaches may recommend these tools when they support a learner’s individual goals, context, and language-learning plan.
+            </p>
           </div>
 
           {/* Resource cards grid */}
@@ -137,6 +141,48 @@ export default function ResourcesPage() {
               </Link>
             ))}
           </div>
+
+          {/* Recommended practice resource */}
+          <section id="sentence-paths" className="scroll-mt-24 mb-16">
+            <h2 className="text-2xl font-semibold text-foreground tracking-tight mb-6">
+              Recommended Practice Resource
+            </h2>
+            <div className="card-calm">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-accent rounded-lg">
+                  <Route className="w-5 h-5 text-primary" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="text-lg font-semibold text-foreground">Sentence Paths</h3>
+                    <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
+                      Sponsored Organization Access May Be Available
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    A language-learning practice platform designed to help learners turn useful language into fluent, automatic language through extensive reading, listening, speaking, memorization, and repeated practice.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Sentence Paths is a supplementary practice resource — it does not replace a language coach, language helper, community interaction, or real-world language use.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Your organization may already provide sponsored access. Log in with your work email address to check whether your organization has access.
+                  </p>
+                  <div className="mt-5">
+                    <a
+                      href={SENTENCE_PATHS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary-calm"
+                    >
+                      Open Sentence Paths
+                      <ExternalLink className="w-4 h-4 ml-2" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Four Strands section */}
           <section id="four-strands" className="scroll-mt-24 mb-16">

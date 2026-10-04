@@ -170,6 +170,9 @@ export default function ResourcesPage() {
                     Sentence Paths is a supplementary practice resource — it does not replace a language coach, language helper, community interaction, or real-world language use.
                   </p>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Full transparency: I'm the creator of Sentence Paths. Put in the time and read 5 million words — don't take supposed shortcuts that actually lead to disappointment.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-2xl">
                     Your organization may already provide sponsored access. Log in with your work email address to check whether your organization has access.
                   </p>
                   <div className="mt-5">
